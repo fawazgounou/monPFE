@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "455258819634",
+    "project_id": "sinistreapp",
+    "storage_bucket": "sinistreapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455258819634:android:0ebf538b3e50d07666002b",
+        "android_client_info": {
+          "package_name": "com.example.insertion_bd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455258819634-1v2utedttfroo05rldalusvmuv2glj5f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.insertion_bd",
+            "certificate_hash": "e6e84c9e2d4cb77b22f82ea985ba3436e2bf18dc"
+          }
+        },
+        {
+          "client_id": "455258819634-87ocppuvp52s1vvd4l4ito9h07mhtiq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdXBF4vOK-w3PhfxL87BxQvfEZ3Ix3fR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455258819634-87ocppuvp52s1vvd4l4ito9h07mhtiq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
