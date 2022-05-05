@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:insertion_bd/screens/VehiculA/addphotoA.dart';
 import 'package:insertion_bd/screens/home/home.dart';
 
 void main() async {
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         /* fontFamily: 'lithos', */
       ),
       title: 'Déclare ton Sinistre',
-      home: AddPhotoA(),
+      home: Home(),
     );
   }
 }

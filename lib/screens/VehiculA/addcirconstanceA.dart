@@ -143,10 +143,9 @@ class _AddCirconstanceAState extends State<AddCirconstanceA> {
             ),
             ElevatedButton(
               onPressed: () {
-                /*  FirebaseFirestore.instance.collection('Sinistre').add({
-                      
-                      'circonstance': data.first,
-                    }); */
+                FirebaseFirestore.instance.collection('CirconstanceA').add({
+                  'circonstance': data.toString(),
+                });
                 Navigator.push(
                     context,
                     MaterialPageRoute(

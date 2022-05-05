@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:insertion_bd/screens/VehiculA/SignatureA/addsignatureA.dart';
+
+
 import 'package:insertion_bd/screens/VehiculB/SignatureB/addsignatureB.dart';
 
 class AddCirconstanceB extends StatefulWidget {
@@ -143,14 +145,9 @@ class _AddCirconstanceBState extends State<AddCirconstanceB> {
             ),
             ElevatedButton(
               onPressed: () {
-                /* if (_key.currentState!.validate()) {
-                      mySinistre.date_accident = dateinput.text;
-                      mySinistre.heure = _txtTimeController.text;
-                      mySinistre.localisation = localisation.value;
-                      mySinistre.lieu = lieu.value;
-
-                      await Api.addsinistre(mySinistre.toMap());
-                    } */
+                 FirebaseFirestore.instance.collection('CirconstanceB').add({
+                  'circonstance': data.toString(),
+                });
                 Navigator.push(
                     context,
                     MaterialPageRoute(
