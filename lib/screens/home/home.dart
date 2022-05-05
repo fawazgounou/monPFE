@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/home/addsinistre.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -20,10 +20,10 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Padding(
-                padding: EdgeInsets.only(top: 50 ),
-                child: Text('Constat Amiable Automobile',
+                padding: EdgeInsets.only(top: 50),
+                child: Text('CONSTAT AMIABLE AUTOMOBILE',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
@@ -32,39 +32,39 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 height: 50,
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddSinistre()));
+                },
                 child: Image.asset(
                   'assets/image/sinistre2.jpg',
-                  height: 200,
+                  height: 300,
                   width: 300,
                   fit: BoxFit.cover,
                 ),
+
+                /*  icon: Icon(Icons.add, color: Colors.white),
+                  label: Text(
+                    "Ajouter un Sinistre",
+                    style: TextStyle(color: Colors.white),
+                  ), */
               ),
               const SizedBox(
                 height: 50,
               ),
-              const Text(
-                'DECLARE TON SINISTRE',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
               const SizedBox(
                 height: 30,
               ),
-              FlatButton.icon(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddSinistre()));
-                  },
-                  icon: Icon(Icons.add, color: Colors.white),
-                  label: Text(
-                    "Ajouter un Sinistre",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  color: Colors.lightBlueAccent),
+              const Text(
+                'DECLARE TON SINISTRE',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
             ],
           ),
         ),

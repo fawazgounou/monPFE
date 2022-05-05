@@ -35,14 +35,14 @@ class CustomTextField {
       obscureText: this.ispass,
       decoration: InputDecoration(
           hintText: this.placeholder,
-          hintStyle: TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: Colors.black),
           labelText: this.title,
-          labelStyle: TextStyle(color: Colors.white),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(1)),
+          labelStyle: TextStyle(color: Colors.black),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Color(0xFF6200EE)),
           ),
           focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.black))),
     );
   }
 
