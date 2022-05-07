@@ -38,60 +38,47 @@ class _AddVehiculAState extends State<AddVehiculA> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(30),
           child: Form(
             key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  " Véhicule A",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
                 marqueA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 immatriculationVA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 paysimmatriculationVA.textfrofield(),
-                const SizedBox(
-                  height: 200,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    FirebaseFirestore.instance.collection('VehiculeA').add({
-                      'marque': marqueA.value,
-                      'numero_immatriculation': immatriculationVA.value,
-                      'pays_immatriculation': paysimmatriculationVA.value,
-                    });
-
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddAssureA()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          FirebaseFirestore.instance.collection('VehiculeA').add({
+            'marque': marqueA.value,
+            'numero_immatriculation': immatriculationVA.value,
+            'pays_immatriculation': paysimmatriculationVA.value,
+          });
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddAssureA()));
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
     );

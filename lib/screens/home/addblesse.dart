@@ -37,16 +37,14 @@ class _AddBlesseState extends State<AddBlesse> {
       title: "Situation au moment de l'accident",
       initialValue: '');
   CustomTextField casqueceinture = CustomTextField(
-      placeholder: "",
-      title: "Portait-il de casque ou ceinture ?",
-      initialValue: '');
+      placeholder: "", title: "casque ou ceinture ?", initialValue: '');
   CustomTextField premiersoinslieu = CustomTextField(
       placeholder: "Entrer lieu hospitalisation",
-      title: "1 Soins ou Hospitalisation",
+      title: "Soins ou Hospitalisation",
       initialValue: '');
   CustomTextField gravitenature = CustomTextField(
-      placeholder: "Entrer la nature et la gravité",
-      title: "Nature et Gravité des Blessures",
+      placeholder: "Entrer la gravité",
+      title: " Gravité des Blessures",
       initialValue: '');
 
   final _key = GlobalKey<FormState>();
@@ -64,112 +62,139 @@ class _AddBlesseState extends State<AddBlesse> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ajouter des Blessés"),
+        title: const Text(
+          "Ajouter des Blessés",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(30),
           child: Form(
             key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
+                Row(
+                  children: [
+                    Expanded(flex: 1, child: nomblesse.textfrofield()),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: prenomblesse.textfrofield(),
+                    ),
+                  ],
                 ),
-                const Text(
-                  "Nouveaux Blessés",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
                 const SizedBox(
-                  height: 25,
-                ),
-                nomblesse.textfrofield(),
-                const SizedBox(
-                  height: 20,
-                ),
-                prenomblesse.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 adresseblesse.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                telephone.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(flex: 1, child: telephone.textfrofield()),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: profession.textfrofield(),
+                    ),
+                  ],
                 ),
-                profession.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 situation.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                casqueceinture.textfrofield(),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: gravitenature.textfrofield(),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: casqueceinture.textfrofield(),
+                    ),
+                  ],
+                ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 premiersoinslieu.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                gravitenature.textfrofield(),
-                const SizedBox(
-                  height: 35,
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                  
-                      FirebaseFirestore.instance.collection('Blesse').add({
-                      'nom': nomblesse.value,
-                      'prenom': prenomblesse.value,
-                      'adresse': adresseblesse.value,
-                      'telephone': telephone.value,
-                      'profession': profession.value,
-                       'situation': situation.value,
-                      'casque': casqueceinture.value,
-                      'centre_hospitalier': premiersoinslieu.value,
-                      'nature_gravite': gravitenature.value,
-                      }); 
-                       
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.lightBlue.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Ajouter un Blessé",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
+                Row(
+                  children: [
+                    Expanded(flex: 1, child: Text('')),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          FirebaseFirestore.instance.collection('Blesse').add({
+                            'nom': nomblesse.value,
+                            'prenom': prenomblesse.value,
+                            'adresse': adresseblesse.value,
+                            'telephone': telephone.value,
+                            'profession': profession.value,
+                            'situation': situation.value,
+                            'casque': casqueceinture.value,
+                            'centre_hospitalier': premiersoinslieu.value,
+                            'nature_gravite': gravitenature.value,
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          shadowColor: Colors.lightBlue.withOpacity(.7),
+                        ),
+                        child: const Text(
+                          "+ de Blessé",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 55,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddVehiculA()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddVehiculA()));
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
     );

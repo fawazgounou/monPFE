@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/VehiculA/Choc_photo/Arriere.dart';
+import 'package:insertion_bd/screens/VehiculA/Choc_photo/Avant.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
-
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -17,10 +18,8 @@ class _AddPhotoAState extends State<AddPhotoA> {
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
-
   String value = '';
   final TextEditingController txt = TextEditingController();
- 
 
   @override
   void initState() {
@@ -48,8 +47,8 @@ class _AddPhotoAState extends State<AddPhotoA> {
     String error = 'No Error Detected';
 
     try {
-          resultList = await MultiImagePicker.pickImages(
-        maxImages: 300,
+      resultList = await MultiImagePicker.pickImages(
+        maxImages: 200,
         enableCamera: val,
         selectedAssets: images,
         cupertinoOptions: const CupertinoOptions(takePhotoIcon: ""),
@@ -72,7 +71,6 @@ class _AddPhotoAState extends State<AddPhotoA> {
 
     setState(() {
       images = resultList;
-     
     });
   }
 
@@ -81,121 +79,153 @@ class _AddPhotoAState extends State<AddPhotoA> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Indication Choc",
+          "Indications des Chocs",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Form(
-            key: _key,
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  " Point de choc Véhicul A",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50))),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Avant',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          ElevatedButton(
                             onPressed: () {
-                              loadAssets(true);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddAvant()));
                             },
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              shadowColor: Colors.white.withOpacity(.7),
-                            ),
-                            child: const Text(
-                              "Camera",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                            child: Image.asset(
+                              'assets/image/avant.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              loadAssets(true);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              shadowColor: Colors.white.withOpacity(.7),
-                            ),
-                            child: const Text(
-                              "Photo",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Coté Droite',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Image.asset(
+                              'assets/image/coté_droite.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      ),
+                      flex: 1,
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 15,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: List.generate(images.length, (index) {
-                      //Asset asset =;
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: AssetThumb(
-                          asset: images[index], //asset,
-                          width: 300,
-                          height: 400,
-                        ),
-                      );
-                    }),
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Coté Gauche',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Image.asset(
+                              'assets/image/coté_droite.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      ),
+                      flex: 1,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Arrière',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const ArrierevA()));
+                            },
+                            child: Image.asset(
+                              'assets/image/arriere.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      ),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                   
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AddCirconstanceA()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Haut',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Image.asset(
+                              'assets/image/haut.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      ),
+                      flex: 1,
+                    ),
+                  ],
                 ),
               ],
             ),

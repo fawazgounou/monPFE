@@ -133,51 +133,58 @@ class _AddSinistreState extends State<AddSinistre> {
               const SizedBox(
                 width: 5,
               ),
-              Container(
-                  padding: EdgeInsets.all(15),
-                  child: Center(
-                      child: TextField(
-                    controller: timeinput,
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.timer,
-                          color: Colors.black,
-                        ),
-                        labelText: "Enter Time"),
-                    readOnly: true,
-                    onTap: () async {
-                      TimeOfDay? pickedTime = await showTimePicker(
-                        initialTime: TimeOfDay.now(),
-                        context: context,
-                      );
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        padding: EdgeInsets.all(15),
+                        child: Center(
+                            child: TextField(
+                          controller: timeinput,
+                          decoration: InputDecoration(
+                              icon: Icon(
+                                Icons.timer,
+                                color: Colors.black,
+                              ),
+                              labelText: "Enter Time"),
+                          readOnly: true,
+                          onTap: () async {
+                            TimeOfDay? pickedTime = await showTimePicker(
+                              initialTime: TimeOfDay.now(),
+                              context: context,
+                            );
 
-                      if (pickedTime != null) {
-                        print(pickedTime.format(context));
-                        DateTime parsedTime = DateFormat.jm()
-                            .parse(pickedTime.format(context).toString());
+                            if (pickedTime != null) {
+                              print(pickedTime.format(context));
+                              DateTime parsedTime = DateFormat.jm()
+                                  .parse(pickedTime.format(context).toString());
 
-                        print(parsedTime);
-                        String formattedTime =
-                            DateFormat('HH:mm:ss').format(parsedTime);
-                        print(formattedTime);
+                              print(parsedTime);
+                              String formattedTime =
+                                  DateFormat('HH:mm:ss').format(parsedTime);
+                              print(formattedTime);
 
-                        setState(() {
-                          timeinput.text = formattedTime;
-                        });
-                      } else {
-                        print("Time is not selected");
-                      }
-                    },
-                  ))),
-              const SizedBox(
-                height: 5,
+                              setState(() {
+                                timeinput.text = formattedTime;
+                              });
+                            } else {
+                              print("Time is not selected");
+                            }
+                          },
+                        ))),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Expanded(
+                    child: lieu.textfrofield(),
+                    flex: 1,
+                  )
+                ],
               ),
               const SizedBox(
-                height: 5,
-              ),
-              lieu.textfrofield(),
-              const SizedBox(
-                height: 5,
+                height: 15,
               ),
               /* DropDownMultiSelect(
                 decoration: const InputDecoration(
@@ -208,7 +215,7 @@ class _AddSinistreState extends State<AddSinistre> {
                         title: Text(
                           data[index]['title'].toString(),
                           style: const TextStyle(
-                              color: Colors.black, fontSize: 18),
+                              color: Colors.black, fontSize: 17),
                         ),
                         value: data[index]['value'],
                         onChanged: (value) {
@@ -231,7 +238,6 @@ class _AddSinistreState extends State<AddSinistre> {
           FirebaseFirestore.instance.collection('Sinistre').add({
             'date_sinistre': dateinput.text,
             'heure_sinistre': timeinput.text,
-           
             'lieu_sinistre': lieu.value,
             'temoins_sinistre': data.toString(),
           });

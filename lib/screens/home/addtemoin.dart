@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/screens/home/addblesse.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
-
+import 'package:responsive_row/responsive_row.dart';
 import '../../widgets/customTextField.dart';
 
 class AddTemoins extends StatefulWidget {
@@ -41,66 +41,60 @@ class _AddTemoinsState extends State<AddTemoins> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(30),
           child: Column(
             children: [
               Row(
                 children: [
-                  SizedBox(
+                  Expanded(
                     child: nomtemoin.textfrofield(),
-                    width: 160,
+                    flex: 1,
                   ),
                   SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
-                  SizedBox(
+                  Expanded(
                     child: prenomtemoin.textfrofield(),
-                    width: 160,
+                    flex: 1,
                   ),
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 15,
+              ),
+              adressetemoin.textfrofield(),
+              const SizedBox(
+                height: 15,
               ),
               Row(
                 children: [
+                  Expanded(flex: 1, child: telephone.textfrofield()),
                   SizedBox(
-                    child: adressetemoin.textfrofield(),
-                    width: 160,
+                    width: 10,
                   ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  SizedBox(
-                    child: telephone.textfrofield(),
-                    width: 160,
+                  Expanded(
+                    flex: 1,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        FirebaseFirestore.instance.collection('Temoins').add({
+                          'nom': nomtemoin.value,
+                          'prenom': prenomtemoin.value,
+                          'adresse': adressetemoin.value,
+                          'telephone': telephone.value,
+                        });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        shadowColor: Colors.lightBlue.withOpacity(.7),
+                      ),
+                      child: const Text(
+                        "+ de Témoin",
+                        style: TextStyle(color: Colors.white, fontSize: 19),
+                      ),
+                    ),
                   ),
                 ],
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  FirebaseFirestore.instance.collection('Temoins').add({
-                    'nom': nomtemoin.value,
-                    'prenom': prenomtemoin.value,
-                    'adresse': adressetemoin.value,
-                    'telephone': telephone.value,
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  shadowColor: Colors.lightBlue.withOpacity(.7),
-                ),
-                child: const Text(
-                  "Ajouter un Témoin",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              ),
-              const SizedBox(
-                height: 55,
               ),
             ],
           ),
@@ -108,12 +102,6 @@ class _AddTemoinsState extends State<AddTemoins> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance.collection('Temoins').add({
-            'nom': nomtemoin.value,
-            'prenom': prenomtemoin.value,
-            'adresse': adressetemoin.value,
-            'telephone': telephone.value,
-          });
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const AddBlesse()));
         },

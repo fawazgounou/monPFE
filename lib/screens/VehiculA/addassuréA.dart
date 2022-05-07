@@ -52,77 +52,82 @@ class _AddAssureAState extends State<AddAssureA> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(30),
           child: Form(
             key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
+                Row(
+                  children: [
+                    Expanded(
+                      child: nomassureA.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: prenomassureA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                const Text(
-                  " Assuré A",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
                 const SizedBox(
-                  height: 25,
-                ),
-                nomassureA.textfrofield(),
-                const SizedBox(
-                  height: 20,
-                ),
-                prenomassureA.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 adresseassureA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                codepostalA.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: codepostalA.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: telephoneassureA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                telephoneassureA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 emailA.textfrofield(),
-                const SizedBox(
-                  height: 55,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    FirebaseFirestore.instance.collection('AssureA').add({
-                      'nom': nomassureA.value,
-                      'prenom': prenomassureA.value,
-                      'adress': adresseassureA.value,
-                      'code_postal': codepostalA.value,
-                      'telephone': telephoneassureA.value,
-                      'email': emailA.value,
-                    });
-
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AddAssuranceA()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          FirebaseFirestore.instance.collection('AssureA').add({
+            'nom': nomassureA.value,
+            'prenom': prenomassureA.value,
+            'adress': adresseassureA.value,
+            'code_postal': codepostalA.value,
+            'telephone': telephoneassureA.value,
+            'email': emailA.value,
+          });
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddAssuranceA()));
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
     );

@@ -28,7 +28,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
 
   CustomTextField agenceA = CustomTextField(
       placeholder: "Type agence",
-      title: "Agence(ou Bureau ou Courtier)",
+      title: " Bureau ou Courtier",
       initialValue: '');
   CustomTextField nomagence = CustomTextField(
       placeholder: "Nom Agence", title: "Nom", initialValue: '');
@@ -41,10 +41,12 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
   CustomTextField emailagenceA = CustomTextField(
       placeholder: "Email Agence", title: "Email", initialValue: '');
   TextEditingController dateinput = TextEditingController();
+  TextEditingController dateinput2 = TextEditingController();
   final _key = GlobalKey<FormState>();
   @override
   void initState() {
     dateinput.text = "";
+    dateinput2.text = "";
     super.initState();
   }
 
@@ -65,148 +67,176 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
       appBar: AppBar(
         title: const Text(
           "Société D'Assurance A",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(30),
           child: Form(
             key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  " Assurance A",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
                 nomassuranceA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                numcontratA.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: numcontratA.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: numcarteverteA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                numcarteverteA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 const Text(
                   ' Attestation Assurance valide:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                Container(
-                  child: Center(
-                    child: TextField(
-                      controller: dateinput,
-                      decoration: const InputDecoration(
-                          icon: Icon(
-                            Icons.calendar_today,
-                            color: Colors.white,
-                          ),
-                          labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Du'),
-                      readOnly: true,
-                      onTap: () async {
-                        DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2101));
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Center(
+                          child: TextField(
+                            controller: dateinput,
+                            decoration: const InputDecoration(
+                                icon: Icon(
+                                  Icons.calendar_today,
+                                  color: Colors.black,
+                                ),
+                                labelStyle: TextStyle(color: Colors.black),
+                                labelText: 'Du'),
+                            readOnly: true,
+                            onTap: () async {
+                              DateTime? pickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2101));
 
-                        if (pickedDate != null) {
-                          print(pickedDate);
-                          String formattedDate =
-                              DateFormat('yyyy-MM-dd').format(pickedDate);
-                          print(formattedDate);
-                          setState(() {
-                            dateinput.text = formattedDate;
-                          });
-                        } else {
-                          print("Date is not selected");
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  child: Center(
-                    child: TextField(
-                      controller: dateinput,
-                      decoration: const InputDecoration(
-                          icon: Icon(
-                            Icons.calendar_today,
-                            color: Colors.white,
+                              if (pickedDate != null) {
+                                print(pickedDate);
+                                String formattedDate =
+                                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                                print(formattedDate);
+                                setState(() {
+                                  dateinput.text = formattedDate;
+                                });
+                              } else {
+                                print("Date is not selected");
+                              }
+                            },
                           ),
-                          labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Au'),
-                      readOnly: true,
-                      onTap: () async {
-                        DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2101));
-
-                        if (pickedDate != null) {
-                          print(pickedDate);
-                          String formattedDate =
-                              DateFormat('yyyy-MM-dd').format(pickedDate);
-                          print(formattedDate);
-                          setState(() {
-                            dateinput.text = formattedDate;
-                          });
-                        } else {
-                          print("Date is not selected");
-                        }
-                      },
+                        ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Center(
+                          child: TextField(
+                            controller: dateinput2,
+                            decoration: const InputDecoration(
+                                icon: Icon(
+                                  Icons.calendar_today,
+                                  color: Colors.black,
+                                ),
+                                labelStyle: TextStyle(color: Colors.black),
+                                labelText: 'Au'),
+                            readOnly: true,
+                            onTap: () async {
+                              DateTime? pickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2101));
+
+                              if (pickedDate != null) {
+                                print(pickedDate);
+                                String formattedDate =
+                                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                                print(formattedDate);
+                                setState(() {
+                                  dateinput.text = formattedDate;
+                                });
+                              } else {
+                                print("Date is not selected");
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                agenceA.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: agenceA.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: telephoneagenceA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                nomagence.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 adresseagenceA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                paysagenceA.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: nomagence.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: paysagenceA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                telephoneagenceA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 emailagenceA.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 DropDownMultiSelect(
                   onChanged: (List<String> x) {
@@ -225,40 +255,42 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
                 const SizedBox(
                   height: 55,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                     FirebaseFirestore.instance.collection('AssuranceA').add({
-                      'nom': nomassuranceA.value,
-                      'num_contrat': numcontratA.value,
-                      'num_carte_verte': numcarteverteA.value,
-                      'du': dateinput.text,
-                      'au': dateinput.text,
-                      'agence': agenceA.value,
-                      'nom_agence': nomagence.value,
-                      'adresse': adresseagenceA.value,
-                      'pays': paysagenceA.value,
-                      'telephone': telephoneagenceA.value,
-                      'email': emailagenceA.value,
-                      'prise_encharge': selected.toString(),
-                    }); 
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AddConducteurA()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          FirebaseFirestore.instance.collection('AssuranceA').add({
+            'nom': nomassuranceA.value,
+            'num_contrat': numcontratA.value,
+            'num_carte_verte': numcarteverteA.value,
+            'du': dateinput.text,
+            'au': dateinput2.text,
+            'agence': agenceA.value,
+            'nom_agence': nomagence.value,
+            'adresse': adresseagenceA.value,
+            'pays': paysagenceA.value,
+            'telephone': telephoneagenceA.value,
+            'email': emailagenceA.value,
+            'prise_encharge': selected.toString(),
+          });
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddConducteurA()));
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
     );
