@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/Choc_photo/Arriere.dart';
 import 'package:insertion_bd/screens/VehiculA/Choc_photo/Avant.dart';
+import 'package:insertion_bd/screens/VehiculA/Choc_photo/CoteDroit.dart';
+import 'package:insertion_bd/screens/VehiculA/Choc_photo/CoteGauche.dart';
+import 'package:insertion_bd/screens/VehiculA/Choc_photo/Haut.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
@@ -108,7 +111,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AddAvant()));
+                                      builder: (context) => AddAvantA()));
                             },
                             child: Image.asset(
                               'assets/image/avant.jpg',
@@ -131,7 +134,12 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             style: TextStyle(fontSize: 18),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CoteDroitA()));
+                            },
                             child: Image.asset(
                               'assets/image/coté_droite.jpg',
                               height: 200,
@@ -158,7 +166,12 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             style: TextStyle(fontSize: 18),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CoteGaucheA()));
+                            },
                             child: Image.asset(
                               'assets/image/coté_droite.jpg',
                               height: 200,
@@ -185,7 +198,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const ArrierevA()));
+                                      builder: (context) => ArrierevA()));
                             },
                             child: Image.asset(
                               'assets/image/arriere.jpg',
@@ -213,7 +226,12 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             style: TextStyle(fontSize: 18),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HautA()));
+                            },
                             child: Image.asset(
                               'assets/image/haut.jpg',
                               height: 200,

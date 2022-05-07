@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -40,6 +40,7 @@ class _ArrierevAState extends State<ArrierevA> {
     final picker = ImagePicker();
     final pickedImage =
         await picker.getImage(source: ImageSource.camera, imageQuality: 10);
+    print(pickedImage);
     final pickedImageFile = File(pickedImage!.path);
     setState(() {
       _pickedImage = pickedImageFile;
@@ -140,12 +141,13 @@ class _ArrierevAState extends State<ArrierevA> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: FileImage(_pickedImage!),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  height: 400,
+                  decoration: _pickedImage == null
+                      ? const BoxDecoration(color: Colors.white)
+                      : BoxDecoration(
+                          image: DecorationImage(
+                              image: FileImage(_pickedImage!),
+                              fit: BoxFit.cover)),
                 ),
               )
             ],
@@ -153,7 +155,21 @@ class _ArrierevAState extends State<ArrierevA> {
         ),
       ),
       bottomNavigationBar: GestureDetector(
-        onTap: () {
+        onTap: () async {
+          if (_pickedImage != null) {
+            final ref = FirebaseStorage.instance
+                .ref()
+                .child('usersImages')
+                .child(_fullName + '.jpg');
+            await ref.putFile(_pickedImage!);
+            url = await ref.getDownloadURL();
+
+            await FirebaseFirestore.instance.collection('PhotosA').add({
+              'name': _fullName,
+              'imageUrl': url,
+            });
+          }
+
           Navigator.push(
               context,
               MaterialPageRoute(

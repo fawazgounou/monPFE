@@ -124,7 +124,7 @@ class _AddCirconstanceAState extends State<AddCirconstanceA> {
                   itemCount: data.length,
                   itemBuilder: (BuildContext context, int index) {
                     return CheckboxListTile(
-                        tileColor: Colors.teal,
+                        tileColor: Colors.grey,
                         activeColor: Colors.redAccent,
                         title: Text(
                           data[index]['title'].toString(),
@@ -141,29 +141,35 @@ class _AddCirconstanceAState extends State<AddCirconstanceA> {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                FirebaseFirestore.instance.collection('CirconstanceA').add({
+           
+          ],
+        ),
+      ),
+       bottomNavigationBar: GestureDetector(
+        onTap: () async {
+          FirebaseFirestore.instance.collection('CirconstanceA').add({
                   'circonstance': data.toString(),
                 });
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const SignaturePageA()));
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                shadowColor: Colors.white.withOpacity(.7),
-              ),
-              child: const Text(
-                "Suivant",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
-          ],
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
+      
     );
   }
 }

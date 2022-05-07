@@ -1,74 +1,50 @@
 import 'dart:io';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
-
-
-import 'package:image_picker/image_picker.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-import '../addcirconstanceA.dart';
+import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
-class AddAvant extends StatefulWidget {
-  static const routeName = '/AddAvant';
+import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+class AddAvantA extends StatefulWidget {
+  const AddAvantA({Key? key}) : super(key: key);
+
   @override
-  _AddAvantState createState() => _AddAvantState();
+  State<AddAvantA> createState() => _AddAvantAState();
 }
 
-class _AddAvantState extends State<AddAvant> {
+class _AddAvantAState extends State<AddAvantA> {
+  final _key = GlobalKey<FormState>();
+  List<Asset> images = <Asset>[];
+
+  String value = '';
+  final TextEditingController txt = TextEditingController();
+
+  get imageRef => null;
   String _fullName = '';
 
-  File? _pickedImage;
   String? url;
-  final _formKey = GlobalKey<FormState>();
- 
-  bool _isLoading = false;
   @override
-  void _submitForm() async {
-    final isValid = _formKey.currentState!.validate();
-
-    if (isValid) {
-    
-      try {
-        if (_pickedImage == null) {
-        
-        } else {
-          setState(() {
-            _isLoading = true;
-          });
-          final ref = FirebaseStorage.instance
-              .ref()
-              .child('usersImages')
-              .child(_fullName + '.jpg');
-          await ref.putFile(_pickedImage!);
-          url = await ref.getDownloadURL();
-
-       
-          await FirebaseFirestore.instance.collection('users').add({
-           
-            'name': _fullName,
-            'imageUrl': url,
-          });
-          Navigator.canPop(context) ? Navigator.pop(context) : null;
-        }
-      } catch (error) {
-      } finally {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    }
+  void initState() {
+    requestPermission();
+    super.initState();
   }
 
+  File? _pickedImage;
   void _pickImageCamera() async {
     final picker = ImagePicker();
     final pickedImage =
         await picker.getImage(source: ImageSource.camera, imageQuality: 10);
+    print(pickedImage);
     final pickedImageFile = File(pickedImage!.path);
     setState(() {
       _pickedImage = pickedImageFile;
     });
-    Navigator.pop(context);
   }
 
   void _pickImageGallery() async {
@@ -78,150 +54,122 @@ class _AddAvantState extends State<AddAvant> {
     setState(() {
       _pickedImage = pickedImageFile;
     });
-    Navigator.pop(context);
   }
 
-  void _remove() {
-    setState(() {
-      _pickedImage = null;
-    });
-    Navigator.pop(context);
+  void requestPermission() async {
+    var status = await Permission.storage.status;
+    if (!status.isGranted) {
+      await Permission.storage.request();
+    }
+    var status1 = await Permission.camera.status;
+    if (!status.isGranted) {
+      await Permission.camera.request();
+    }
+    var status2 = await Permission.manageExternalStorage.status;
+    if (!status.isGranted) {
+      await Permission.manageExternalStorage.request();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-         
-          SingleChildScrollView(
-            child: Column(
-              children: [ 
-                SizedBox(
-                  height: 30,
-                ),
-                Stack(
-                  children: [
-                    Container(
-                      child: CircleAvatar(
-                        radius: 65,
-                        backgroundImage: _pickedImage == null
-                            ? null
-                            : FileImage(_pickedImage!),
+      appBar: AppBar(
+        title: const Text(
+          "Indications Choc A",
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            children: [
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _pickImageCamera();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                              child: const Text(
+                                "Camera",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Positioned(
-                        top: 120,
-                        left: 110,
-                        child: RawMaterialButton(
-                          elevation: 10,
-                          child: Icon(Icons.add_a_photo),
-                          padding: EdgeInsets.all(15.0),
-                          shape: CircleBorder(),
-                          onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text(
-                                      'Choose option',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                         ),
-                                    ),
-                                    content: SingleChildScrollView(
-                                      child: ListBody(
-                                        children: [
-                                          InkWell(
-                                            onTap: _pickImageCamera,
-                                            splashColor: Colors.purpleAccent,
-                                            child: Row(
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Icon(
-                                                    Icons.camera,
-                                                    color: Colors.purpleAccent,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Camera',
-                                                  style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                
-                                                        ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          InkWell(
-                                            onTap: _pickImageGallery,
-                                            splashColor: Colors.purpleAccent,
-                                            child: Row(
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Icon(
-                                                    Icons.image,
-                                                    color: Colors.purpleAccent,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Gallery',
-                                                  style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          InkWell(
-                                            onTap: _remove,
-                                            splashColor: Colors.purpleAccent,
-                                            child: Row(
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Icon(
-                                                    Icons.remove_circle,
-                                                    color: Colors.red,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  'Remove',
-                                                  style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Colors.red),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                });
-                          },
-                        ))
-                  ],
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _pickImageGallery();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                shadowColor: Colors.white.withOpacity(.7),
+                              ),
+                              child: const Text(
+                                "Photos",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 55,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 400,
+                  decoration: _pickedImage == null
+                      ? const BoxDecoration(color: Colors.white)
+                      : BoxDecoration(
+                          image: DecorationImage(
+                              image: FileImage(_pickedImage!),
+                              fit: BoxFit.cover)),
+                ),
+              )
+            ],
           ),
-
-        ],
+        ),
       ),
       bottomNavigationBar: GestureDetector(
-        onTap: () {
+        onTap: () async {
+          if (_pickedImage != null) {
+            final ref = FirebaseStorage.instance
+                .ref()
+                .child('usersImages')
+                .child(_fullName + '.jpg');
+            await ref.putFile(_pickedImage!);
+            url = await ref.getDownloadURL();
+
+            await FirebaseFirestore.instance.collection('PhotosA').add({
+              'name': _fullName,
+              'imageUrl': url,
+            });
+          }
+
           Navigator.push(
               context,
               MaterialPageRoute(
