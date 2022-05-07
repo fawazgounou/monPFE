@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          /*  scaffoldBackgroundColor: Colors.blue */
-          /* Color(0xFF3F0846) */
-          /* fontFamily: 'lithos', */
+          
           ),
       title: 'Déclare ton Sinistre',
       home: Home(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/home/addsinistre.dart';
+import 'package:insertion_bd/screens/home/localisation.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _HomeState extends State<Home> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AddSinistre()));
+                          builder: (context) => const Localisation()));
                 },
                 child: Image.asset(
                   'assets/image/sinistre2.jpg',
