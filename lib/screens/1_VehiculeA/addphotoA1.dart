@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/1Choc_photo/Arriere.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/1Choc_photo/Avant.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/1Choc_photo/CoteDroit.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/1Choc_photo/CoteGauche.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/1Choc_photo/Haut.dart';
 import 'package:insertion_bd/screens/VehiculA/Choc_photo/Arriere.dart';
 import 'package:insertion_bd/screens/VehiculA/Choc_photo/Avant.dart';
 import 'package:insertion_bd/screens/VehiculA/Choc_photo/CoteDroit.dart';
@@ -111,7 +116,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AddAvantA()));
+                                      builder: (context) => AddAvantA1()));
                             },
                             child: Image.asset(
                               'assets/image/avant.jpg',
@@ -138,7 +143,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CoteDroitA()));
+                                      builder: (context) => CoteDroitA1()));
                             },
                             child: Image.asset(
                               'assets/image/coté_droite.jpg',
@@ -170,7 +175,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CoteGaucheA()));
+                                      builder: (context) => CoteGaucheA1()));
                             },
                             child: Image.asset(
                               'assets/image/coté_droite.jpg',
@@ -198,7 +203,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ArrierevA()));
+                                      builder: (context) => ArrierevA1()));
                             },
                             child: Image.asset(
                               'assets/image/arriere.jpg',
@@ -230,7 +235,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HautA()));
+                                      builder: (context) => HautA1()));
                             },
                             child: Image.asset(
                               'assets/image/haut.jpg',

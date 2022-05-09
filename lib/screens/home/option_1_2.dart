@@ -87,12 +87,15 @@ class _ChoixOptionState extends State<ChoixOption> {
                                       builder: (context) =>
                                           const Localisation()));
                             },
-                            child: const Text("2 Conducteurs")),
+                            child: const Text(
+                              "2 Conducteurs",
+                              style: TextStyle(fontSize: 19),
+                            )),
                       )
                     ],
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 50,
                   ),
                   Row(
                     children: [
@@ -105,7 +108,7 @@ class _ChoixOptionState extends State<ChoixOption> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const Localisation()));
+                                          const Localisation1()));
                             },
                             child: Image.asset(
                               'assets/image/A.jpg',
@@ -125,7 +128,10 @@ class _ChoixOptionState extends State<ChoixOption> {
                                       builder: (context) =>
                                           const Localisation1()));
                             },
-                            child: const Text("1 Conducteurs")),
+                            child: const Text(
+                              "1 Conducteur",
+                              style: TextStyle(fontSize: 19),
+                            )),
                       )
                     ],
                   ),

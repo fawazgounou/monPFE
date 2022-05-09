@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/addconducteurA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:intl/intl.dart';
@@ -312,7 +313,7 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
             'prise_encharge': index.toString(),
           });
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddConducteurA()));
+              MaterialPageRoute(builder: (context) => AddConducteurA1()));
         },
         child: Container(
           height: 50.0,

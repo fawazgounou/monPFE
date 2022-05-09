@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/addvehiculA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 
@@ -181,7 +182,7 @@ class _AddBlesse1State extends State<AddBlesse1> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddVehiculA()));
+              context, MaterialPageRoute(builder: (context) => AddVehiculA1()));
         },
         child: Container(
           height: 50.0,

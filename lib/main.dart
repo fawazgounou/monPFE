@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       title: 'Déclare ton Sinistre',
-      home: const ChoixOption(),
+      home: const Home(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/addassuranceA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addassuranceA.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
@@ -114,7 +115,7 @@ class _AddAssureA1State extends State<AddAssureA1> {
             'email': emailA.value,
           });
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddAssuranceA()));
+              MaterialPageRoute(builder: (context) => AddAssuranceA1()));
         },
         child: Container(
           height: 50.0,

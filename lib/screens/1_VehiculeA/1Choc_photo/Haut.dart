@@ -12,14 +12,14 @@ import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class HautA extends StatefulWidget {
-  const HautA({Key? key}) : super(key: key);
+class HautA1 extends StatefulWidget {
+  const HautA1({Key? key}) : super(key: key);
 
   @override
-  State<HautA> createState() => _HautAState();
+  State<HautA1> createState() => _HautA1State();
 }
 
-class _HautAState extends State<HautA> {
+class _HautA1State extends State<HautA1> {
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 

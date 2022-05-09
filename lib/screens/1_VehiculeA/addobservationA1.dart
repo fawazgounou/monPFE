@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/addphotoA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addphotoA.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 
@@ -68,7 +69,7 @@ class _AddObservationA1State extends State<AddObservationA1> {
             'heure_sinistre': observationA.value,
           });
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPhotoA()));
+              context, MaterialPageRoute(builder: (context) => AddPhotoA1()));
         },
         child: Container(
           height: 50.0,

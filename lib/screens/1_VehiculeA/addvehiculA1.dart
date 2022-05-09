@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/1_VehiculeA/addassur%C3%A9A1.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 
@@ -65,7 +66,7 @@ class _AddVehiculA1State extends State<AddVehiculA1> {
             'pays_immatriculation': paysimmatriculationVA.value,
           });
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddAssureA()));
+              context, MaterialPageRoute(builder: (context) => AddAssureA1()));
         },
         child: Container(
           height: 50.0,

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
 
-class TransitionA extends StatefulWidget {
-  const TransitionA({Key? key}) : super(key: key);
+class TransitionA1 extends StatefulWidget {
+  const TransitionA1({Key? key}) : super(key: key);
 
   @override
-  State<TransitionA> createState() => _TransitionAState();
+  State<TransitionA1> createState() => _TransitionA1State();
 }
 
-class _TransitionAState extends State<TransitionA> {
+class _TransitionA1State extends State<TransitionA1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +44,7 @@ class _TransitionAState extends State<TransitionA> {
           ),
         ),
       ),
-     /*  bottomNavigationBar: GestureDetector(
+      /*  bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddVehiculB()));
