@@ -39,12 +39,12 @@ class _AddAssureAState extends State<AddAssureA> {
 
   @override
   Widget build(BuildContext context) {
-    nomassureA.err = "veillez entrer le Nom ";
-    prenomassureA.err = "veillez entrer le Prénom";
-    adresseassureA.err = "veillez entrer l'Adresse'";
-    codepostalA.err = "veillez entrer le Code Poastal";
-    telephoneassureA.err = "veillez entrer le Téléphone";
-    emailA.err = "veillez entrer le Mail";
+    nomassureA.err = "Veuillez entrer le Nom ";
+    prenomassureA.err = "Veuillez entrer le Prénom";
+    adresseassureA.err = "Veuillez entrer l'Adresse'";
+    codepostalA.err = "Veuillez entrer le Code Poastal";
+    telephoneassureA.err = "Veuillez entrer le Téléphone";
+    emailA.err = "Veuillez entrer le Mail";
     return Scaffold(
       appBar: AppBar(
         title: const Text("Informaions Assuré A"),
@@ -105,7 +105,8 @@ class _AddAssureAState extends State<AddAssureA> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance.collection('AssureA').add({
+          if(_key.currentState!.validate()){
+FirebaseFirestore.instance.collection('AssureA').add({
             'nom': nomassureA.value,
             'prenom': prenomassureA.value,
             'adress': adresseassureA.value,
@@ -115,6 +116,8 @@ class _AddAssureAState extends State<AddAssureA> {
           });
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => AddAssuranceA()));
+          }
+          
         },
         child: Container(
           height: 50.0,

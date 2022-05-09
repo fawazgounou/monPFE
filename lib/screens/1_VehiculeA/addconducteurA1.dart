@@ -48,14 +48,14 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
 
   @override
   Widget build(BuildContext context) {
-    nomconducteurA.err = "veillez entrer le Nom ";
-    prenomconducteurA.err = "veillez entrer le Prénom";
-    adresseconducteurA.err = "veillez entrer l'Adresse'";
-    paysconducteurA.err = "veillez entrer le Code Pays";
-    telephoneconducteurA.err = "veillez entrer le Téléphone";
-    emailconducteurA.err = "veillez entrer le Mail";
-    numpermisdeconduireA.err = "veillez entrer le Numéro du Permis";
-    categorieA.err = "veillez entrer la Catégorie";
+    nomconducteurA.err = "Veuillez entrer le Nom ";
+    prenomconducteurA.err = "Veuillez entrer le Prénom";
+    adresseconducteurA.err = "Veuillez entrer l'Adresse'";
+    paysconducteurA.err = "Veuillez entrer le Code Pays";
+    telephoneconducteurA.err = "Veuillez entrer le Téléphone";
+    emailconducteurA.err = "Veuillez entrer le Mail";
+    numpermisdeconduireA.err = "Veuillez entrer le Numéro du Permis";
+    categorieA.err = "Veuillez entrer la Catégorie";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -89,8 +89,15 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
               ),
               Container(
                 child: Center(
-                  child: TextField(
+                  child: TextFormField(
                     controller: dateinput,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Entrer la Date";
+                      } else {
+                        return null;
+                      }
+                    },
                     decoration: const InputDecoration(
                         icon: Icon(
                           Icons.calendar_today,
@@ -170,8 +177,15 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
               ),
               Container(
                 child: Center(
-                  child: TextField(
-                    controller: dateinput,
+                  child: TextFormField(
+                    controller: dateinputV,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Entrer la Date";
+                      } else {
+                        return null;
+                      }
+                    },
                     decoration: const InputDecoration(
                         icon: Icon(
                           Icons.calendar_today,
@@ -211,20 +225,22 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance.collection('ConducteurA').add({
-            'nom': nomconducteurA.value,
-            'prenom': prenomconducteurA.value,
-            'adresse': adresseconducteurA.value,
-            'date_naissance': dateinput.text,
-            'pays': paysconducteurA.value,
-            'telephone': telephoneconducteurA.value,
-            'email': emailconducteurA.value,
-            'num_permis': numpermisdeconduireA.value,
-            'categorie': categorieA.value,
-            'fin_valide_permis': dateinputV.text,
-          });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddObservationA1()));
+          if (_key.currentState!.validate()) {
+            FirebaseFirestore.instance.collection('ConducteurA').add({
+              'nom': nomconducteurA.value,
+              'prenom': prenomconducteurA.value,
+              'adresse': adresseconducteurA.value,
+              'date_naissance': dateinput.text,
+              'pays': paysconducteurA.value,
+              'telephone': telephoneconducteurA.value,
+              'email': emailconducteurA.value,
+              'num_permis': numpermisdeconduireA.value,
+              'categorie': categorieA.value,
+              'fin_valide_permis': dateinputV.text,
+            });
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddObservationA1()));
+          }
         },
         child: Container(
           height: 50.0,

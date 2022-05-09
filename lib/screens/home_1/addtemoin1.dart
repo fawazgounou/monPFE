@@ -28,10 +28,10 @@ class _AddTemoins1State extends State<AddTemoins1> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    nomtemoin.err = "veillez entrer le Nom ";
-    prenomtemoin.err = "Veillez entrer Prenom";
-    adressetemoin.err = "Veillez entrer l'Adresse'";
-    telephone.err = "Veillez entrer le Téléphone";
+    nomtemoin.err = "Veuillez entrer le Nom ";
+    prenomtemoin.err = "Veuillez entrer Prenom";
+    adressetemoin.err = "Veuillez entrer l'Adresse'";
+    telephone.err = "Veuillez entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -103,8 +103,11 @@ class _AddTemoins1State extends State<AddTemoins1> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          Navigator.push(context,
+          if(_key.currentState!.validate()){
+         Navigator.push(context,
               MaterialPageRoute(builder: (context) => const AddBlesse1()));
+          }
+ 
         },
         child: Container(
           height: 50.0,

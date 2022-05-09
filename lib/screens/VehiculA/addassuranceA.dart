@@ -55,15 +55,15 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
 
   @override
   Widget build(BuildContext context) {
-    nomassuranceA.err = "veillez entrer le Nom ";
-    numcontratA.err = "veillez entrer le Numéro du contrat";
-    numcarteverteA.err = "veillez entrer le Numéro de la carte verte'";
-    agenceA.err = "veillez entrer te type D'agence";
-    nomagence.err = "veillez entrer le Nom de l'agence";
-    adresseagenceA.err = "veillez entrer l'Adresse l'agence'";
-    paysagenceA.err = "veillez entrer le Pays Agence";
-    telephoneagenceA.err = "veillez entrer le Téléphone";
-    emailagenceA.err = "veillez entrer le Téléphone";
+    nomassuranceA.err = "Veuillez entrer le Nom ";
+    numcontratA.err = "Veuillez entrer le Numéro du contrat";
+    numcarteverteA.err = "Veuillez entrer le Numéro de la carte verte'";
+    agenceA.err = "Veuillez entrer te type D'agence";
+    nomagence.err = "Veuillez entrer le Nom de l'agence";
+    adresseagenceA.err = "Veuillez entrer l'Adresse l'agence'";
+    paysagenceA.err = "Veuillez entrer le Pays Agence";
+    telephoneagenceA.err = "Veuillez entrer le Téléphone";
+    emailagenceA.err = "Veuillez entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -117,8 +117,15 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
                       flex: 1,
                       child: Container(
                         child: Center(
-                          child: TextField(
+                          child: TextFormField(
                             controller: dateinput,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Entrer la Date";
+                              } else {
+                                return null;
+                              }
+                            },
                             decoration: const InputDecoration(
                                 icon: Icon(
                                   Icons.calendar_today,
@@ -154,8 +161,15 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
                       flex: 1,
                       child: Container(
                         child: Center(
-                          child: TextField(
+                          child: TextFormField(
                             controller: dateinput2,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Entrer la Date";
+                              } else {
+                                return null;
+                              }
+                            },
                             decoration: const InputDecoration(
                                 icon: Icon(
                                   Icons.calendar_today,
@@ -290,29 +304,31 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          String index = '';
-          if (oui == true) {
-            index = 'Oui';
+          if (_key.currentState!.validate()) {
+            String index = '';
+            if (oui == true) {
+              index = 'Oui';
+            }
+            if (non == true) {
+              index = 'Non';
+            }
+            FirebaseFirestore.instance.collection('AssuranceA').add({
+              'nom': nomassuranceA.value,
+              'num_contrat': numcontratA.value,
+              'num_carte_verte': numcarteverteA.value,
+              'du': dateinput.text,
+              'au': dateinput2.text,
+              'agence': agenceA.value,
+              'nom_agence': nomagence.value,
+              'adresse': adresseagenceA.value,
+              'pays': paysagenceA.value,
+              'telephone': telephoneagenceA.value,
+              'email': emailagenceA.value,
+              'prise_encharge': index.toString(),
+            });
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddConducteurA()));
           }
-          if (non == true) {
-            index = 'Non';
-          }
-          FirebaseFirestore.instance.collection('AssuranceA').add({
-            'nom': nomassuranceA.value,
-            'num_contrat': numcontratA.value,
-            'num_carte_verte': numcarteverteA.value,
-            'du': dateinput.text,
-            'au': dateinput2.text,
-            'agence': agenceA.value,
-            'nom_agence': nomagence.value,
-            'adresse': adresseagenceA.value,
-            'pays': paysagenceA.value,
-            'telephone': telephoneagenceA.value,
-            'email': emailagenceA.value,
-            'prise_encharge': index.toString(),
-          });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddConducteurA()));
         },
         child: Container(
           height: 50.0,

@@ -27,8 +27,8 @@ class _AddObservationAState extends State<AddObservationA> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    degatsapparentA.err = "veillez entrer les dégats Apparent ";
-    observationA.err = "veillez entrer vos Observations";
+    degatsapparentA.err = "Veuillez entrer les dégats Apparent ";
+    observationA.err = "Veuillez entrer vos Observations";
 
     return Scaffold(
       appBar: AppBar(
@@ -63,12 +63,15 @@ class _AddObservationAState extends State<AddObservationA> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance.collection('ObservationA').add({
+          if(_key.currentState!.validate()){
+ FirebaseFirestore.instance.collection('ObservationA').add({
             'date_sinistre': degatsapparentA.value,
             'heure_sinistre': observationA.value,
           });
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddPhotoA()));
+          }
+         
         },
         child: Container(
           height: 50.0,

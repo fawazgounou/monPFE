@@ -74,7 +74,7 @@ class _AddSinistre1State extends State<AddSinistre1> {
 
   @override
   Widget build(BuildContext context) {
-    lieu.err = "veillez entrer le Lieu";
+    lieu.err = "Veuillez entrer le Lieu";
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ajouter un Sinistre",
@@ -89,8 +89,15 @@ class _AddSinistre1State extends State<AddSinistre1> {
             children: [
               Container(
                 child: Center(
-                  child: TextField(
+                  child: TextFormField(
                     controller: dateinput,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Entrer la Date";
+                      } else {
+                        return null;
+                      }
+                    },
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFF6200EE)),
@@ -276,29 +283,31 @@ class _AddSinistre1State extends State<AddSinistre1> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          String index = '';
-          String index2 = '';
-          if (oui == true) {
-            index = 'Oui';
+          if (_key.currentState!.validate()) {
+            String index = '';
+            String index2 = '';
+            if (oui == true) {
+              index = 'Oui';
+            }
+            if (non == true) {
+              index = 'Non';
+            }
+            if (_oui == true) {
+              index2 = 'Oui';
+            }
+            if (_non == true) {
+              index2 = 'Non';
+            }
+            FirebaseFirestore.instance.collection('Sinistre').add({
+              'date_sinistre': dateinput.text,
+              'heure_sinistre': timeinput.text,
+              'lieu_sinistre': lieu.value,
+              'blesse': index.toString(),
+              'degats': index2.toString(),
+            });
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddTemoins1()));
           }
-          if (non == true) {
-            index = 'Non';
-          }
-          if (_oui == true) {
-            index2 = 'Oui';
-          }
-          if (_non == true) {
-            index2 = 'Non';
-          }
-          FirebaseFirestore.instance.collection('Sinistre').add({
-            'date_sinistre': dateinput.text,
-            'heure_sinistre': timeinput.text,
-            'lieu_sinistre': lieu.value,
-            'blesse': index.toString(),
-            'degats': index2.toString(),
-          });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddTemoins1()));
         },
         child: Container(
           height: 50.0,

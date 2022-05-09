@@ -50,15 +50,15 @@ class _AddBlesseState extends State<AddBlesse> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    nomblesse.err = "veillez entrer le Nom";
-    prenomblesse.err = "veillez entrer le Prénom";
-    adresseblesse.err = " veillez entrer l'Adresse ";
-    telephone.err = " veillez entrer le Téléphone";
-    profession.err = " veillez entrer la Profession";
-    situation.err = " veillez entrer la Situation ";
-    casqueceinture.err = " veillez entrer repondre ";
-    premiersoinslieu.err = " veillez entrer le Lieu du premier soin";
-    gravitenature.err = " veillez entrer le niveau de blessure";
+    nomblesse.err = "Veuillez entrer le Nom";
+    prenomblesse.err = "Veuillez entrer le Prénom";
+    adresseblesse.err = " Veuillez entrer l'Adresse ";
+    telephone.err = " Veuillez entrer le Téléphone";
+    profession.err = " Veuillez entrer la Profession";
+    situation.err = " Veuillez entrer la Situation ";
+    casqueceinture.err = " Veuillez entrer repondre ";
+    premiersoinslieu.err = " Veuillez entrer le Lieu du premier soin";
+    gravitenature.err = " Veuillez entrer le niveau de blessure";
 
     return Scaffold(
       appBar: AppBar(
@@ -180,8 +180,10 @@ class _AddBlesseState extends State<AddBlesse> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddVehiculA()));
+          if (_key.currentState!.validate()) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddVehiculA()));
+          }
         },
         child: Container(
           height: 50.0,

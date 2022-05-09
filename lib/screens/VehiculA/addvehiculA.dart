@@ -27,9 +27,9 @@ class _AddVehiculAState extends State<AddVehiculA> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    marqueA.err = "veillez entrer la Marque ";
-    immatriculationVA.err = "veillez entrer l'Immatriculation";
-    paysimmatriculationVA.err = "veillez entrer le Pays'";
+    marqueA.err = "Veuillez entrer la Marque ";
+    immatriculationVA.err = "Veuillez entrer l'Immatriculation";
+    paysimmatriculationVA.err = "Veuillez entrer le Pays'";
 
     return Scaffold(
       appBar: AppBar(
@@ -59,13 +59,16 @@ class _AddVehiculAState extends State<AddVehiculA> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance.collection('VehiculeA').add({
+          if(_key.currentState!.validate()){
+  FirebaseFirestore.instance.collection('VehiculeA').add({
             'marque': marqueA.value,
             'numero_immatriculation': immatriculationVA.value,
             'pays_immatriculation': paysimmatriculationVA.value,
           });
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddAssureA()));
+          }
+        
         },
         child: Container(
           height: 50.0,
