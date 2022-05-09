@@ -29,7 +29,7 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
 
   CustomTextField agenceB = CustomTextField(
       placeholder: "Type agence",
-      title: "Agence(ou Bureau ou Courtier)",
+      title: " Bureau ou Courtier",
       initialValue: '');
   CustomTextField nomagence = CustomTextField(
       placeholder: "Nom Agence", title: "Nom", initialValue: '');
@@ -39,227 +39,310 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
       placeholder: "Pays Agence", title: "Pays", initialValue: '');
   CustomNumberField telephoneagenceB = CustomNumberField(
       placeholder: "Téléphone Agence", title: "Téléphone", initialValue: '');
-  TextEditingController dateinput = TextEditingController();
   CustomTextField emailagenceB = CustomTextField(
       placeholder: "Email Agence", title: "Email", initialValue: '');
+  TextEditingController dateinput = TextEditingController();
+  TextEditingController dateinput2 = TextEditingController();
   final _key = GlobalKey<FormState>();
   @override
   void initState() {
     dateinput.text = "";
+    dateinput2.text = "";
     super.initState();
   }
 
-  List<String> selected = [];
+  bool oui = false;
+  bool non = false;
 
   @override
   Widget build(BuildContext context) {
-    nomassuranceB.err = "veillez entrer le Nom ";
-    numcontratB.err = "veillez entrer le Numéro du contrat";
-    numcarteverteB.err = "veillez entrer le Numéro de la carte verte'";
-    agenceB.err = "veillez entrer te type D'agence";
-    nomagence.err = "veillez entrer le Nom de l'agence";
-    adresseagenceB.err = "veillez entrer l'Adresse l'agence'";
-    paysagenceB.err = "veillez entrer le Pays Agence";
-    telephoneagenceB.err = "veillez entrer le Téléphone";
-    emailagenceB.err = "veillez entrer le Téléphone";
+    nomassuranceB.err = "Entrer le Nom ";
+    numcontratB.err = "Entrer le Numéro du contrat";
+    numcarteverteB.err = "Entrer le Numéro de la carte verte'";
+    agenceB.err = "Entrer te type D'agence";
+    nomagence.err = "Entrer le Nom de l'agence";
+    adresseagenceB.err = "Entrer l'Adresse l'agence'";
+    paysagenceB.err = "Entrer le Pays Agence";
+    telephoneagenceB.err = "Entrer le Téléphone";
+    emailagenceB.err = "Entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Société D'Assurance A",
+          "Société D'Assurance B",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(30),
           child: Form(
             key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  " Assurance A",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
                 nomassuranceB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                numcontratB.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: numcontratB.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: numcarteverteB.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                numcarteverteB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 const Text(
                   ' Attestation Assurance valide:',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                Container(
-                  child: Center(
-                    child: TextField(
-                      controller: dateinput,
-                      decoration: const InputDecoration(
-                          icon: Icon(
-                            Icons.calendar_today,
-                            color: Colors.white,
-                          ),
-                          labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Du'),
-                      readOnly: true,
-                      onTap: () async {
-                        DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2101));
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Center(
+                          child: TextFormField(
+                            controller: dateinput,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Entrer la Date";
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: const InputDecoration(
+                                icon: Icon(
+                                  Icons.calendar_today,
+                                  color: Colors.black,
+                                ),
+                                labelStyle: TextStyle(color: Colors.black),
+                                labelText: 'Du'),
+                            readOnly: true,
+                            onTap: () async {
+                              DateTime? pickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2101));
 
-                        if (pickedDate != null) {
-                          print(pickedDate);
-                          String formattedDate =
-                              DateFormat('yyyy-MM-dd').format(pickedDate);
-                          print(formattedDate);
-                          setState(() {
-                            dateinput.text = formattedDate;
-                          });
-                        } else {
-                          print("Date is not selected");
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  child: Center(
-                    child: TextField(
-                      controller: dateinput,
-                      decoration: const InputDecoration(
-                          icon: Icon(
-                            Icons.calendar_today,
-                            color: Colors.white,
+                              if (pickedDate != null) {
+                                print(pickedDate);
+                                String formattedDate =
+                                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                                print(formattedDate);
+                                setState(() {
+                                  dateinput.text = formattedDate;
+                                });
+                              } else {
+                                print("Date is not selected");
+                              }
+                            },
                           ),
-                          labelStyle: TextStyle(color: Colors.white),
-                          labelText: 'Au'),
-                      readOnly: true,
-                      onTap: () async {
-                        DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2000),
-                            lastDate: DateTime(2101));
-
-                        if (pickedDate != null) {
-                          print(pickedDate);
-                          String formattedDate =
-                              DateFormat('yyyy-MM-dd').format(pickedDate);
-                          print(formattedDate);
-                          setState(() {
-                            dateinput.text = formattedDate;
-                          });
-                        } else {
-                          print("Date is not selected");
-                        }
-                      },
+                        ),
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        child: Center(
+                          child: TextFormField(
+                            controller: dateinput2,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Entrer la Date";
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: const InputDecoration(
+                                icon: Icon(
+                                  Icons.calendar_today,
+                                  color: Colors.black,
+                                ),
+                                labelStyle: TextStyle(color: Colors.black),
+                                labelText: 'Au'),
+                            readOnly: true,
+                            onTap: () async {
+                              DateTime? pickedDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2000),
+                                  lastDate: DateTime(2101));
+
+                              if (pickedDate != null) {
+                                print(pickedDate);
+                                String formattedDate =
+                                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                                print(formattedDate);
+                                setState(() {
+                                  dateinput.text = formattedDate;
+                                });
+                              } else {
+                                print("Date is not selected");
+                              }
+                            },
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                agenceB.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: agenceB.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: telephoneagenceB.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                nomagence.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 adresseagenceB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                paysagenceB.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: nomagence.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: paysagenceB.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                telephoneagenceB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 emailagenceB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                DropDownMultiSelect(
-                  onChanged: (List<String> x) {
-                    setState(() {
-                      selected = x;
-                    });
-                  },
-                  options: const [
-                    'OUI',
-                    'NON',
-                  ],
-                  selectedValues: selected,
-                  whenEmpty:
-                      'Les dégats matériels au véhicule sont assuré par le contrat',
+                const Text(
+                  " Les dégâts matériels au véhicule sont-ils assurés par le contrat ?",
+                  style: TextStyle(color: Colors.black, fontSize: 17),
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(
-                  height: 55,
+                  height: 15,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    FirebaseFirestore.instance.collection('AssuranceB').add({
-                      'nom': nomassuranceB.value,
-                      'num_contrat': numcontratB.value,
-                      'num_carte_verte': numcarteverteB.value,
-                      'du': dateinput.text,
-                      'au': dateinput.text,
-                      'agence': agenceB.value,
-                      'nom_agence': nomagence.value,
-                      'adresse': adresseagenceB.value,
-                      'pays': paysagenceB.value,
-                      'telephone': telephoneagenceB.value,
-                      'email': emailagenceB.value,
-                      'prise_encharge': selected.toString(),
-                    });
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AddConducteurB()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Checkbox(
+                            value: oui,
+                            onChanged: (value) {
+                              setState(() {
+                                oui = true;
+                                non = false;
+                              });
+                            },
+                          ),
+                          Text('OUI')
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Checkbox(
+                            value: non,
+                            onChanged: (value) {
+                              setState(() {
+                                oui = false;
+                                non = true;
+                              });
+                            },
+                          ),
+                          Text('NON')
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          if (_key.currentState!.validate()) {
+            String index = '';
+            if (oui == true) {
+              index = 'Oui';
+            }
+            if (non == true) {
+              index = 'Non';
+            }
+            FirebaseFirestore.instance.collection('AssuranceB').add({
+              'nom': nomassuranceB.value,
+              'num_contrat': numcontratB.value,
+              'num_carte_verte': numcarteverteB.value,
+              'du': dateinput.text,
+              'au': dateinput2.text,
+              'agence': agenceB.value,
+              'nom_agence': nomagence.value,
+              'adresse': adresseagenceB.value,
+              'pays': paysagenceB.value,
+              'telephone': telephoneagenceB.value,
+              'email': emailagenceB.value,
+              'prise_encharge': index.toString(),
+            });
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddConducteurB()));
+          }
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
     );

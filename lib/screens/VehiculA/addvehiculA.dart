@@ -27,9 +27,9 @@ class _AddVehiculAState extends State<AddVehiculA> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    marqueA.err = "Veuillez entrer la Marque ";
-    immatriculationVA.err = "Veuillez entrer l'Immatriculation";
-    paysimmatriculationVA.err = "Veuillez entrer le Pays'";
+    marqueA.err = "Entrer la Marque ";
+    immatriculationVA.err = "Entrer l'Immatriculation";
+    paysimmatriculationVA.err = "Entrer le Pays'";
 
     return Scaffold(
       appBar: AppBar(

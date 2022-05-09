@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/screens/VehiculB/addassur%C3%A9B.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 
@@ -19,7 +20,7 @@ class _AddVehiculBState extends State<AddVehiculB> {
       placeholder: "Entrer l'immatriculaton",
       title: "N°Immatriculation",
       initialValue: '');
-  CustomTextField paysimmatriculationVB = CustomTextField(
+  CustomNumberField paysimmatriculationVB = CustomNumberField(
       placeholder: "Entrer le Pays d'immatricuation",
       title: "Pays D'immatriculation",
       initialValue: '');
@@ -27,70 +28,61 @@ class _AddVehiculBState extends State<AddVehiculB> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-     marqueB.err = "veillez entrer la Marque ";
-    immatriculationVB.err = "veillez entrer l'Immatriculation";
-    paysimmatriculationVB.err = "veillez entrer le Pays'";
+    marqueB.err = "Entrer la Marque ";
+    immatriculationVB.err = "Entrer l'Immatriculation";
+    paysimmatriculationVB.err = "Entrer le Pays'";
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informaion Véhicul B"),
+        title: const Text("Informaions Véhicule A"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(30),
           child: Form(
             key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  " Véhicul B",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 25,
-                ),
                 marqueB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 immatriculationVB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 paysimmatriculationVB.textfrofield(),
-                const SizedBox(
-                  height: 200,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                      FirebaseFirestore.instance.collection('VehiculeB').add({
-                      'marque': marqueB.value,
-                      'numero_immatriculation': immatriculationVB.value,
-                      'pays_immatriculation': paysimmatriculationVB.value,
-                    });
-
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AddAssureB()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          if(_key.currentState!.validate()){
+  FirebaseFirestore.instance.collection('VehiculeB').add({
+            'marque': marqueB.value,
+            'numero_immatriculation': immatriculationVB.value,
+            'pays_immatriculation': paysimmatriculationVB.value,
+          });
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddAssureB()));
+          }
+        
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
     );

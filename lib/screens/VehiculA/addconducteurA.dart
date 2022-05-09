@@ -47,14 +47,14 @@ class _AddConducteurAState extends State<AddConducteurA> {
 
   @override
   Widget build(BuildContext context) {
-    nomconducteurA.err = "Veuillez entrer le Nom ";
-    prenomconducteurA.err = "Veuillez entrer le Prénom";
-    adresseconducteurA.err = "Veuillez entrer l'Adresse'";
-    paysconducteurA.err = "Veuillez entrer le Code Pays";
-    telephoneconducteurA.err = "Veuillez entrer le Téléphone";
-    emailconducteurA.err = "Veuillez entrer le Mail";
-    numpermisdeconduireA.err = "Veuillez entrer le Numéro du Permis";
-    categorieA.err = "Veuillez entrer la Catégorie";
+    nomconducteurA.err = "Entrer le Nom ";
+    prenomconducteurA.err = "Entrer le Prénom";
+    adresseconducteurA.err = "Entrer l'Adresse'";
+    paysconducteurA.err = "Entrer le Code Pays";
+    telephoneconducteurA.err = "Entrer le Téléphone";
+    emailconducteurA.err = "Entrer le Mail";
+    numpermisdeconduireA.err = "Entrer le Numéro du Permis";
+    categorieA.err = "Entrer la Catégorie";
     return Scaffold(
       appBar: AppBar(
         title: const Text(

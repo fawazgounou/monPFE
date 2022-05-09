@@ -50,15 +50,15 @@ class _AddBlesseState extends State<AddBlesse> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    nomblesse.err = "Veuillez entrer le Nom";
-    prenomblesse.err = "Veuillez entrer le Prénom";
-    adresseblesse.err = " Veuillez entrer l'Adresse ";
-    telephone.err = " Veuillez entrer le Téléphone";
-    profession.err = " Veuillez entrer la Profession";
-    situation.err = " Veuillez entrer la Situation ";
-    casqueceinture.err = " Veuillez entrer repondre ";
-    premiersoinslieu.err = " Veuillez entrer le Lieu du premier soin";
-    gravitenature.err = " Veuillez entrer le niveau de blessure";
+    nomblesse.err = "Entrer le Nom";
+    prenomblesse.err = "Entrer le Prénom";
+    adresseblesse.err = "Entrer l'Adresse ";
+    telephone.err = "Entrer le Téléphone";
+    profession.err = "Entrer la Profession";
+    situation.err = "Entrer la Situation ";
+    casqueceinture.err = "Entrer repondre ";
+    premiersoinslieu.err = "Entrer le Lieu du premier soin";
+    gravitenature.err = "Entrer le niveau de blessure";
 
     return Scaffold(
       appBar: AppBar(

@@ -40,12 +40,12 @@ class _AddAssureA1State extends State<AddAssureA1> {
 
   @override
   Widget build(BuildContext context) {
-    nomassureA.err = "Veuillez entrer le Nom ";
-    prenomassureA.err = "Veuillez entrer le Prénom";
-    adresseassureA.err = "Veuillez entrer l'Adresse'";
-    codepostalA.err = "Veuillez entrer le Code Poastal";
-    telephoneassureA.err = "Veuillez entrer le Téléphone";
-    emailA.err = "Veuillez entrer le Mail";
+    nomassureA.err = "Entrer le Nom ";
+    prenomassureA.err = "Entrer le Prénom";
+    adresseassureA.err = "Entrer l'Adresse'";
+    codepostalA.err = "Entrer le Code Poastal";
+    telephoneassureA.err = "Entrer le Téléphone";
+    emailA.err = "Entrer le Mail";
     return Scaffold(
       appBar: AppBar(
         title: const Text("Informaions Assuré A"),

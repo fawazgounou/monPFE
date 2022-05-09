@@ -27,8 +27,8 @@ class _AddObservationAState extends State<AddObservationA> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    degatsapparentA.err = "Veuillez entrer les dégats Apparent ";
-    observationA.err = "Veuillez entrer vos Observations";
+    degatsapparentA.err = "Entrer les dégats Apparent ";
+    observationA.err = "Entrer vos Observations";
 
     return Scaffold(
       appBar: AppBar(

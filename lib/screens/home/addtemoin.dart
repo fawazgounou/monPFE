@@ -15,7 +15,7 @@ class AddTemoins extends StatefulWidget {
 
 class _AddTemoinsState extends State<AddTemoins> {
   CustomTextField nomtemoin = CustomTextField(
-      placeholder: "Entrer le noms", title: "Nom", initialValue: '');
+      placeholder: "Entrer le nom", title: "Nom", initialValue: '');
   CustomTextField prenomtemoin = CustomTextField(
       placeholder: "Entrer le Prenom", title: "Prénom", initialValue: '');
   CustomTextField adressetemoin = CustomTextField(
@@ -27,10 +27,10 @@ class _AddTemoinsState extends State<AddTemoins> {
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    nomtemoin.err = "Veuillez entrer le Nom ";
-    prenomtemoin.err = "Veuillez entrer Prenom";
-    adressetemoin.err = "Veuillez entrer l'Adresse'";
-    telephone.err = "Veuillez entrer le Téléphone";
+    nomtemoin.err = "Entrer le Nom ";
+    prenomtemoin.err = "Entrer le Prenom";
+    adressetemoin.err = " Entrer l'Adresse'";
+    telephone.err = " Entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -40,63 +40,66 @@ class _AddTemoinsState extends State<AddTemoins> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: nomtemoin.textfrofield(),
-                    flex: 1,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: prenomtemoin.textfrofield(),
-                    flex: 1,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              adressetemoin.textfrofield(),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Expanded(flex: 1, child: telephone.textfrofield()),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        FirebaseFirestore.instance.collection('Temoins').add({
-                          'nom': nomtemoin.value,
-                          'prenom': prenomtemoin.value,
-                          'adresse': adressetemoin.value,
-                          'telephone': telephone.value,
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        shadowColor: Colors.lightBlue.withOpacity(.7),
-                      ),
-                      child: const Text(
-                        "+ de Témoin",
-                        style: TextStyle(color: Colors.white, fontSize: 19),
+        child: Form(
+          key: _key,
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: nomtemoin.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: prenomtemoin.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                adressetemoin.textfrofield(),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Expanded(flex: 1, child: telephone.textfrofield()),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          FirebaseFirestore.instance.collection('Temoins').add({
+                            'nom': nomtemoin.value,
+                            'prenom': prenomtemoin.value,
+                            'adresse': adressetemoin.value,
+                            'telephone': telephone.value,
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          shadowColor: Colors.lightBlue.withOpacity(.7),
+                        ),
+                        child: const Text(
+                          "+ de Témoin",
+                          style: TextStyle(color: Colors.white, fontSize: 19),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

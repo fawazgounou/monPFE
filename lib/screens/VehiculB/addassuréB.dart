@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/screens/VehiculA/addassuranceA.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/screens/VehiculB/addassuranceB.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
@@ -39,89 +40,98 @@ class _AddAssureBState extends State<AddAssureB> {
 
   @override
   Widget build(BuildContext context) {
-    nomassureB.err = "veillez entrer le Nom ";
-    prenomassureB.err = "veillez entrer le Prénom";
-    adresseassureB.err = "veillez entrer l'Adresse'";
-    codepostalB.err = "veillez entrer le Code Poastal";
-    telephoneassureB.err = "veillez entrer le Téléphone";
-    emailB.err = "veillez entrer le Mail";
+    nomassureB.err = "Entrer le Nom ";
+    prenomassureB.err = "Entrer le Prénom";
+    adresseassureB.err = "Entrer l'Adresse'";
+    codepostalB.err = "Entrer le Code Poastal";
+    telephoneassureB.err = "Entrer le Téléphone";
+    emailB.err = "Entrer le Mail";
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informaion Assuré B"),
+        title: const Text("Informaions Assuré B"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(30),
           child: Form(
             key: _key,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 10,
+                Row(
+                  children: [
+                    Expanded(
+                      child: nomassureB.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: prenomassureB.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                const Text(
-                  " Assuré B",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
                 const SizedBox(
-                  height: 25,
-                ),
-                nomassureB.textfrofield(),
-                const SizedBox(
-                  height: 20,
-                ),
-                prenomassureB.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 adresseassureB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                codepostalB.textfrofield(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    Expanded(
+                      child: codepostalB.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: telephoneassureB.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
                 ),
-                telephoneassureB.textfrofield(),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 emailB.textfrofield(),
-                const SizedBox(
-                  height: 55,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    FirebaseFirestore.instance.collection('AssureB').add({
-                      'nom': nomassureB.value,
-                      'prenom': prenomassureB.value,
-                      'adress': adresseassureB.value,
-                      'code_postal': codepostalB.value,
-                      'telephone': telephoneassureB.value,
-                      'email': emailB.value,
-                    });
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AddAssuranceB()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    shadowColor: Colors.white.withOpacity(.7),
-                  ),
-                  child: const Text(
-                    "Suivant",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          if(_key.currentState!.validate()){
+FirebaseFirestore.instance.collection('AssureB').add({
+            'nom': nomassureB.value,
+            'prenom': prenomassureB.value,
+            'adress': adresseassureB.value,
+            'code_postal': codepostalB.value,
+            'telephone': telephoneassureB.value,
+            'email': emailB.value,
+          });
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddAssuranceB()));
+          }
+          
+        },
+        child: Container(
+          height: 50.0,
+          width: double.infinity,
+          color: Colors.blue,
+          child: const Text(
+            "Suivant",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold),
+          ),
+          alignment: Alignment.center,
         ),
       ),
     );

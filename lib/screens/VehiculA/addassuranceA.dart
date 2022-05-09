@@ -55,15 +55,15 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
 
   @override
   Widget build(BuildContext context) {
-    nomassuranceA.err = "Veuillez entrer le Nom ";
-    numcontratA.err = "Veuillez entrer le Numéro du contrat";
-    numcarteverteA.err = "Veuillez entrer le Numéro de la carte verte'";
-    agenceA.err = "Veuillez entrer te type D'agence";
-    nomagence.err = "Veuillez entrer le Nom de l'agence";
-    adresseagenceA.err = "Veuillez entrer l'Adresse l'agence'";
-    paysagenceA.err = "Veuillez entrer le Pays Agence";
-    telephoneagenceA.err = "Veuillez entrer le Téléphone";
-    emailagenceA.err = "Veuillez entrer le Téléphone";
+    nomassuranceA.err = "Entrer le Nom ";
+    numcontratA.err = "Entrer le Numéro du contrat";
+    numcarteverteA.err = "Entrer le Numéro de la carte verte'";
+    agenceA.err = "Entrer te type D'agence";
+    nomagence.err = "Entrer le Nom de l'agence";
+    adresseagenceA.err = "Entrer l'Adresse l'agence'";
+    paysagenceA.err = "Entrer le Pays Agence";
+    telephoneagenceA.err = "Entrer le Téléphone";
+    emailagenceA.err = "Entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
         title: const Text(

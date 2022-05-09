@@ -4,8 +4,10 @@ import 'package:insertion_bd/screens/VehiculA/SignatureA/preview_signature.dart'
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/VehiculB/transitionB.dart';
+import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:signature/signature.dart';
+
+import 'addimgasignature.dart';
 
 class SignaturePageB extends StatefulWidget {
   const SignaturePageB({Key? key}) : super(key: key);
@@ -38,13 +40,14 @@ class _SignaturePageBState extends State<SignaturePageB> {
         appBar: AppBar(
           title: const Text(
             "Signature Conducteur A",
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),
         body: Column(
           children: [
             Container(
-              height: 550,
+              height: 551.7,
               width: 400,
               child: Signature(
                 controller: controller,
@@ -55,52 +58,28 @@ class _SignaturePageBState extends State<SignaturePageB> {
             const SizedBox(
               height: 5,
             ),
-            ElevatedButton(
-              onPressed: () {
-                      /* FirebaseFirestore.instance.collection('ConducteurB').add({
-                      'signature': degatsapparentA.value,
-                     
-                    });  */
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TransitionB()));
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                shadowColor: Colors.white.withOpacity(.7),
-              ),
-              child: const Text(
-                "Suivant",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
           ],
         ),
-        /*   bottomNavigationBar: GestureDetector(
-        onTap: () {
-              Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => TransitionA(
-               
-              ),
+        bottomNavigationBar: GestureDetector(
+          onTap: () {
+           
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddImageSignatureB()));
+          },
+          child: Container(
+            height: 50.0,
+            width: double.infinity,
+            color: Colors.blue,
+            child: const Text(
+              "Importer l'image",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold),
             ),
-          );
-        },
-        child: Container(
-          height: 70.0,
-          width: double.infinity,
-          color: Colors.blueAccent,
-          child: const Text(
-            "Suivant",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17.0,
-            ),
+            alignment: Alignment.center,
           ),
-          alignment: Alignment.center,
         ),
-      ), */
       );
 
   Widget buildButtons(BuildContext context) => Container(

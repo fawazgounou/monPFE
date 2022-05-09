@@ -71,10 +71,24 @@ class _AddSinistre1State extends State<AddSinistre1> {
   bool non = false;
   bool _oui = false;
   bool _non = false;
+  TimeOfDay selectedTime = TimeOfDay.now();
+  String heure = "";
+  _selectTime(BuildContext context) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null && timeOfDay != selectedTime) {
+      setState(() {
+        selectedTime = timeOfDay;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    lieu.err = "Veuillez entrer le Lieu";
+    lieu.err = "Entrer le Lieu";
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ajouter un Sinistre",
@@ -139,41 +153,35 @@ class _AddSinistre1State extends State<AddSinistre1> {
                   Expanded(
                     flex: 1,
                     child: Container(
-                        padding: EdgeInsets.all(15),
-                        child: Center(
-                            child: TextField(
-                          controller: timeinput,
-                          decoration: InputDecoration(
-                              icon: Icon(
-                                Icons.timer,
-                                color: Colors.black,
-                              ),
-                              labelText: "Enter Time"),
-                          readOnly: true,
-                          onTap: () async {
-                            TimeOfDay? pickedTime = await showTimePicker(
-                              initialTime: TimeOfDay.now(),
-                              context: context,
-                            );
+                      child: TextFormField(
+                        controller: timeinput,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer l'Heure";
+                          } else {
+                            return null;
+                          }
+                        },
+                        decoration: const InputDecoration(
+                          icon: Icon(
+                            Icons.timer,
+                            color: Colors.black,
+                          ),
+                          labelText: "Heure",
+                          labelStyle:
+                              TextStyle(color: Colors.black, fontSize: 19),
+                        ),
+                        readOnly: true,
+                        onTap: () async {
+                          _selectTime(context);
 
-                            if (pickedTime != null) {
-                              print(pickedTime.format(context));
-                              DateTime parsedTime = DateFormat.jm()
-                                  .parse(pickedTime.format(context).toString());
-
-                              print(parsedTime);
-                              String formattedTime =
-                                  DateFormat('HH:mm:ss').format(parsedTime);
-                              print(formattedTime);
-
-                              setState(() {
-                                timeinput.text = formattedTime;
-                              });
-                            } else {
-                              print("Time is not selected");
-                            }
-                          },
-                        ))),
+                          setState(() {
+                            timeinput.text =
+                                "${selectedTime.hour}:${selectedTime.minute}";
+                          });
+                        },
+                      ),
+                    ),
                   ),
                   SizedBox(
                     width: 5,
