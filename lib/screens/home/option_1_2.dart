@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:insertion_bd/screens/home/localisation.dart';
+import 'package:insertion_bd/screens/home_1/localisation1.dart';
 
 class ChoixOption extends StatefulWidget {
   const ChoixOption({Key? key}) : super(key: key);
@@ -42,20 +43,39 @@ class _ChoixOptionState extends State<ChoixOption> {
                   Row(
                     children: [
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const Localisation()));
-                          },
-                          child: Image.asset(
-                            'assets/image/A.jpg',
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ),
+                        child: Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Localisation()));
+                              },
+                              child: Image.asset(
+                                'assets/image/A.jpg',
+                                height: 100,
+                                width: 100,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Localisation()));
+                              },
+                              child: Image.asset(
+                                'assets/image/B.jpg',
+                                height: 100,
+                                width: 100,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Expanded(
@@ -67,31 +87,19 @@ class _ChoixOptionState extends State<ChoixOption> {
                                       builder: (context) =>
                                           const Localisation()));
                             },
-                            child: Text("2 Conducteur")),
+                            child: const Text("2 Conducteurs")),
                       )
                     ],
+                  ),
+                  const SizedBox(
+                    height: 30,
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const Localisation()));
-                          },
-                          child: Image.asset(
-                            'assets/image/B.jpg',
-                            height: 100,
-                            width: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: ElevatedButton(
+                          child: Column(
+                        children: [
+                          ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -99,7 +107,25 @@ class _ChoixOptionState extends State<ChoixOption> {
                                       builder: (context) =>
                                           const Localisation()));
                             },
-                            child: Text("1 Conducteur")),
+                            child: Image.asset(
+                              'assets/image/A.jpg',
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ],
+                      )),
+                      Expanded(
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const Localisation1()));
+                            },
+                            child: const Text("1 Conducteurs")),
                       )
                     ],
                   ),

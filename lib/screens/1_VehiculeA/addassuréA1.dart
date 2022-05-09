@@ -6,14 +6,14 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 
 import '../../widgets/customTextField.dart';
 
-class AddAssureA extends StatefulWidget {
-  AddAssureA({Key? key}) : super(key: key);
+class AddAssureA1 extends StatefulWidget {
+  AddAssureA1({Key? key}) : super(key: key);
 
   @override
-  State<AddAssureA> createState() => _AddAssureAState();
+  State<AddAssureA1> createState() => _AddAssureA1State();
 }
 
-class _AddAssureAState extends State<AddAssureA> {
+class _AddAssureA1State extends State<AddAssureA1> {
   CustomTextField nomassureA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assuré", initialValue: '');
   CustomTextField prenomassureA = CustomTextField(

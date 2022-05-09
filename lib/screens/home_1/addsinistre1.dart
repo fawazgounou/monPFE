@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/home/addtemoin.dart';
+import 'package:insertion_bd/screens/home_1/addtemoin1.dart';
 import 'package:multiselect/multiselect.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,14 +8,14 @@ import '../../widgets/customTextField.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
-class AddSinistre extends StatefulWidget {
-  const AddSinistre({Key? key}) : super(key: key);
+class AddSinistre1 extends StatefulWidget {
+  const AddSinistre1({Key? key}) : super(key: key);
 
   @override
-  State<AddSinistre> createState() => _AddSinistreState();
+  State<AddSinistre1> createState() => _AddSinistre1State();
 }
 
-class _AddSinistreState extends State<AddSinistre> {
+class _AddSinistre1State extends State<AddSinistre1> {
   CustomTextField lieu = CustomTextField(
       placeholder: "Entrer le Lieu", title: "Lieu", line: 1, initialValue: '');
 
@@ -297,7 +298,7 @@ class _AddSinistreState extends State<AddSinistre> {
             'degats': index2.toString(),
           });
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddTemoins()));
+              MaterialPageRoute(builder: (context) => const AddTemoins1()));
         },
         child: Container(
           height: 50.0,

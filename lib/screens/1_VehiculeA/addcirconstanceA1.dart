@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/addsignatureA.dart';
 import 'package:multiselect/multiselect.dart';
 
-class AddCirconstanceA extends StatefulWidget {
-  const AddCirconstanceA({Key? key}) : super(key: key);
+class AddCirconstanceA1 extends StatefulWidget {
+  const AddCirconstanceA1({Key? key}) : super(key: key);
 
   @override
-  State<AddCirconstanceA> createState() => _AddCirconstanceAState();
+  State<AddCirconstanceA1> createState() => _AddCirconstanceA1State();
 }
 
-class _AddCirconstanceAState extends State<AddCirconstanceA> {
+class _AddCirconstanceA1State extends State<AddCirconstanceA1> {
   bool _1 = false;
   bool _2 = false;
   bool _3 = false;

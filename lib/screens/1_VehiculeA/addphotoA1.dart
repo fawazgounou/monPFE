@@ -10,14 +10,14 @@ import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class AddPhotoA extends StatefulWidget {
-  const AddPhotoA({Key? key}) : super(key: key);
+class AddPhotoA1 extends StatefulWidget {
+  const AddPhotoA1({Key? key}) : super(key: key);
 
   @override
-  State<AddPhotoA> createState() => _AddPhotoAState();
+  State<AddPhotoA1> createState() => _AddPhotoA1State();
 }
 
-class _AddPhotoAState extends State<AddPhotoA> {
+class _AddPhotoA1State extends State<AddPhotoA1> {
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 

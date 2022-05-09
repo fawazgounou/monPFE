@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:insertion_bd/screens/home/addsinistre.dart';
+import 'package:insertion_bd/screens/home_1/addsinistre1.dart';
 
-class Localisation extends StatefulWidget {
-  const Localisation({Key? key}) : super(key: key);
+class Localisation1 extends StatefulWidget {
+  const Localisation1({Key? key}) : super(key: key);
 
   @override
-  State<Localisation> createState() => _LocalisationState();
+  State<Localisation1> createState() => _Localisation1State();
 }
 
-class _LocalisationState extends State<Localisation> {
+class _Localisation1State extends State<Localisation1> {
   String location = 'localisation';
   String Adresse = '';
   TextEditingController localisation = TextEditingController();
@@ -107,7 +108,7 @@ class _LocalisationState extends State<Localisation> {
             /*   'localisation_sinistre': ,  */
           });
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddSinistre()));
+              MaterialPageRoute(builder: (context) => const AddSinistre1()));
         },
         child: Container(
           height: 50.0,

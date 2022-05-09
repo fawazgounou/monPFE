@@ -5,14 +5,14 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:insertion_bd/widgets/customTextField.dart';
 import 'package:intl/intl.dart';
 
-class AddConducteurA extends StatefulWidget {
-  AddConducteurA({Key? key}) : super(key: key);
+class AddConducteurA1 extends StatefulWidget {
+  AddConducteurA1({Key? key}) : super(key: key);
 
   @override
-  State<AddConducteurA> createState() => _AddConducteurAState();
+  State<AddConducteurA1> createState() => _AddConducteurA1State();
 }
 
-class _AddConducteurAState extends State<AddConducteurA> {
+class _AddConducteurA1State extends State<AddConducteurA1> {
   CustomTextField nomconducteurA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom ", initialValue: '');
   CustomTextField prenomconducteurA = CustomTextField(

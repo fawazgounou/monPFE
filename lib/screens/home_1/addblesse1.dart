@@ -5,14 +5,14 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 
 import '../../widgets/customTextField.dart';
 
-class AddBlesse extends StatefulWidget {
-  const AddBlesse({Key? key}) : super(key: key);
+class AddBlesse1 extends StatefulWidget {
+  const AddBlesse1({Key? key}) : super(key: key);
 
   @override
-  State<AddBlesse> createState() => _AddBlesseState();
+  State<AddBlesse1> createState() => _AddBlesse1State();
 }
 
-class _AddBlesseState extends State<AddBlesse> {
+class _AddBlesse1State extends State<AddBlesse1> {
   CustomTextField nomblesse = CustomTextField(
       placeholder: "Entrer le noms", title: "Nom Blessé(s)", initialValue: '');
   CustomTextField prenomblesse = CustomTextField(

@@ -4,9 +4,9 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/utils.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class SignaturePreviewPage extends StatelessWidget {
+class SignaturePreviewPage1 extends StatelessWidget {
   final Uint8List signature;
-  const SignaturePreviewPage({Key? key, required this.signature})
+  const SignaturePreviewPage1({Key? key, required this.signature})
       : super(key: key);
 
   @override

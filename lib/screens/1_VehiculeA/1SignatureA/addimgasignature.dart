@@ -12,14 +12,14 @@ import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class AddImageSignatureA extends StatefulWidget {
-  const AddImageSignatureA({Key? key}) : super(key: key);
+class AddImageSignatureA1 extends StatefulWidget {
+  const AddImageSignatureA1({Key? key}) : super(key: key);
 
   @override
-  State<AddImageSignatureA> createState() => _AddImageSignatureAState();
+  State<AddImageSignatureA1> createState() => _AddImageSignatureA1State();
 }
 
-class _AddImageSignatureAState extends State<AddImageSignatureA> {
+class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 

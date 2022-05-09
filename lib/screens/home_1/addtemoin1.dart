@@ -2,18 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/screens/home/addblesse.dart';
+import 'package:insertion_bd/screens/home_1/addblesse1.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:responsive_row/responsive_row.dart';
 import '../../widgets/customTextField.dart';
 
-class AddTemoins extends StatefulWidget {
-  const AddTemoins({Key? key}) : super(key: key);
+class AddTemoins1 extends StatefulWidget {
+  const AddTemoins1({Key? key}) : super(key: key);
 
   @override
-  State<AddTemoins> createState() => _AddTemoinsState();
+  State<AddTemoins1> createState() => _AddTemoins1State();
 }
 
-class _AddTemoinsState extends State<AddTemoins> {
+class _AddTemoins1State extends State<AddTemoins1> {
   CustomTextField nomtemoin = CustomTextField(
       placeholder: "Entrer le noms", title: "Nom", initialValue: '');
   CustomTextField prenomtemoin = CustomTextField(
@@ -103,7 +104,7 @@ class _AddTemoinsState extends State<AddTemoins> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddBlesse()));
+              MaterialPageRoute(builder: (context) => const AddBlesse1()));
         },
         child: Container(
           height: 50.0,

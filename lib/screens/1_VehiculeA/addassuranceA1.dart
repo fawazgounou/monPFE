@@ -7,14 +7,14 @@ import 'package:multiselect/multiselect.dart';
 
 import '../../widgets/customTextField.dart';
 
-class AddAssuranceA extends StatefulWidget {
-  AddAssuranceA({Key? key}) : super(key: key);
+class AddAssuranceA1 extends StatefulWidget {
+  AddAssuranceA1({Key? key}) : super(key: key);
 
   @override
-  State<AddAssuranceA> createState() => _AddAssuranceAState();
+  State<AddAssuranceA1> createState() => _AddAssuranceA1State();
 }
 
-class _AddAssuranceAState extends State<AddAssuranceA> {
+class _AddAssuranceA1State extends State<AddAssuranceA1> {
   CustomTextField nomassuranceA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assureur", initialValue: '');
   CustomNumberField numcontratA = CustomNumberField(

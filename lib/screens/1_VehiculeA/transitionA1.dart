@@ -44,7 +44,7 @@ class _TransitionAState extends State<TransitionA> {
           ),
         ),
       ),
-      bottomNavigationBar: GestureDetector(
+     /*  bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddVehiculB()));
@@ -63,7 +63,7 @@ class _TransitionAState extends State<TransitionA> {
           ),
           alignment: Alignment.center,
         ),
-      ),
+      ), */
     );
   }
 }

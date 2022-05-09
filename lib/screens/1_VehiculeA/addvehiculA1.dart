@@ -5,14 +5,14 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 
 import '../../widgets/customTextField.dart';
 
-class AddVehiculA extends StatefulWidget {
-  AddVehiculA({Key? key}) : super(key: key);
+class AddVehiculA1 extends StatefulWidget {
+  AddVehiculA1({Key? key}) : super(key: key);
 
   @override
-  State<AddVehiculA> createState() => _AddVehiculAState();
+  State<AddVehiculA1> createState() => _AddVehiculA1State();
 }
 
-class _AddVehiculAState extends State<AddVehiculA> {
+class _AddVehiculA1State extends State<AddVehiculA1> {
   CustomTextField marqueA = CustomTextField(
       placeholder: "Entrer la Marque", title: "Marque, Type", initialValue: '');
   CustomNumberField immatriculationVA = CustomNumberField(

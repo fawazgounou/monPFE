@@ -5,14 +5,14 @@ import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 
 import '../../widgets/customTextField.dart';
 
-class AddObservationA extends StatefulWidget {
-  AddObservationA({Key? key}) : super(key: key);
+class AddObservationA1 extends StatefulWidget {
+  AddObservationA1({Key? key}) : super(key: key);
 
   @override
-  State<AddObservationA> createState() => _AddObservationAState();
+  State<AddObservationA1> createState() => _AddObservationA1State();
 }
 
-class _AddObservationAState extends State<AddObservationA> {
+class _AddObservationA1State extends State<AddObservationA1> {
   CustomTextField degatsapparentA = CustomTextField(
       placeholder: "Dégats",
       title: "Dégats Apparents",

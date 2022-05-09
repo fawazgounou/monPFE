@@ -9,14 +9,14 @@ import 'package:signature/signature.dart';
 
 import 'addimgasignature.dart';
 
-class SignaturePageA extends StatefulWidget {
-  const SignaturePageA({Key? key}) : super(key: key);
+class SignaturePageA1 extends StatefulWidget {
+  const SignaturePageA1({Key? key}) : super(key: key);
 
   @override
-  _SignaturePageAState createState() => _SignaturePageAState();
+  _SignaturePageA1State createState() => _SignaturePageA1State();
 }
 
-class _SignaturePageAState extends State<SignaturePageA> {
+class _SignaturePageA1State extends State<SignaturePageA1> {
   late SignatureController controller;
 
   @override
@@ -64,7 +64,7 @@ class _SignaturePageAState extends State<SignaturePageA> {
           onTap: () {
            
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddImageSignatureA()));
+                MaterialPageRoute(builder: (context) => AddImageSignatureA1()));
           },
           child: Container(
             height: 50.0,
