@@ -191,7 +191,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
                                     DateFormat('yyyy-MM-dd').format(pickedDate);
                                 print(formattedDate);
                                 setState(() {
-                                  dateinput.text = formattedDate;
+                                  dateinput2.text = formattedDate;
                                 });
                               } else {
                                 print("Date is not selected");
