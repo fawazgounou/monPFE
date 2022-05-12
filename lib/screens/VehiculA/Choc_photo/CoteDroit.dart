@@ -11,6 +11,8 @@ import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../Model/model.dart';
+
 class CoteDroitA extends StatefulWidget {
   const CoteDroitA({Key? key}) : super(key: key);
 
@@ -163,11 +165,11 @@ class _CoteDroitAState extends State<CoteDroitA> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-
-            await FirebaseFirestore.instance.collection('PhotosA').add({
+Choc(imageUrl: url, namePhoto: _fullName);
+            /* await FirebaseFirestore.instance.collection('PhotosA').add({
               'name': _fullName,
               'imageUrl': url,
-            });
+            }); */
           }
 
           Navigator.push(

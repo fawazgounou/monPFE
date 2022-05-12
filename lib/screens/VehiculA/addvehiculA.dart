@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 
@@ -59,16 +60,15 @@ class _AddVehiculAState extends State<AddVehiculA> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          if(_key.currentState!.validate()){
-  FirebaseFirestore.instance.collection('VehiculeA').add({
-            'marque': marqueA.value,
-            'numero_immatriculation': immatriculationVA.value,
-            'pays_immatriculation': paysimmatriculationVA.value,
-          });
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddAssureA()));
+          if (_key.currentState!.validate()) {
+            VehiculeA(
+                marque: marqueA.value,
+                numero_immatriculation: immatriculationVA.value,
+                pays_immatriculation: paysimmatriculationVA.value);
+
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AddAssureA()));
           }
-        
         },
         child: Container(
           height: 50.0,

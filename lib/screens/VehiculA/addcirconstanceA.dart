@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 
 import 'package:insertion_bd/screens/VehiculA/SignatureA/addsignatureA.dart';
 import 'package:multiselect/multiselect.dart';
@@ -884,9 +885,8 @@ class _AddCirconstanceAState extends State<AddCirconstanceA> {
           if (_18 == true) {
             index = "Ma situation ne correspond à rien";
           }
-          FirebaseFirestore.instance.collection('CirconstanceA').add({
-            'circonstance': index.toString(),
-          });
+          Circonstance(circonstance: index.toString());
+        
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const SignaturePageA()));
         },

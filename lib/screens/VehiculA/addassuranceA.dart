@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:intl/intl.dart';
@@ -312,20 +313,21 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
             if (non == true) {
               index = 'Non';
             }
-            FirebaseFirestore.instance.collection('AssuranceA').add({
-              'nom': nomassuranceA.value,
-              'num_contrat': numcontratA.value,
-              'num_carte_verte': numcarteverteA.value,
-              'du': dateinput.text,
-              'au': dateinput2.text,
-              'agence': agenceA.value,
-              'nom_agence': nomagence.value,
-              'adresse': adresseagenceA.value,
-              'pays': paysagenceA.value,
-              'telephone': telephoneagenceA.value,
-              'email': emailagenceA.value,
-              'prise_encharge': index.toString(),
-            });
+            AssuranceA(
+              nomCA: nomassuranceA.value,
+              numContrat: numcontratA.value,
+              numCarteVerte: numcarteverteA.value,
+              du: dateinput.text,
+              au: dateinput2.text,
+              agence: agenceA.value,
+              nomAgence: nomagence.value,
+              adresseCA: adresseagenceA.value,
+              paysCA: paysagenceA.value,
+              telephoneCA: telephoneagenceA.value,
+              emailCA: emailagenceA.value,
+              priseEncharge: index.toString(),
+            );
+
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => AddConducteurA()));
           }

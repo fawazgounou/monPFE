@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:insertion_bd/Model/model.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
@@ -164,10 +165,9 @@ class _ArrierevAState extends State<ArrierevA> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            await FirebaseFirestore.instance.collection('PhotosA').add({
-              'name': _fullName,
-              'imageUrl': url,
-            });
+            Choc(imageUrl: url, namePhoto: _fullName);
+
+            
           }
 
           Navigator.push(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/home/addtemoin.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../widgets/customTextField.dart';
+import 'package:insertion_bd/Model/model.dart';
 
 class AddSinistre extends StatefulWidget {
   const AddSinistre({Key? key}) : super(key: key);
@@ -269,13 +272,16 @@ class _AddSinistreState extends State<AddSinistre> {
             if (_non == true) {
               index2 = 'Non';
             }
-            FirebaseFirestore.instance.collection('Sinistre').add({
-              'date_sinistre': dateinput.text,
-              'heure_sinistre': selectedTime.toString(),
-              'lieu_sinistre': lieu.value,
-              'blesse': index.toString(),
-              'degats': index2.toString(),
-            });
+            Sinistres sinistre = new Sinistres(
+              dateSinistre: dateinput.text,
+              heureSinistre: selectedTime.toString(),
+              lieuSinistre: lieu.value,
+              blesse: index.toString(),
+              degats: index2.toString(),
+              
+            );
+
+           
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const AddTemoins()));
           }

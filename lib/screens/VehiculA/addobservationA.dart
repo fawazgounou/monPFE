@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addphotoA.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 
@@ -63,15 +64,14 @@ class _AddObservationAState extends State<AddObservationA> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          if(_key.currentState!.validate()){
- FirebaseFirestore.instance.collection('ObservationA').add({
-            'date_sinistre': degatsapparentA.value,
-            'heure_sinistre': observationA.value,
-          });
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPhotoA()));
+          if (_key.currentState!.validate()) {
+            ObservationA(
+                observation: degatsapparentA.value,
+                degatsapparent: observationA.value);
+
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AddPhotoA()));
           }
-         
         },
         child: Container(
           height: 50.0,

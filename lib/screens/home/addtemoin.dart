@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/screens/home/addblesse.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
@@ -78,12 +79,10 @@ class _AddTemoinsState extends State<AddTemoins> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          FirebaseFirestore.instance.collection('Temoins').add({
-                            'nom': nomtemoin.value,
-                            'prenom': prenomtemoin.value,
-                            'adresse': adressetemoin.value,
-                            'telephone': telephone.value,
-                          });
+                          Temoin(nomt: nomtemoin.value, prenomt: prenomtemoin.value, adresset:  adressetemoin.value, telephonet: telephone.value);
+                          /* FirebaseFirestore.instance.collection('Temoins').add({
+    
+                          }); */
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

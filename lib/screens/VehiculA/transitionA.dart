@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
+import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/screens/home/addsinistre.dart';
 
 class TransitionA extends StatefulWidget {
   const TransitionA({Key? key}) : super(key: key);
@@ -39,6 +43,17 @@ class _TransitionAState extends State<TransitionA> {
                   width: 300,
                   fit: BoxFit.cover,
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                    /*   FirebaseFirestore.instance.collection('Sinistre').add({
+                      'date_sinstre': 
+
+                      }); */
+                    },
+                    child: const Text(
+                      'Sauvegarder',
+                      style: TextStyle(fontSize: 19),
+                    ))
               ],
             ),
           ),
@@ -67,3 +82,4 @@ class _TransitionAState extends State<TransitionA> {
     );
   }
 }
+     

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 
@@ -145,17 +146,19 @@ class _AddBlesseState extends State<AddBlesse> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          FirebaseFirestore.instance.collection('Blesse').add({
-                            'nom': nomblesse.value,
-                            'prenom': prenomblesse.value,
-                            'adresse': adresseblesse.value,
-                            'telephone': telephone.value,
-                            'profession': profession.value,
-                            'situation': situation.value,
-                            'casque': casqueceinture.value,
-                            'centre_hospitalier': premiersoinslieu.value,
-                            'nature_gravite': gravitenature.value,
-                          });
+                          Blesse(
+                              nomb: nomblesse.value,
+                              prenomb: prenomblesse.value,
+                              adresseb: adresseblesse.value,
+                              telephoneb: telephone.value,
+                              professionb: profession.value,
+                              situationb: situation.value,
+                              casqueb: casqueceinture.value,
+                              centreHospitalierb: premiersoinslieu.value,
+                              natureGraviteb: gravitenature.value);
+                          /*  FirebaseFirestore.instance
+                              .collection('Blesse')
+                              .add({}); */
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

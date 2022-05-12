@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:insertion_bd/Model/model.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
@@ -135,10 +136,11 @@ class _AddImageSignatureAState extends State<AddImageSignatureA> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            await FirebaseFirestore.instance.collection('SignatureA').add({
+            signatureA(imageUrlSignature: url, nameSignature: _fullName);
+            /*    await FirebaseFirestore.instance.collection('SignatureA').add({
               'name': _fullName,
               'imageUrl': url,
-            });
+            }); */
           }
 
           Navigator.push(context,

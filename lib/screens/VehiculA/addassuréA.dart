@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addassuranceA.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
@@ -105,19 +106,17 @@ class _AddAssureAState extends State<AddAssureA> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          if(_key.currentState!.validate()){
-FirebaseFirestore.instance.collection('AssureA').add({
-            'nom': nomassureA.value,
-            'prenom': prenomassureA.value,
-            'adress': adresseassureA.value,
-            'code_postal': codepostalA.value,
-            'telephone': telephoneassureA.value,
-            'email': emailA.value,
-          });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddAssuranceA()));
+          if (_key.currentState!.validate()) {
+            AssureA(
+                nomA: nomassureA.value,
+                prenomA: prenomassureA.value,
+                telephoneA: telephoneassureA.value,
+                adresseA: adresseassureA.value,
+                code_postalA: codepostalA.value,
+                emailA: emailA.value);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => AddAssuranceA()));
           }
-          
         },
         child: Container(
           height: 50.0,

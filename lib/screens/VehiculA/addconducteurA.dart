@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addobservationA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:insertion_bd/widgets/customTextField.dart';
@@ -225,18 +226,18 @@ class _AddConducteurAState extends State<AddConducteurA> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            FirebaseFirestore.instance.collection('ConducteurA').add({
-              'nom': nomconducteurA.value,
-              'prenom': prenomconducteurA.value,
-              'adresse': adresseconducteurA.value,
-              'date_naissance': dateinput.text,
-              'pays': paysconducteurA.value,
-              'telephone': telephoneconducteurA.value,
-              'email': emailconducteurA.value,
-              'num_permis': numpermisdeconduireA.value,
-              'categorie': categorieA.value,
-              'fin_valide_permis': dateinputV.text,
-            });
+            Conducteur(
+                nomC: nomconducteurA.value,
+                prenomC: prenomconducteurA.value,
+                adresseC: adresseconducteurA.value,
+                dateNaissanceC: dateinput.text,
+                paysC: paysconducteurA.value,
+                telephoneC: telephoneconducteurA.value,
+                categorie: categorieA.value,
+                emailC: emailconducteurA.value,
+                finValidePermis: dateinputV.text,
+                numPermis: numpermisdeconduireA.value);
+
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => AddObservationA()));
           }

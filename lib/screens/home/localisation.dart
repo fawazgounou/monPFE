@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/home/addsinistre.dart';
 
 class Localisation extends StatefulWidget {
@@ -90,9 +91,9 @@ class _LocalisationState extends State<Localisation> {
               Text(
                 '${Adresse}',
                 style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
               ),
               const SizedBox(
                 height: 50,
@@ -103,9 +104,7 @@ class _LocalisationState extends State<Localisation> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance.collection('Sinistre').add({
-            /*   'localisation_sinistre': ,  */
-          });
+          Geo(localise: Adresse.toString());
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const AddSinistre()));
         },
