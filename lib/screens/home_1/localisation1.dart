@@ -68,6 +68,8 @@ class _Localisation1State extends State<Localisation1> {
               const SizedBox(
                 height: 50,
               ),
+              const Text('Cliquer ici', style: TextStyle(fontSize: 17)),
+              const Icon(Icons.arrow_downward),
               ElevatedButton(
                 onPressed: () async {
                   Position position = await _determinePosition();
@@ -91,9 +93,9 @@ class _Localisation1State extends State<Localisation1> {
               Text(
                 '${Adresse}',
                 style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
               ),
               const SizedBox(
                 height: 50,

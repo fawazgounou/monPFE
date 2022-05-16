@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:insertion_bd/screens/VehiculA/addassuranceA.dart';
-import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
+import 'package:http/http.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
-import 'package:insertion_bd/screens/home/addblesse.dart';
-import 'package:insertion_bd/screens/home/addsinistre.dart';
-import 'package:insertion_bd/screens/home/addtemoin.dart';
+import 'package:provider/provider.dart';
+
 import 'package:insertion_bd/screens/home/home.dart';
-import 'package:insertion_bd/screens/home/option_1_2.dart';
+
+import 'Model/sinistre_notifier.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (_) => SinistreNotifier(),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,9 +28,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {'temoin':(context)=> AddTemoins(),
-      'blesse':(context)=> AddBlesse(),
-      },
       theme: ThemeData(),
       title: 'Déclare ton Sinistre',
       home: const Home(),

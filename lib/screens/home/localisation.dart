@@ -68,6 +68,9 @@ class _LocalisationState extends State<Localisation> {
               const SizedBox(
                 height: 50,
               ),
+              const Text('Cliquer ici', style: TextStyle(fontSize: 17)),
+                   const Icon(Icons.arrow_downward),
+              
               ElevatedButton(
                 onPressed: () async {
                   Position position = await _determinePosition();
@@ -78,6 +81,7 @@ class _LocalisationState extends State<Localisation> {
 
                   setState(() {});
                 },
+                
                 child: Image.asset(
                   'assets/image/loc1.jpg',
                   height: 300,
@@ -104,7 +108,7 @@ class _LocalisationState extends State<Localisation> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          Geo(localise: Adresse.toString());
+       /*    Geo(localise: Adresse.toString()); */
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const AddSinistre()));
         },

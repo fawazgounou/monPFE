@@ -23,7 +23,9 @@ class _AddConducteurAState extends State<AddConducteurA> {
   CustomTextField paysconducteurA = CustomTextField(
       placeholder: "Entrer le Pays", title: "Pays", initialValue: '');
   CustomNumberField telephoneconducteurA = CustomNumberField(
-      placeholder: "Entrer le Téléphone", title: "Téléphon ", initialValue: '');
+      placeholder: "Entrer le Téléphone",
+      title: "Téléphone ",
+      initialValue: '');
   CustomNumberField emailconducteurA = CustomNumberField(
       placeholder: "Entrer le mail", title: "Email ", initialValue: '');
   CustomNumberField numpermisdeconduireA = CustomNumberField(
@@ -65,161 +67,164 @@ class _AddConducteurAState extends State<AddConducteurA> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: nomconducteurA.textfrofield(),
-                    flex: 1,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: prenomconducteurA.textfrofield(),
-                    flex: 1,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Container(
-                child: Center(
-                  child: TextFormField(
-                    controller: dateinput,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Entrer la Date";
-                      } else {
-                        return null;
-                      }
-                    },
-                    decoration: const InputDecoration(
-                        icon: Icon(
-                          Icons.calendar_today,
-                          color: Colors.black,
-                        ),
-                        labelStyle: TextStyle(color: Colors.black),
-                        labelText: 'Date de naissance'),
-                    readOnly: true,
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2000),
-                          lastDate: DateTime(2101));
+        child: Form(
+          key: _key,
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: nomconducteurA.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: prenomconducteurA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  child: Center(
+                    child: TextFormField(
+                      controller: dateinput,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Entrer la Date";
+                        } else {
+                          return null;
+                        }
+                      },
+                      decoration: const InputDecoration(
+                          icon: Icon(
+                            Icons.calendar_today,
+                            color: Colors.black,
+                          ),
+                          labelStyle: TextStyle(color: Colors.black),
+                          labelText: 'Date de naissance'),
+                      readOnly: true,
+                      onTap: () async {
+                        DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2101));
 
-                      if (pickedDate != null) {
-                        print(pickedDate);
-                        String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(formattedDate);
-                        setState(() {
-                          dateinput.text = formattedDate;
-                        });
-                      } else {
-                        print("Date is not selected");
-                      }
-                    },
+                        if (pickedDate != null) {
+                          print(pickedDate);
+                          String formattedDate =
+                              DateFormat('yyyy-MM-dd').format(pickedDate);
+                          print(formattedDate);
+                          setState(() {
+                            dateinput.text = formattedDate;
+                          });
+                        } else {
+                          print("Date is not selected");
+                        }
+                      },
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              adresseconducteurA.textfrofield(),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: paysconducteurA.textfrofield(),
-                    flex: 1,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: telephoneconducteurA.textfrofield(),
-                    flex: 1,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              emailconducteurA.textfrofield(),
-              const SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: numpermisdeconduireA.textfrofield(),
-                    flex: 1,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: categorieA.textfrofield(),
-                    flex: 1,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Container(
-                child: Center(
-                  child: TextFormField(
-                    controller: dateinput,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Entrer la Date";
-                      } else {
-                        return null;
-                      }
-                    },
-                    decoration: const InputDecoration(
-                        icon: Icon(
-                          Icons.calendar_today,
-                          color: Colors.black,
-                        ),
-                        labelStyle: TextStyle(color: Colors.black),
-                        labelText: "Permis valable jusqu'au"),
-                    readOnly: true,
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2000),
-                          lastDate: DateTime(2101));
+                const SizedBox(
+                  height: 15,
+                ),
+                adresseconducteurA.textfrofield(),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: paysconducteurA.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: telephoneconducteurA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                emailconducteurA.textfrofield(),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: numpermisdeconduireA.textfrofield(),
+                      flex: 1,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: categorieA.textfrofield(),
+                      flex: 1,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  child: Center(
+                    child: TextFormField(
+                      controller: dateinputV,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Entrer la Date";
+                        } else {
+                          return null;
+                        }
+                      },
+                      decoration: const InputDecoration(
+                          icon: Icon(
+                            Icons.calendar_today,
+                            color: Colors.black,
+                          ),
+                          labelStyle: TextStyle(color: Colors.black),
+                          labelText: "Permis valable jusqu'au"),
+                      readOnly: true,
+                      onTap: () async {
+                        DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2101));
 
-                      if (pickedDate != null) {
-                        print(pickedDate);
-                        String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
-                        print(formattedDate);
-                        setState(() {
-                          dateinput.text = formattedDate;
-                        });
-                      } else {
-                        print("Date is not selected");
-                      }
-                    },
+                        if (pickedDate != null) {
+                          print(pickedDate);
+                          String formattedDate =
+                              DateFormat('yyyy-MM-dd').format(pickedDate);
+                          print(formattedDate);
+                          setState(() {
+                            dateinputV.text = formattedDate;
+                          });
+                        } else {
+                          print("Date is not selected");
+                        }
+                      },
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 55,
-              ),
-            ],
+                const SizedBox(
+                  height: 55,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -12,7 +12,7 @@ class Sinistres {
     required this.blesse,
     required this.degats,
   });
-  Map<String, dynamic> toMap() {
+/*   Map<String, dynamic> toMap() {
     return {
       'dateSinistre': dateSinistre,
       'heureSinistre': heureSinistre,
@@ -21,6 +21,8 @@ class Sinistres {
       'degats': degats,
     };
   }
+
+  void add(Sinistres sinistre) {} */
 }
 
 class Geo {

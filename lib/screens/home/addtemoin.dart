@@ -15,6 +15,7 @@ class AddTemoins extends StatefulWidget {
 }
 
 class _AddTemoinsState extends State<AddTemoins> {
+  
   CustomTextField nomtemoin = CustomTextField(
       placeholder: "Entrer le nom", title: "Nom", initialValue: '');
   CustomTextField prenomtemoin = CustomTextField(

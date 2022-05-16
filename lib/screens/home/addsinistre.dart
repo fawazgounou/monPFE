@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/Model/sinistre_notifier.dart';
+import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:insertion_bd/screens/home/addtemoin.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/customTextField.dart';
 import 'package:insertion_bd/Model/model.dart';
 
@@ -19,7 +22,7 @@ class _AddSinistreState extends State<AddSinistre> {
       placeholder: "Entrer le Lieu", title: "Lieu", line: 1, initialValue: '');
 
   final _key = GlobalKey<FormState>();
-
+  SinistreNotifier? sinistreNotifier;
   TextEditingController dateinput = TextEditingController();
   TextEditingController timeinput = TextEditingController();
 
@@ -28,6 +31,8 @@ class _AddSinistreState extends State<AddSinistre> {
   void initState() {
     dateinput.text = "";
     super.initState();
+    sinistreNotifier = Provider.of<SinistreNotifier>(context, listen: false);
+    print("sinistre deux est ${sinistreNotifier?.sinistre?.toMap()}");
   }
 
   TimeOfDay selectedTime = TimeOfDay.now();
@@ -49,7 +54,6 @@ class _AddSinistreState extends State<AddSinistre> {
   bool non = false;
   bool _oui = false;
   bool _non = false;
-
   @override
   Widget build(BuildContext context) {
     lieu.err = "Entrer le Lieu";
@@ -158,14 +162,14 @@ class _AddSinistreState extends State<AddSinistre> {
                   ],
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 const Text(
                   " Blessé(s) même léger(s)",
                   style: TextStyle(color: Colors.black, fontSize: 17),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Row(
                   children: <Widget>[
@@ -204,7 +208,7 @@ class _AddSinistreState extends State<AddSinistre> {
                   ],
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 const Text(
                   "Dégâts matériel à des véhicules autre que  A et B",
@@ -212,7 +216,7 @@ class _AddSinistreState extends State<AddSinistre> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Row(
                   children: <Widget>[
@@ -272,18 +276,24 @@ class _AddSinistreState extends State<AddSinistre> {
             if (_non == true) {
               index2 = 'Non';
             }
-            Sinistres sinistre = new Sinistres(
+
+            /*  sinistreNotifier?.addSininstre(new Sinistres(
+                dateSinistre: "aaa",
+                heureSinistre: "bbb",
+                lieuSinistre: "ccc",
+                blesse: "ddd",
+                degats: "eee")); */
+
+            Sinistres sinistre = sinistreNotifier?.addSininstre(Sinistres(
               dateSinistre: dateinput.text,
               heureSinistre: selectedTime.toString(),
               lieuSinistre: lieu.value,
               blesse: index.toString(),
               degats: index2.toString(),
-              
-            );
-
-           
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddTemoins()));
+            ));
+            print("le sinistre est ${sinistreNotifier?.getSinistre()}");
+            /*  Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const TransitionA())); */
           }
         },
         child: Container(

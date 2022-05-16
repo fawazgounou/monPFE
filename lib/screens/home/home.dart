@@ -35,6 +35,17 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 height: 50,
               ),
+              const Text('Cliquer ici',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              const Icon(
+                Icons.arrow_downward,
+                size: 30,
+                color: Colors.red,
+              ),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -60,13 +71,6 @@ class _HomeState extends State<Home> {
               ),
               const SizedBox(
                 height: 30,
-              ),
-              const Text(
-                'DECLARE TON SINISTRE',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
               ),
             ],
           ),

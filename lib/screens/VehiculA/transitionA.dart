@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/Model/sinistre_notifier.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/home/addsinistre.dart';
+import 'package:provider/provider.dart';
 
 class TransitionA extends StatefulWidget {
   const TransitionA({Key? key}) : super(key: key);
@@ -14,8 +16,18 @@ class TransitionA extends StatefulWidget {
 }
 
 class _TransitionAState extends State<TransitionA> {
+  late SinistreNotifier sinistreNotifier;
+  /*  void initState() {
+
+    super.initState();
+    sinistreNotifier = 
+  }
+ */
   @override
   Widget build(BuildContext context) {
+    SinistreNotifier sinistreNotifier =
+        Provider.of<SinistreNotifier>(context, listen: false);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -45,9 +57,19 @@ class _TransitionAState extends State<TransitionA> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                    /*   FirebaseFirestore.instance.collection('Sinistre').add({
-                      'date_sinstre': 
-
+                      print(
+                        sinistreNotifier.sinistre?.dateSinistre,
+                      );
+                      print(
+                        sinistreNotifier.sinistre?.heureSinistre,
+                        
+                      );
+                      /*   FirebaseFirestore.instance.collection('Sinistre').add({
+                        'date_sinstre': sinistreNotifier.sinistre?.dateSinistre,
+                        'heure': sinistreNotifier.sinistre?.heureSinistre,
+                        'lieu': sinistreNotifier.sinistre?.lieuSinistre,
+                        'blesse': sinistreNotifier.sinistre?.blesse,
+                        'degats': sinistreNotifier.sinistre?.degats
                       }); */
                     },
                     child: const Text(
@@ -82,4 +104,3 @@ class _TransitionAState extends State<TransitionA> {
     );
   }
 }
-     
