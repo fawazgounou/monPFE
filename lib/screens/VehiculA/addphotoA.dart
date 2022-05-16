@@ -11,13 +11,33 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AddPhotoA extends StatefulWidget {
-  const AddPhotoA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  AddPhotoA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ})
+      : super(key: key);
 
   @override
   State<AddPhotoA> createState() => _AddPhotoAState();
 }
 
 class _AddPhotoAState extends State<AddPhotoA> {
+  var photo = [];
+
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -111,7 +131,17 @@ class _AddPhotoAState extends State<AddPhotoA> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AddAvantA()));
+                                      builder: (context) => AddAvantA(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: photo,
+                                          )));
                             },
                             child: Image.asset(
                               'assets/image/avant.jpg',
@@ -138,7 +168,17 @@ class _AddPhotoAState extends State<AddPhotoA> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CoteDroitA()));
+                                      builder: (context) => CoteDroitA(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: photo,
+                                          )));
                             },
                             child: Image.asset(
                               'assets/image/coté_droite.jpg',
@@ -170,7 +210,17 @@ class _AddPhotoAState extends State<AddPhotoA> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => CoteGaucheA()));
+                                      builder: (context) => CoteGaucheA(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: photo,
+                                          )));
                             },
                             child: Image.asset(
                               'assets/image/coté_droite.jpg',
@@ -198,7 +248,17 @@ class _AddPhotoAState extends State<AddPhotoA> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ArrierevA()));
+                                      builder: (context) => ArrierevA(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: photo,
+                                          )));
                             },
                             child: Image.asset(
                               'assets/image/arriere.jpg',
@@ -230,7 +290,17 @@ class _AddPhotoAState extends State<AddPhotoA> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HautA()));
+                                      builder: (context) => HautA(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: photo,
+                                          )));
                             },
                             child: Image.asset(
                               'assets/image/haut.jpg',

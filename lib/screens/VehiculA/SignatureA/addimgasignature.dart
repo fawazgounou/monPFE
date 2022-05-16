@@ -14,13 +14,48 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AddImageSignatureA extends StatefulWidget {
-  const AddImageSignatureA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  var signature;
+  AddImageSignatureA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA,
+      this.signature})
+      : super(key: key);
 
   @override
   State<AddImageSignatureA> createState() => _AddImageSignatureAState();
 }
 
 class _AddImageSignatureAState extends State<AddImageSignatureA> {
+  var imagesignature = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -136,15 +171,35 @@ class _AddImageSignatureAState extends State<AddImageSignatureA> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            signatureA(imageUrlSignature: url, nameSignature: _fullName);
+            imagesignature = [url, _fullName];
             /*    await FirebaseFirestore.instance.collection('SignatureA').add({
               'name': _fullName,
               'imageUrl': url,
             }); */
           }
 
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const TransitionA()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => TransitionA(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: widget.circonstanceA,
+                        signature: widget.signature,
+                        imagesignature: imagesignature,
+                      )));
         },
         child: Container(
           height: 50.0,

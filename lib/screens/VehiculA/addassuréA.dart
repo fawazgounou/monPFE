@@ -8,13 +8,19 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 import '../../widgets/customTextField.dart';
 
 class AddAssureA extends StatefulWidget {
-  AddAssureA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  AddAssureA({Key? key, this.Sin, this.Temoin, this.blesse, this.vehiculeA})
+      : super(key: key);
 
   @override
   State<AddAssureA> createState() => _AddAssureAState();
 }
 
 class _AddAssureAState extends State<AddAssureA> {
+  var assureA = [];
   CustomTextField nomassureA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assuré", initialValue: '');
   CustomTextField prenomassureA = CustomTextField(
@@ -107,15 +113,24 @@ class _AddAssureAState extends State<AddAssureA> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            AssureA(
-                nomA: nomassureA.value,
-                prenomA: prenomassureA.value,
-                telephoneA: telephoneassureA.value,
-                adresseA: adresseassureA.value,
-                code_postalA: codepostalA.value,
-                emailA: emailA.value);
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddAssuranceA()));
+            assureA = [
+              nomassureA.value,
+              prenomassureA.value,
+              telephoneassureA.value,
+              adresseassureA.value,
+              codepostalA.value,
+              emailA.value
+            ];
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddAssuranceA(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: widget.vehiculeA,
+                          assureA: assureA,
+                        )));
           }
         },
         child: Container(

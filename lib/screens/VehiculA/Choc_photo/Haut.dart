@@ -14,13 +14,34 @@ import 'package:permission_handler/permission_handler.dart';
 import '../../../Model/model.dart';
 
 class HautA extends StatefulWidget {
-  const HautA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  HautA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo})
+      : super(key: key);
 
   @override
   State<HautA> createState() => _HautAState();
 }
 
 class _HautAState extends State<HautA> {
+  var hautA = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -165,8 +186,8 @@ class _HautAState extends State<HautA> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-              Choc(imageUrl: url, namePhoto: _fullName);
-           /*  await FirebaseFirestore.instance.collection('PhotosA').add({
+            hautA = [url, _fullName];
+            /*  await FirebaseFirestore.instance.collection('PhotosA').add({
               'name': _fullName,
               'imageUrl': url,
             }); */
@@ -175,7 +196,18 @@ class _HautAState extends State<HautA> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const AddCirconstanceA()));
+                  builder: (context) => AddCirconstanceA(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        hautA: hautA,
+                      )));
         },
         child: Container(
           height: 50.0,

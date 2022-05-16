@@ -7,13 +7,30 @@ import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import '../../widgets/customTextField.dart';
 
 class AddObservationA extends StatefulWidget {
-  AddObservationA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  AddObservationA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA})
+      : super(key: key);
 
   @override
   State<AddObservationA> createState() => _AddObservationAState();
 }
 
 class _AddObservationAState extends State<AddObservationA> {
+  var observ = [];
   CustomTextField degatsapparentA = CustomTextField(
       placeholder: "Dégats",
       title: "Dégats Apparents",
@@ -65,12 +82,19 @@ class _AddObservationAState extends State<AddObservationA> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            ObservationA(
-                observation: degatsapparentA.value,
-                degatsapparent: observationA.value);
+            observ = [degatsapparentA.value, observationA.value];
 
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddPhotoA()));
+                context, MaterialPageRoute(builder: (context) => AddPhotoA(
+                   Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: widget.vehiculeA,
+                          assureA: widget.assureA,
+                          assuranceA: widget.assuranceA,
+                          conductA: widget.conductA,
+                          observ:observ,
+                )));
           }
         },
         child: Container(

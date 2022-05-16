@@ -9,25 +9,52 @@ import 'package:insertion_bd/screens/home/addsinistre.dart';
 import 'package:provider/provider.dart';
 
 class TransitionA extends StatefulWidget {
-  const TransitionA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  var signature;
+  var imagesignature;
+  TransitionA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA,
+      this.signature,
+      this.imagesignature})
+      : super(key: key);
 
   @override
   State<TransitionA> createState() => _TransitionAState();
 }
 
 class _TransitionAState extends State<TransitionA> {
-  late SinistreNotifier sinistreNotifier;
-  /*  void initState() {
-
-    super.initState();
-    sinistreNotifier = 
-  }
- */
+  var transA = [];
   @override
   Widget build(BuildContext context) {
-    SinistreNotifier sinistreNotifier =
-        Provider.of<SinistreNotifier>(context, listen: false);
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -55,27 +82,7 @@ class _TransitionAState extends State<TransitionA> {
                   width: 300,
                   fit: BoxFit.cover,
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      print(
-                        sinistreNotifier.sinistre?.dateSinistre,
-                      );
-                      print(
-                        sinistreNotifier.sinistre?.heureSinistre,
-                        
-                      );
-                      /*   FirebaseFirestore.instance.collection('Sinistre').add({
-                        'date_sinstre': sinistreNotifier.sinistre?.dateSinistre,
-                        'heure': sinistreNotifier.sinistre?.heureSinistre,
-                        'lieu': sinistreNotifier.sinistre?.lieuSinistre,
-                        'blesse': sinistreNotifier.sinistre?.blesse,
-                        'degats': sinistreNotifier.sinistre?.degats
-                      }); */
-                    },
-                    child: const Text(
-                      'Sauvegarder',
-                      style: TextStyle(fontSize: 19),
-                    ))
+               
               ],
             ),
           ),
@@ -84,7 +91,27 @@ class _TransitionAState extends State<TransitionA> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddVehiculB()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddVehiculB(
+                      Sin: widget.Sin,
+                      Temoin: widget.Temoin,
+                      blesse: widget.blesse,
+                      vehiculeA: widget.vehiculeA,
+                      assureA: widget.assureA,
+                      assuranceA: widget.assuranceA,
+                      conductA: widget.conductA,
+                      observ: widget.observ,
+                      photo: widget.photo,
+                      arriere: widget.arriere,
+                      avant: widget.avant,
+                      droit: widget.droit,
+                      gauche: widget.gauche,
+                      hautA: widget.hautA,
+                      circonstanceA: widget.circonstanceA,
+                      signature: widget.signature,
+                      imagesignature: widget.imagesignature,
+                      transA: transA)));
         },
         child: Container(
           height: 70.0,

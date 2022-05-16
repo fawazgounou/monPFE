@@ -8,14 +8,15 @@ import 'package:responsive_row/responsive_row.dart';
 import '../../widgets/customTextField.dart';
 
 class AddTemoins extends StatefulWidget {
-  const AddTemoins({Key? key}) : super(key: key);
+  var Sin;
+  AddTemoins({Key? key, this.Sin}) : super(key: key);
 
   @override
   State<AddTemoins> createState() => _AddTemoinsState();
 }
 
 class _AddTemoinsState extends State<AddTemoins> {
-  
+  var Temoin = [];
   CustomTextField nomtemoin = CustomTextField(
       placeholder: "Entrer le nom", title: "Nom", initialValue: '');
   CustomTextField prenomtemoin = CustomTextField(
@@ -36,7 +37,7 @@ class _AddTemoinsState extends State<AddTemoins> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Ajouter des Temoins",
+          "Ajouter des Temoins ",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -80,10 +81,10 @@ class _AddTemoinsState extends State<AddTemoins> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          Temoin(nomt: nomtemoin.value, prenomt: prenomtemoin.value, adresset:  adressetemoin.value, telephonet: telephone.value);
-                          /* FirebaseFirestore.instance.collection('Temoins').add({
-    
-                          }); */
+                         /*  Temoin.add(
+                            nomtemoin.value,
+                           prenomtemoin.value,
+                              adressetemoin.value, telephone.value); */
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -106,15 +107,25 @@ class _AddTemoinsState extends State<AddTemoins> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
+            Temoin = [
+              nomtemoin.value,
+              prenomtemoin.value,
+              adressetemoin.value,
+              telephone.value
+            ];
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddBlesse()));
+                MaterialPageRoute(builder: (context) =>  AddBlesse(
+                 Sin: widget.Sin,
+                 Temoin: Temoin,
+                 
+                )));
           }
         },
         child: Container(
           height: 50.0,
           width: double.infinity,
           color: Colors.blue,
-          child: const Text(
+          child: Text(
             "Suivant",
             style: TextStyle(
                 color: Colors.white,

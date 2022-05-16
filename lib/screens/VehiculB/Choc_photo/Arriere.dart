@@ -7,18 +7,71 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
+import 'package:insertion_bd/screens/VehiculB/addcirconstanceB.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ArrierevB extends StatefulWidget {
-  const ArrierevB({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  var signature;
+  var imagesignature;
+  var transA;
+  var vehiculeB;
+  var assureB;
+  var assuranceB;
+  var conducteurB;
+  var observB;
+  var photoB;
+
+  ArrierevB(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA,
+      this.signature,
+      this.imagesignature,
+      this.transA,
+      this.vehiculeB,
+      this.assureB,
+      this.assuranceB,
+      this.conducteurB,
+      this.observB,
+      this.photoB})
+      : super(key: key);
 
   @override
   State<ArrierevB> createState() => _ArrierevBState();
 }
 
 class _ArrierevBState extends State<ArrierevB> {
+  var arriereB = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -164,16 +217,42 @@ class _ArrierevBState extends State<ArrierevB> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            await FirebaseFirestore.instance.collection('PhotosA').add({
-              'name': _fullName,
-              'imageUrl': url,
-            });
+            arriereB = [
+              _fullName,
+              url,
+            ];
           }
 
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const AddCirconstanceA()));
+                  builder: (context) => AddCirconstanceB(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: widget.circonstanceA,
+                        signature: widget.signature,
+                        imagesignature: widget.imagesignature,
+                        transA: widget.transA,
+                        vehiculeB: widget.vehiculeB,
+                        assureB: widget.assureB,
+                        assuranceB: widget.assuranceB,
+                        conducteurB: widget.conducteurB,
+                        observB: widget.observB,
+                        photoB: widget.photoB,
+                        arriereB: arriereB,
+                      )));
         },
         child: Container(
           height: 50.0,

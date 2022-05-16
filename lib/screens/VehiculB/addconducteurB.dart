@@ -7,13 +7,57 @@ import 'package:insertion_bd/widgets/customTextField.dart';
 import 'package:intl/intl.dart';
 
 class AddConducteurB extends StatefulWidget {
-  AddConducteurB({Key? key}) : super(key: key);
-
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  var signature;
+  var imagesignature;
+  var transA;
+  var vehiculeB;
+  var assureB;
+  var assuranceB;
+  AddConducteurB(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA,
+      this.signature,
+      this.imagesignature,
+      this.transA,
+      this.vehiculeB,
+      this.assureB,
+      this.assuranceB})
+      : super(key: key);
   @override
   State<AddConducteurB> createState() => _AddConducteurBState();
 }
 
 class _AddConducteurBState extends State<AddConducteurB> {
+  var conducteurB = [];
   CustomTextField nomconducteurB = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom ", initialValue: '');
   CustomTextField prenomconducteurB = CustomTextField(
@@ -226,20 +270,44 @@ class _AddConducteurBState extends State<AddConducteurB> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            FirebaseFirestore.instance.collection('ConducteurB').add({
-              'nom': nomconducteurB.value,
-              'prenom': prenomconducteurB.value,
-              'adresse': adresseconducteurB.value,
-              'date_naissance': dateinput.text,
-              'pays': paysconducteurB.value,
-              'telephone': telephoneconducteurB.value,
-              'email': emailconducteurB.value,
-              'num_permis': numpermisdeconduireB.value,
-              'categorie': categorieB.value,
-              'fin_valide_permis': dateinputV.text,
-            });
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddObservationB()));
+            conducteurB = [
+              nomconducteurB.value,
+              prenomconducteurB.value,
+              adresseconducteurB.value,
+              dateinput.text,
+              paysconducteurB.value,
+              telephoneconducteurB.value,
+              emailconducteurB.value,
+              numpermisdeconduireB.value,
+              categorieB.value,
+              dateinputV.text,
+            ];
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddObservationB(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: widget.circonstanceA,
+                        signature: widget.signature,
+                        imagesignature: widget.imagesignature,
+                        transA: widget.transA,
+                        vehiculeB: widget.vehiculeB,
+                        assureB: widget.assureB,
+                        assuranceB: widget.assuranceB,
+                        conducteurB: conducteurB)));
           }
         },
         child: Container(

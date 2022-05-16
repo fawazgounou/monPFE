@@ -9,13 +9,26 @@ import 'package:multiselect/multiselect.dart';
 import '../../widgets/customTextField.dart';
 
 class AddAssuranceA extends StatefulWidget {
-  AddAssuranceA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  AddAssuranceA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA})
+      : super(key: key);
 
   @override
   State<AddAssuranceA> createState() => _AddAssuranceAState();
 }
 
 class _AddAssuranceAState extends State<AddAssuranceA> {
+  var assuranceA = [];
   CustomTextField nomassuranceA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assureur", initialValue: '');
   CustomNumberField numcontratA = CustomNumberField(
@@ -313,23 +326,32 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
             if (non == true) {
               index = 'Non';
             }
-            AssuranceA(
-              nomCA: nomassuranceA.value,
-              numContrat: numcontratA.value,
-              numCarteVerte: numcarteverteA.value,
-              du: dateinput.text,
-              au: dateinput2.text,
-              agence: agenceA.value,
-              nomAgence: nomagence.value,
-              adresseCA: adresseagenceA.value,
-              paysCA: paysagenceA.value,
-              telephoneCA: telephoneagenceA.value,
-              emailCA: emailagenceA.value,
-              priseEncharge: index.toString(),
-            );
+            assuranceA = [
+              nomassuranceA.value,
+              numcontratA.value,
+              numcarteverteA.value,
+              dateinput.text,
+              dateinput2.text,
+              agenceA.value,
+              nomagence.value,
+              adresseagenceA.value,
+              paysagenceA.value,
+              telephoneagenceA.value,
+              emailagenceA.value,
+              index.toString(),
+            ];
 
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddConducteurA()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddConducteurA(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: widget.vehiculeA,
+                          assureA: widget.assureA,
+                          assuranceA: assuranceA,
+                        )));
           }
         },
         child: Container(

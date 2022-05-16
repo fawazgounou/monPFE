@@ -6,13 +6,75 @@ import 'package:insertion_bd/screens/VehiculB/SignatureB/addsignatureA.dart';
 import 'package:multiselect/multiselect.dart';
 
 class AddCirconstanceB extends StatefulWidget {
-  const AddCirconstanceB({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  var signature;
+  var imagesignature;
+  var transA;
+  var vehiculeB;
+  var assureB;
+  var assuranceB;
+  var conducteurB;
+  var observB;
+  var photoB;
+  var arriereB;
+  var avantB;
+  var droiteB;
+  var gaucheB;
+  var hautB;
+
+  AddCirconstanceB(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA,
+      this.signature,
+      this.imagesignature,
+      this.transA,
+      this.vehiculeB,
+      this.assureB,
+      this.assuranceB,
+      this.conducteurB,
+      this.observB,
+      this.photoB,
+      this.arriereB,
+      this.avantB,
+      this.droiteB,
+      this.gaucheB,
+      this.hautB})
+      : super(key: key);
 
   @override
   State<AddCirconstanceB> createState() => _AddCirconstanceBState();
 }
 
 class _AddCirconstanceBState extends State<AddCirconstanceB> {
+  var circonstanceB = [];
   bool _1 = false;
   bool _2 = false;
   bool _3 = false;
@@ -885,11 +947,45 @@ class _AddCirconstanceBState extends State<AddCirconstanceB> {
           if (_18 == true) {
             index = "Ma situation ne correspond à rien";
           }
-          FirebaseFirestore.instance.collection('CirconstanceA').add({
-            'circonstance': index.toString(),
-          });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SignaturePageB()));
+
+          circonstanceB = [
+            index.toString(),
+          ];
+
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SignaturePageB(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: widget.circonstanceA,
+                        signature: widget.signature,
+                        imagesignature: widget.imagesignature,
+                        transA: widget.transA,
+                        vehiculeB: widget.vehiculeB,
+                        assureB: widget.assureB,
+                        assuranceB: widget.assuranceB,
+                        conducteurB: widget.conducteurB,
+                        observB: widget.observB,
+                        photoB: widget.photoB,
+                        arriereB: widget.arriereB,
+                        avantB: widget.avantB,
+                        droiteB: widget.droiteB,
+                        gaucheB: widget.gaucheB,
+                        circonstanceB: circonstanceB,
+                      )));
         },
         child: Container(
           height: 50.0,

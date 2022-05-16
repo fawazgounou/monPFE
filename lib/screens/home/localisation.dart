@@ -44,9 +44,9 @@ class _LocalisationState extends State<Localisation> {
   Future<void> GetAddresseFromLatLong(Position position) async {
     List<Placemark> placemark =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    print(placemark);
+    
     Placemark place = placemark[0];
-    Adresse = '${place.street}, ${place.locality}, ${place.country} ';
+    Adresse = ' ${place.locality}, ${place.country} ';
     setState(() {});
   }
 
@@ -69,8 +69,7 @@ class _LocalisationState extends State<Localisation> {
                 height: 50,
               ),
               const Text('Cliquer ici', style: TextStyle(fontSize: 17)),
-                   const Icon(Icons.arrow_downward),
-              
+              const Icon(Icons.arrow_downward),
               ElevatedButton(
                 onPressed: () async {
                   Position position = await _determinePosition();
@@ -81,7 +80,6 @@ class _LocalisationState extends State<Localisation> {
 
                   setState(() {});
                 },
-                
                 child: Image.asset(
                   'assets/image/loc1.jpg',
                   height: 300,
@@ -108,7 +106,7 @@ class _LocalisationState extends State<Localisation> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-       /*    Geo(localise: Adresse.toString()); */
+          /*    Geo(localise: Adresse.toString()); */
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const AddSinistre()));
         },

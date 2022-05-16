@@ -7,13 +7,22 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 import '../../widgets/customTextField.dart';
 
 class AddVehiculA extends StatefulWidget {
-  AddVehiculA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  AddVehiculA({
+    Key? key,
+    this.Sin,
+    this.Temoin,
+    this.blesse,
+  }) : super(key: key);
 
   @override
   State<AddVehiculA> createState() => _AddVehiculAState();
 }
 
 class _AddVehiculAState extends State<AddVehiculA> {
+  var vehiculeA = [];
   CustomTextField marqueA = CustomTextField(
       placeholder: "Entrer la Marque", title: "Marque, Type", initialValue: '');
   CustomNumberField immatriculationVA = CustomNumberField(
@@ -61,13 +70,19 @@ class _AddVehiculAState extends State<AddVehiculA> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            VehiculeA(
-                marque: marqueA.value,
-                numero_immatriculation: immatriculationVA.value,
-                pays_immatriculation: paysimmatriculationVA.value);
+            vehiculeA = [
+              marqueA.value,
+              immatriculationVA.value,
+              paysimmatriculationVA.value
+            ];
 
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddAssureA()));
+                context, MaterialPageRoute(builder: (context) => AddAssureA(
+                    Sin: widget.Sin,
+                Temoin:widget.Temoin,
+                blesse:widget.blesse,
+                vehiculeA:vehiculeA,
+                )));
           }
         },
         child: Container(

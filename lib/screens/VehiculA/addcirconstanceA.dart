@@ -6,13 +6,44 @@ import 'package:insertion_bd/screens/VehiculA/SignatureA/addsignatureA.dart';
 import 'package:multiselect/multiselect.dart';
 
 class AddCirconstanceA extends StatefulWidget {
-  const AddCirconstanceA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  AddCirconstanceA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA})
+      : super(key: key);
 
   @override
   State<AddCirconstanceA> createState() => _AddCirconstanceAState();
 }
 
 class _AddCirconstanceAState extends State<AddCirconstanceA> {
+  var circonstanceA = [];
   bool _1 = false;
   bool _2 = false;
   bool _3 = false;
@@ -885,10 +916,28 @@ class _AddCirconstanceAState extends State<AddCirconstanceA> {
           if (_18 == true) {
             index = "Ma situation ne correspond à rien";
           }
-          Circonstance(circonstance: index.toString());
-        
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SignaturePageA()));
+          circonstanceA = [index.toString()];
+
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SignaturePageA(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: circonstanceA,
+                      )));
         },
         child: Container(
           height: 50.0,

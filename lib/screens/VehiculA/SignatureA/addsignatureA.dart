@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/preview_signature.dart';
 
 import 'dart:typed_data';
@@ -10,13 +11,46 @@ import 'package:signature/signature.dart';
 import 'addimgasignature.dart';
 
 class SignaturePageA extends StatefulWidget {
-  const SignaturePageA({Key? key}) : super(key: key);
-
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  SignaturePageA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA})
+      : super(key: key);
   @override
   _SignaturePageAState createState() => _SignaturePageAState();
 }
 
 class _SignaturePageAState extends State<SignaturePageA> {
+  var signature = [];
+
   late SignatureController controller;
 
   @override
@@ -62,9 +96,26 @@ class _SignaturePageAState extends State<SignaturePageA> {
         ),
         bottomNavigationBar: GestureDetector(
           onTap: () {
-           
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddImageSignatureA()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddImageSignatureA(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: widget.circonstanceA,
+                        signature: signature)));
           },
           child: Container(
             height: 50.0,

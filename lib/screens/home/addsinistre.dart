@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/Model/sinistre_notifier.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:insertion_bd/screens/home/addtemoin.dart';
+
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
@@ -18,11 +19,12 @@ class AddSinistre extends StatefulWidget {
 }
 
 class _AddSinistreState extends State<AddSinistre> {
+  var Sin = [];
   CustomTextField lieu = CustomTextField(
       placeholder: "Entrer le Lieu", title: "Lieu", line: 1, initialValue: '');
 
   final _key = GlobalKey<FormState>();
-  SinistreNotifier? sinistreNotifier;
+  //SinistreNotifier? sinistreNotifier;
   TextEditingController dateinput = TextEditingController();
   TextEditingController timeinput = TextEditingController();
 
@@ -31,8 +33,7 @@ class _AddSinistreState extends State<AddSinistre> {
   void initState() {
     dateinput.text = "";
     super.initState();
-    sinistreNotifier = Provider.of<SinistreNotifier>(context, listen: false);
-    print("sinistre deux est ${sinistreNotifier?.sinistre?.toMap()}");
+    //sinistreNotifier = Provider.of<SinistreNotifier>(context, listen: false);
   }
 
   TimeOfDay selectedTime = TimeOfDay.now();
@@ -276,24 +277,20 @@ class _AddSinistreState extends State<AddSinistre> {
             if (_non == true) {
               index2 = 'Non';
             }
+            Sin = [
+              dateinput.text,
+              selectedTime.toString(),
+              lieu.value,
+              index.toString(),
+              index2.toString()
+            ];
 
-            /*  sinistreNotifier?.addSininstre(new Sinistres(
-                dateSinistre: "aaa",
-                heureSinistre: "bbb",
-                lieuSinistre: "ccc",
-                blesse: "ddd",
-                degats: "eee")); */
-
-            Sinistres sinistre = sinistreNotifier?.addSininstre(Sinistres(
-              dateSinistre: dateinput.text,
-              heureSinistre: selectedTime.toString(),
-              lieuSinistre: lieu.value,
-              blesse: index.toString(),
-              degats: index2.toString(),
-            ));
-            print("le sinistre est ${sinistreNotifier?.getSinistre()}");
-            /*  Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const TransitionA())); */
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddTemoins(
+                          Sin: Sin,
+                        )));
           }
         },
         child: Container(

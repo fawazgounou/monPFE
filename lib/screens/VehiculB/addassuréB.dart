@@ -8,13 +8,54 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 import '../../widgets/customTextField.dart';
 
 class AddAssureB extends StatefulWidget {
-  AddAssureB({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  var signature;
+  var imagesignature;
+  var transA;
+  var vehiculeB;
+  AddAssureB(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA,
+      this.signature,
+      this.imagesignature,
+      this.transA,
+      this.vehiculeB})
+      : super(key: key);
 
   @override
   State<AddAssureB> createState() => _AddAssureBState();
 }
 
 class _AddAssureBState extends State<AddAssureB> {
+  var assureB = [];
   CustomTextField nomassureB = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assuré", initialValue: '');
   CustomTextField prenomassureB = CustomTextField(
@@ -106,19 +147,49 @@ class _AddAssureBState extends State<AddAssureB> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          if(_key.currentState!.validate()){
-FirebaseFirestore.instance.collection('AssureB').add({
-            'nom': nomassureB.value,
-            'prenom': prenomassureB.value,
-            'adress': adresseassureB.value,
-            'code_postal': codepostalB.value,
-            'telephone': telephoneassureB.value,
-            'email': emailB.value,
-          });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddAssuranceB()));
+          if (_key.currentState!.validate()) {
+            assureB = [
+              nomassureB.value,
+              prenomassureB.value,
+              adresseassureB.value,
+              codepostalB.value,
+              telephoneassureB.value,
+              emailB.value
+            ];
+            /*  FirebaseFirestore.instance.collection('AssureB').add({
+              'nom': nomassureB.value,
+              'prenom': prenomassureB.value,
+              'adress': adresseassureB.value,
+              'code_postal': codepostalB.value,
+              'telephone': telephoneassureB.value,
+              'email': emailB.value,
+            }); */
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddAssuranceB(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: widget.vehiculeA,
+                          assureA: widget.assureA,
+                          assuranceA: widget.assuranceA,
+                          conductA: widget.conductA,
+                          observ: widget.observ,
+                          photo: widget.photo,
+                          arriere: widget.arriere,
+                          avant: widget.avant,
+                          droit: widget.droit,
+                          gauche: widget.gauche,
+                          hautA: widget.hautA,
+                          circonstanceA: widget.circonstanceA,
+                          signature: widget.signature,
+                          imagesignature: widget.imagesignature,
+                          transA: widget.transA,
+                          vehiculeB: widget.vehiculeB,
+                          assureB: assureB,
+                        )));
           }
-          
         },
         child: Container(
           height: 50.0,

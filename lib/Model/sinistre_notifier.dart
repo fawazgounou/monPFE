@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/* import 'package:flutter/cupertino.dart';
 import 'package:insertion_bd/Model/model.dart';
 
 class SinistreNotifier extends ChangeNotifier {
@@ -12,3 +12,4 @@ class SinistreNotifier extends ChangeNotifier {
     return sinistre.toMap();
   }
 }
+ */

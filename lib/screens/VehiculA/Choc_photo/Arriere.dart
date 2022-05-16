@@ -13,13 +13,34 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ArrierevA extends StatefulWidget {
-  const ArrierevA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  ArrierevA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo})
+      : super(key: key);
 
   @override
   State<ArrierevA> createState() => _ArrierevAState();
 }
 
 class _ArrierevAState extends State<ArrierevA> {
+  var arriere = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -165,15 +186,24 @@ class _ArrierevAState extends State<ArrierevA> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            Choc(imageUrl: url, namePhoto: _fullName);
-
-            
+            arriere = [url, _fullName];
           }
 
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const AddCirconstanceA()));
+                  builder: (context) => AddCirconstanceA(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: arriere,
+                      )));
         },
         child: Container(
           height: 50.0,

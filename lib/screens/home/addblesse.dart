@@ -7,13 +7,16 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 import '../../widgets/customTextField.dart';
 
 class AddBlesse extends StatefulWidget {
-  const AddBlesse({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  AddBlesse({Key? key, this.Sin, this.Temoin}) : super(key: key);
 
   @override
   State<AddBlesse> createState() => _AddBlesseState();
 }
 
 class _AddBlesseState extends State<AddBlesse> {
+  var blesse = [];
   CustomTextField nomblesse = CustomTextField(
       placeholder: "Entrer le noms", title: "Nom Blessé(s)", initialValue: '');
   CustomTextField prenomblesse = CustomTextField(
@@ -146,7 +149,7 @@ class _AddBlesseState extends State<AddBlesse> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          Blesse(
+                          /*  Blesse(
                               nomb: nomblesse.value,
                               prenomb: prenomblesse.value,
                               adresseb: adresseblesse.value,
@@ -155,7 +158,7 @@ class _AddBlesseState extends State<AddBlesse> {
                               situationb: situation.value,
                               casqueb: casqueceinture.value,
                               centreHospitalierb: premiersoinslieu.value,
-                              natureGraviteb: gravitenature.value);
+                              natureGraviteb: gravitenature.value); */
                           /*  FirebaseFirestore.instance
                               .collection('Blesse')
                               .add({}); */
@@ -184,8 +187,22 @@ class _AddBlesseState extends State<AddBlesse> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
+            blesse = [
+              nomblesse.value,
+              prenomblesse.value,
+              adresseblesse.value,
+              telephone.value,
+              profession.value,
+              premiersoinslieu.value,
+              gravitenature.value
+            ];
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddVehiculA()));
+                MaterialPageRoute(builder: (context) => AddVehiculA(
+                 Sin: widget.Sin,
+                Temoin:widget.Temoin,
+                blesse:blesse,
+                
+                )));
           }
         },
         child: Container(

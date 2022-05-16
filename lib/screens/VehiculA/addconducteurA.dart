@@ -7,13 +7,28 @@ import 'package:insertion_bd/widgets/customTextField.dart';
 import 'package:intl/intl.dart';
 
 class AddConducteurA extends StatefulWidget {
-  AddConducteurA({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  AddConducteurA(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA})
+      : super(key: key);
 
   @override
   State<AddConducteurA> createState() => _AddConducteurAState();
 }
 
 class _AddConducteurAState extends State<AddConducteurA> {
+  var conductA = [];
   CustomTextField nomconducteurA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom ", initialValue: '');
   CustomTextField prenomconducteurA = CustomTextField(
@@ -231,20 +246,31 @@ class _AddConducteurAState extends State<AddConducteurA> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            Conducteur(
-                nomC: nomconducteurA.value,
-                prenomC: prenomconducteurA.value,
-                adresseC: adresseconducteurA.value,
-                dateNaissanceC: dateinput.text,
-                paysC: paysconducteurA.value,
-                telephoneC: telephoneconducteurA.value,
-                categorie: categorieA.value,
-                emailC: emailconducteurA.value,
-                finValidePermis: dateinputV.text,
-                numPermis: numpermisdeconduireA.value);
+            conductA = [
+              nomconducteurA.value,
+              prenomconducteurA.value,
+              adresseconducteurA.value,
+              dateinput.text,
+              paysconducteurA.value,
+              telephoneconducteurA.value,
+              categorieA.value,
+              emailconducteurA.value,
+              dateinputV.text,
+              numpermisdeconduireA.value
+            ];
 
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddObservationA()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddObservationA(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: widget.vehiculeA,
+                          assureA: widget.assureA,
+                          assuranceA: widget.assuranceA,
+                          conductA: conductA,
+                        )));
           }
         },
         child: Container(
