@@ -132,7 +132,7 @@ class _CoteDroitBState extends State<CoteDroitB> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Indications Choc A",
+          "Indications Choc B",
         ),
         centerTitle: true,
       ),
@@ -179,7 +179,7 @@ class _CoteDroitBState extends State<CoteDroitB> {
                                 shadowColor: Colors.white.withOpacity(.7),
                               ),
                               child: const Text(
-                                "Photos",
+                                "Gallerie",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -215,16 +215,20 @@ class _CoteDroitBState extends State<CoteDroitB> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('usersImages')
+                .child('ImagesChocB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-
-            droiteB = [
+ await FirebaseFirestore.instance.collection('PhotosB').add({
+                  'id_PhotoB': widget.photoB[0],
+              'name': _fullName,
+              'imageUrl': url,
+            });
+           /*  droiteB = [
               uuid.v1(),
               _fullName,
               url,
-            ];
+            ]; */
           }
 
           Navigator.push(

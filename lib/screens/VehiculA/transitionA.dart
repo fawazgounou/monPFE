@@ -118,7 +118,7 @@ class _TransitionAState extends State<TransitionA> {
           width: double.infinity,
           color: Colors.blue,
           child: const Text(
-            "Saisis les informations du véhicule B",
+            "Saisir les informations du véhicule B",
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 25.0,

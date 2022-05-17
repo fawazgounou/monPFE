@@ -30,7 +30,7 @@ class AddConducteurA1 extends StatefulWidget {
 }
 
 class _AddConducteurA1State extends State<AddConducteurA1> {
-   var uuid = Uuid();
+  var uuid = Uuid();
   var conductA = [];
   CustomTextField nomconducteurA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom ", initialValue: '');
@@ -44,7 +44,7 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
       placeholder: "Entrer le Téléphone",
       title: "Téléphone ",
       initialValue: '');
-  CustomNumberField emailconducteurA = CustomNumberField(
+  CustomTextField emailconducteurA = CustomTextField(
       placeholder: "Entrer le mail", title: "Email ", initialValue: '');
   CustomNumberField numpermisdeconduireA = CustomNumberField(
       placeholder: "Entrer le Numéro",

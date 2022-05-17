@@ -25,7 +25,7 @@ class _AddSinistre1State extends State<AddSinistre1> {
       placeholder: "Entrer le Lieu", title: "Lieu", line: 1, initialValue: '');
 
   final _key = GlobalKey<FormState>();
-  //SinistreNotifier? sinistreNotifier;
+
   TextEditingController dateinput = TextEditingController();
   TextEditingController timeinput = TextEditingController();
 
@@ -34,7 +34,6 @@ class _AddSinistre1State extends State<AddSinistre1> {
   void initState() {
     dateinput.text = "";
     super.initState();
-    //sinistreNotifier = Provider.of<SinistreNotifier>(context, listen: false);
   }
 
   TimeOfDay selectedTime = TimeOfDay.now();
@@ -278,9 +277,14 @@ class _AddSinistre1State extends State<AddSinistre1> {
             if (_non == true) {
               index2 = 'Non';
             }
-            widget.Sin.add(dateinput.text, selectedTime.toString(), lieu.value,
-                index.toString(), index2.toString());
-
+            setState(() {
+              widget.Sin[2] = dateinput.text;
+              widget.Sin[3] = selectedTime.toString();
+              widget.Sin[4] = lieu.value;
+              widget.Sin[5] = index.toString();
+              widget.Sin[6] = index2.toString();
+            });
+           
             Navigator.push(
                 context,
                 MaterialPageRoute(

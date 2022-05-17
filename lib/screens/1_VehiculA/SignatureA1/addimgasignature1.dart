@@ -134,7 +134,7 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
                                 shadowColor: Colors.white.withOpacity(.7),
                               ),
                               child: const Text(
-                                "Photos",
+                                "Gallerie",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -175,11 +175,12 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            imagesignature = [uuid.v1(), url, _fullName];
-            /*    await FirebaseFirestore.instance.collection('SignatureA').add({
+            // imagesignature = [uuid.v1(), url, _fullName];
+            await FirebaseFirestore.instance.collection('SignatureA').add({
+              'id_SignatureCA': widget.signature[0],
               'name': _fullName,
               'imageUrl': url,
-            }); */
+            });
           }
 
           Navigator.push(

@@ -131,81 +131,84 @@ class _ArrierevBState extends State<ArrierevB> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Indications Choc A",
+          "Indications Choc B",
         ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            children: [
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _pickImageCamera();
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                              ),
-                              child: const Text(
-                                "Camera",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _pickImageGallery();
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                shadowColor: Colors.white.withOpacity(.7),
-                              ),
-                              child: const Text(
-                                "Photos",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
+        child: Form(
+          key: _key,
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            child: Column(
+              children: [
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _pickImageCamera();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                ),
+                                child: const Text(
+                                  "Camera",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _pickImageGallery();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  shadowColor: Colors.white.withOpacity(.7),
+                                ),
+                                child: const Text(
+                                  "Gallerie",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 55,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 400,
-                  decoration: _pickedImage == null
-                      ? const BoxDecoration(color: Colors.white)
-                      : BoxDecoration(
-                          image: DecorationImage(
-                              image: FileImage(_pickedImage!),
-                              fit: BoxFit.cover)),
+                const SizedBox(
+                  height: 55,
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 400,
+                    decoration: _pickedImage == null
+                        ? const BoxDecoration(color: Colors.white)
+                        : BoxDecoration(
+                            image: DecorationImage(
+                                image: FileImage(_pickedImage!),
+                                fit: BoxFit.cover)),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -214,16 +217,20 @@ class _ArrierevBState extends State<ArrierevB> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('usersImages')
+                .child('ImagesChocB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-
-            arriereB = [
+            await FirebaseFirestore.instance.collection('PhotosB').add({
+              'id_PhotoB': widget.photoB[0],
+              'name': _fullName,
+              'imageUrl': url,
+            });
+            /*  arriereB = [
               uuid.v1(),
               _fullName,
               url,
-            ];
+            ]; */
           }
 
           Navigator.push(

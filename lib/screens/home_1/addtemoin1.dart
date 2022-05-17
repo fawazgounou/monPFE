@@ -117,6 +117,7 @@ class _AddTemoins1State extends State<AddTemoins1> {
               adressetemoin.value,
               telephone.value
             ];
+             print(widget.Sin);
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) =>  AddBlesse1(
                  Sin: widget.Sin,

@@ -149,7 +149,7 @@ class _HautA1State extends State<HautA1> {
                                 shadowColor: Colors.white.withOpacity(.7),
                               ),
                               child: const Text(
-                                "Photos",
+                                "Gallerie",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -185,15 +185,16 @@ class _HautA1State extends State<HautA1> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('usersImages')
+                .child('Imageschoc')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            hautA = [uuid.v1(),url, _fullName];
-            /*  await FirebaseFirestore.instance.collection('PhotosA').add({
+            //hautA = [uuid.v1(),url, _fullName];
+            await FirebaseFirestore.instance.collection('PhotosA').add({
+              'id_PhotoA': widget.photo[0],
               'name': _fullName,
               'imageUrl': url,
-            }); */
+            });
           }
 
           Navigator.push(

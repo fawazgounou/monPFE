@@ -70,7 +70,7 @@ class _AddObservationBState extends State<AddObservationB> {
       initialValue: '');
   CustomTextField observationA = CustomTextField(
       placeholder: "Donnés vos observations",
-      title: "Observation B",
+      title: "Observations B",
       line: 7,
       initialValue: '');
 

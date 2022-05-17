@@ -100,7 +100,7 @@ class _AddCirconstanceBState extends State<AddCirconstanceB> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "CIRCONSTANCE B",
+          "Circonstance B",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

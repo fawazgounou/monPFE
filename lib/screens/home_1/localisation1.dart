@@ -15,7 +15,7 @@ class Localisation1 extends StatefulWidget {
 }
 
 class _Localisation1State extends State<Localisation1> {
-   var uuid = Uuid();
+  var uuid = Uuid();
   var Sin = [];
   String location = 'localisation';
   String Adresse = '';
@@ -50,7 +50,7 @@ class _Localisation1State extends State<Localisation1> {
         await placemarkFromCoordinates(position.latitude, position.longitude);
 
     Placemark place = placemark[0];
-    Adresse = ' ${place.locality}, ${place.country} ';
+    Adresse = '${place.locality}, ${place.country} ';
     setState(() {});
   }
 
@@ -129,11 +129,13 @@ class _Localisation1State extends State<Localisation1> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-           Sin=[ uuid.v1(),Adresse.toString()];
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) =>  AddSinistre1(
-                Sin: Sin,
-              )));
+          Sin = [uuid.v1(), Adresse.toString(), "", "", "", "", ""];
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddSinistre1(
+                        Sin: Sin,
+                      )));
         },
         child: Container(
           height: 50.0,

@@ -57,11 +57,11 @@ class _AddVehiculBState extends State<AddVehiculB> {
   var vehiculeB = [];
   CustomTextField marqueB = CustomTextField(
       placeholder: "Entrer la Marque", title: "Marque, Type", initialValue: '');
-  CustomNumberField immatriculationVB = CustomNumberField(
+  CustomTextField immatriculationVB = CustomTextField(
       placeholder: "Entrer l'immatriculaton",
       title: "N°Immatriculation",
       initialValue: '');
-  CustomNumberField paysimmatriculationVB = CustomNumberField(
+  CustomTextField paysimmatriculationVB = CustomTextField(
       placeholder: "Entrer le Pays d'immatricuation",
       title: "Pays D'immatriculation",
       initialValue: '');
@@ -75,7 +75,7 @@ class _AddVehiculBState extends State<AddVehiculB> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informaions Véhicule A"),
+        title: const Text("Informaions Véhicule B"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

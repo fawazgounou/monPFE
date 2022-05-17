@@ -147,7 +147,7 @@ class _ArrierevAState extends State<ArrierevA> {
                                 shadowColor: Colors.white.withOpacity(.7),
                               ),
                               child: const Text(
-                                "Photos",
+                                "Gallerie",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -183,12 +183,16 @@ class _ArrierevAState extends State<ArrierevA> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('usersImages')
+                .child('ImagesChocA')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-
-            arriere = [uuid.v1(),url, _fullName];
+  await FirebaseFirestore.instance.collection('PhotosA').add({
+                  'id_PhotoA': widget.photo[0],
+              'name': _fullName,
+              'imageUrl': url,
+            }); 
+            //arriere = [uuid.v1(),url, _fullName];
           }
 
           Navigator.push(

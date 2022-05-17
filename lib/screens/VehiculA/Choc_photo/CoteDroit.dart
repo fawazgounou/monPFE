@@ -148,7 +148,7 @@ class _CoteDroitAState extends State<CoteDroitA> {
                                 shadowColor: Colors.white.withOpacity(.7),
                               ),
                               child: const Text(
-                                "Photos",
+                                "Gallerie",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -184,15 +184,16 @@ class _CoteDroitAState extends State<CoteDroitA> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('usersImages')
+                .child('ImagesChocA')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            droit = [uuid.v1(), url, _fullName];
-            /* await FirebaseFirestore.instance.collection('PhotosA').add({
+            //droit = [uuid.v1(), url, _fullName];
+              await FirebaseFirestore.instance.collection('PhotosA').add({
+                  'id_PhotoA': widget.photo[0],
               'name': _fullName,
               'imageUrl': url,
-            }); */
+            });  
           }
 
           Navigator.push(

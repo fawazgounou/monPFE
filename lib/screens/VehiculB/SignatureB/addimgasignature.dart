@@ -163,7 +163,7 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                                 shadowColor: Colors.white.withOpacity(.7),
                               ),
                               child: const Text(
-                                "Photos",
+                                "Gallerie",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -199,16 +199,19 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('SignatureConducteur')
+                .child('SignatureConducteurB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            url = await ref.getDownloadURL();
-
-            imagesignatureB = [
+            await FirebaseFirestore.instance.collection('SignatureB').add({
+              'id_SignatureCB': widget.signatureB[0],
+              'name': _fullName,
+              'imageUrl': url,
+            });
+            /* imagesignatureB = [
               uuid.v1(),
               _fullName,
               url,
-            ];
+            ]; */
           }
 
           Navigator.push(

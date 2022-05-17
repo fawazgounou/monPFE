@@ -24,15 +24,15 @@ class AddVehiculA1 extends StatefulWidget {
 }
 
 class _AddVehiculA1State extends State<AddVehiculA1> {
-   var uuid = Uuid();
+  var uuid = Uuid();
   var vehiculeA = [];
   CustomTextField marqueA = CustomTextField(
       placeholder: "Entrer la Marque", title: "Marque, Type", initialValue: '');
-  CustomNumberField immatriculationVA = CustomNumberField(
+  CustomTextField immatriculationVA = CustomTextField(
       placeholder: "Entrer l'immatriculaton",
       title: "N°Immatriculation",
       initialValue: '');
-  CustomNumberField paysimmatriculationVA = CustomNumberField(
+  CustomTextField paysimmatriculationVA = CustomTextField(
       placeholder: "Entrer le Pays d'immatricuation",
       title: "Pays D'immatriculation",
       initialValue: '');
@@ -81,12 +81,14 @@ class _AddVehiculA1State extends State<AddVehiculA1> {
             ];
 
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddAssureA1(
-                    Sin: widget.Sin,
-                Temoin:widget.Temoin,
-                blesse:widget.blesse,
-                vehiculeA:vehiculeA,
-                )));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddAssureA1(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: vehiculeA,
+                        )));
           }
         },
         child: Container(

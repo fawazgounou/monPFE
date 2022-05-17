@@ -196,6 +196,8 @@ class _AddBlesseState extends State<AddBlesse> {
               adresseblesse.value,
               telephone.value,
               profession.value,
+              situation.value,
+              casqueceinture.value,
               premiersoinslieu.value,
               gravitenature.value
             ];

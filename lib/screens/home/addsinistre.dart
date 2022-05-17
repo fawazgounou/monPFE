@@ -13,14 +13,13 @@ import 'package:insertion_bd/Model/model.dart';
 
 class AddSinistre extends StatefulWidget {
   var Sin;
-   AddSinistre({Key? key,this.Sin}) : super(key: key);
+  AddSinistre({Key? key, this.Sin}) : super(key: key);
 
   @override
   State<AddSinistre> createState() => _AddSinistreState();
 }
 
 class _AddSinistreState extends State<AddSinistre> {
-  
   CustomTextField lieu = CustomTextField(
       placeholder: "Entrer le Lieu", title: "Lieu", line: 1, initialValue: '');
 
@@ -278,13 +277,13 @@ class _AddSinistreState extends State<AddSinistre> {
             if (_non == true) {
               index2 = 'Non';
             }
-            widget.Sin.add(  dateinput.text,
-              selectedTime.toString(),
-              lieu.value,
-              index.toString(),
-              index2.toString());
-            
-           
+            setState(() {
+              widget.Sin[2] = dateinput.text;
+              widget.Sin[3] = selectedTime.toString();
+              widget.Sin[4] = lieu.value;
+              widget.Sin[5] = index.toString();
+              widget.Sin[6] = index2.toString();
+            });
 
             Navigator.push(
                 context,

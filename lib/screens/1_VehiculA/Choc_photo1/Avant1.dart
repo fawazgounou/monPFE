@@ -150,7 +150,7 @@ class _AddAvantA1State extends State<AddAvantA1> {
                                 shadowColor: Colors.white.withOpacity(.7),
                               ),
                               child: const Text(
-                                "Photos",
+                                "Gallerie",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -186,11 +186,16 @@ class _AddAvantA1State extends State<AddAvantA1> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('usersImages')
+                .child('Imageschoc')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            avant = [uuid.v1(),url, _fullName];
+            await FirebaseFirestore.instance.collection('PhotosA').add({
+                 'id_PhotoA': widget.photo[0],
+              'name': _fullName,
+              'imageUrl': url,
+            });
+            //avant = [uuid.v1(),url, _fullName];
             /*  await FirebaseFirestore.instance.collection('PhotosA').add({
               'name': _fullName,
               'imageUrl': url,

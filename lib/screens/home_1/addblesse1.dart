@@ -18,7 +18,7 @@ class AddBlesse1 extends StatefulWidget {
 }
 
 class _AddBlesse1State extends State<AddBlesse1> {
-   var uuid = Uuid();
+  var uuid = Uuid();
   var blesse = [];
   CustomTextField nomblesse = CustomTextField(
       placeholder: "Entrer le noms", title: "Nom Blessé(s)", initialValue: '');
@@ -197,16 +197,19 @@ class _AddBlesse1State extends State<AddBlesse1> {
               adresseblesse.value,
               telephone.value,
               profession.value,
+              situation.value,
+              casqueceinture.value,
               premiersoinslieu.value,
               gravitenature.value
             ];
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddVehiculA1(
-                 Sin: widget.Sin,
-                Temoin:widget.Temoin,
-                blesse:blesse,
-                
-                )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddVehiculA1(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: blesse,
+                        )));
           }
         },
         child: Container(
