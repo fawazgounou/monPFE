@@ -1,19 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/addassur%C3%A9A1.dart';
+import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addassur%C3%A9A1.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 
 import '../../widgets/customTextField.dart';
 
 class AddVehiculA1 extends StatefulWidget {
-  AddVehiculA1({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  AddVehiculA1({
+    Key? key,
+    this.Sin,
+    this.Temoin,
+    this.blesse,
+  }) : super(key: key);
 
   @override
   State<AddVehiculA1> createState() => _AddVehiculA1State();
 }
 
 class _AddVehiculA1State extends State<AddVehiculA1> {
+  var vehiculeA = [];
   CustomTextField marqueA = CustomTextField(
       placeholder: "Entrer la Marque", title: "Marque, Type", initialValue: '');
   CustomNumberField immatriculationVA = CustomNumberField(
@@ -61,13 +71,19 @@ class _AddVehiculA1State extends State<AddVehiculA1> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            FirebaseFirestore.instance.collection('VehiculeA').add({
-              'marque': marqueA.value,
-              'numero_immatriculation': immatriculationVA.value,
-              'pays_immatriculation': paysimmatriculationVA.value,
-            });
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddAssureA1()));
+            vehiculeA = [
+              marqueA.value,
+              immatriculationVA.value,
+              paysimmatriculationVA.value
+            ];
+
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AddAssureA1(
+                    Sin: widget.Sin,
+                Temoin:widget.Temoin,
+                blesse:widget.blesse,
+                vehiculeA:vehiculeA,
+                )));
           }
         },
         child: Container(

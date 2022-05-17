@@ -42,40 +42,50 @@ class _ChoixOptionState extends State<ChoixOption> {
                   ),
                   Row(
                     children: [
-                      Expanded(
-                        child: Column(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Localisation()));
-                              },
-                              child: Image.asset(
-                                'assets/image/A.jpg',
-                                height: 100,
-                                width: 100,
-                                fit: BoxFit.cover,
+                      Container(
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          )
+                        ]),
+                        child: Expanded(
+                          child: Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Localisation()));
+                                },
+                                child: Image.asset(
+                                  'assets/image/A.jpg',
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Localisation()));
-                              },
-                              child: Image.asset(
-                                'assets/image/B.jpg',
-                                height: 100,
-                                width: 100,
-                                fit: BoxFit.cover,
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Localisation()));
+                                },
+                                child: Image.asset(
+                                  'assets/image/B.jpg',
+                                  height: 100,
+                                  width: 100,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Expanded(
@@ -99,26 +109,36 @@ class _ChoixOptionState extends State<ChoixOption> {
                   ),
                   Row(
                     children: [
-                      Expanded(
-                          child: Column(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const Localisation1()));
-                            },
-                            child: Image.asset(
-                              'assets/image/A.jpg',
-                              height: 100,
-                              width: 100,
-                              fit: BoxFit.cover,
+                      Container(
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          )
+                        ]),
+                        child: Expanded(
+                            child: Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Localisation1()));
+                              },
+                              child: Image.asset(
+                                'assets/image/A.jpg',
+                                height: 100,
+                                width: 100,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                        ],
-                      )),
+                          ],
+                        )),
+                      ),
                       Expanded(
                         child: ElevatedButton(
                             onPressed: () {

@@ -121,33 +121,44 @@ class _AddPhotoAState extends State<AddPhotoA> {
                         children: [
                           const Text(
                             'Avant',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(
-                            width: 10,
+                            width: 15,
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AddAvantA(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: photo,
-                                          )));
-                            },
-                            child: Image.asset(
-                              'assets/image/avant.jpg',
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.cover,
+                          Container(
+                            decoration: BoxDecoration(boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AddAvantA(
+                                              Sin: widget.Sin,
+                                              Temoin: widget.Temoin,
+                                              blesse: widget.blesse,
+                                              vehiculeA: widget.vehiculeA,
+                                              assureA: widget.assureA,
+                                              assuranceA: widget.assuranceA,
+                                              conductA: widget.conductA,
+                                              observ: widget.observ,
+                                              photo: photo,
+                                            )));
+                              },
+                              child: Image.asset(
+                                'assets/image/avant.jpg',
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ],
@@ -161,30 +172,41 @@ class _AddPhotoAState extends State<AddPhotoA> {
                         children: [
                           const Text(
                             'Coté Droite',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CoteDroitA(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: photo,
-                                          )));
-                            },
-                            child: Image.asset(
-                              'assets/image/coté_droite.jpg',
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.cover,
+                          Container(
+                            decoration: BoxDecoration(boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CoteDroitA(
+                                              Sin: widget.Sin,
+                                              Temoin: widget.Temoin,
+                                              blesse: widget.blesse,
+                                              vehiculeA: widget.vehiculeA,
+                                              assureA: widget.assureA,
+                                              assuranceA: widget.assuranceA,
+                                              conductA: widget.conductA,
+                                              observ: widget.observ,
+                                              photo: photo,
+                                            )));
+                              },
+                              child: Image.asset(
+                                'assets/image/coté_droite.jpg',
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ],
@@ -203,30 +225,41 @@ class _AddPhotoAState extends State<AddPhotoA> {
                         children: [
                           const Text(
                             'Coté Gauche',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CoteGaucheA(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: photo,
-                                          )));
-                            },
-                            child: Image.asset(
-                              'assets/image/coté_droite.jpg',
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.cover,
+                          Container(
+                            decoration: BoxDecoration(boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CoteGaucheA(
+                                              Sin: widget.Sin,
+                                              Temoin: widget.Temoin,
+                                              blesse: widget.blesse,
+                                              vehiculeA: widget.vehiculeA,
+                                              assureA: widget.assureA,
+                                              assuranceA: widget.assuranceA,
+                                              conductA: widget.conductA,
+                                              observ: widget.observ,
+                                              photo: photo,
+                                            )));
+                              },
+                              child: Image.asset(
+                                'assets/image/coté_droite.jpg',
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ],
@@ -234,37 +267,48 @@ class _AddPhotoAState extends State<AddPhotoA> {
                       flex: 1,
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 15,
                     ),
                     Expanded(
                       child: Column(
                         children: [
                           const Text(
                             'Arrière',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ArrierevA(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: photo,
-                                          )));
-                            },
-                            child: Image.asset(
-                              'assets/image/arriere.jpg',
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.cover,
+                          Container(
+                            decoration: BoxDecoration(boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ArrierevA(
+                                              Sin: widget.Sin,
+                                              Temoin: widget.Temoin,
+                                              blesse: widget.blesse,
+                                              vehiculeA: widget.vehiculeA,
+                                              assureA: widget.assureA,
+                                              assuranceA: widget.assuranceA,
+                                              conductA: widget.conductA,
+                                              observ: widget.observ,
+                                              photo: photo,
+                                            )));
+                              },
+                              child: Image.asset(
+                                'assets/image/arriere.jpg',
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ],
@@ -283,30 +327,41 @@ class _AddPhotoAState extends State<AddPhotoA> {
                         children: [
                           const Text(
                             'Haut',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HautA(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: photo,
-                                          )));
-                            },
-                            child: Image.asset(
-                              'assets/image/haut.jpg',
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.cover,
+                          Container(
+                            decoration: BoxDecoration(boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HautA(
+                                              Sin: widget.Sin,
+                                              Temoin: widget.Temoin,
+                                              blesse: widget.blesse,
+                                              vehiculeA: widget.vehiculeA,
+                                              assureA: widget.assureA,
+                                              assuranceA: widget.assuranceA,
+                                              conductA: widget.conductA,
+                                              observ: widget.observ,
+                                              photo: photo,
+                                            )));
+                              },
+                              child: Image.asset(
+                                'assets/image/haut.jpg',
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ],

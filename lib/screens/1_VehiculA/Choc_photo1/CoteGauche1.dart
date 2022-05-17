@@ -5,21 +5,44 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/addcirconstanceA1.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addcirconstanceA1.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class HautA1 extends StatefulWidget {
-  const HautA1({Key? key}) : super(key: key);
+import '../../../Model/model.dart';
+
+class CoteGaucheA1 extends StatefulWidget {
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  CoteGaucheA1(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo})
+      : super(key: key);
 
   @override
-  State<HautA1> createState() => _HautA1State();
+  State<CoteGaucheA1> createState() => _CoteGaucheA1State();
 }
 
-class _HautA1State extends State<HautA1> {
+class _CoteGaucheA1State extends State<CoteGaucheA1> {
+  var gauche = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -164,17 +187,28 @@ class _HautA1State extends State<HautA1> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-
-            await FirebaseFirestore.instance.collection('PhotosA').add({
+            gauche = [url, _fullName];
+            /* await FirebaseFirestore.instance.collection('PhotosA').add({
               'name': _fullName,
               'imageUrl': url,
-            });
+            }); */
           }
 
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const AddCirconstanceA1()));
+                  builder: (context) => AddCirconstanceA1(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        gauche: gauche,
+                      )));
         },
         child: Container(
           height: 50.0,

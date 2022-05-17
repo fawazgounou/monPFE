@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/addconducteurA1.dart';
+import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addconducteurA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:intl/intl.dart';
@@ -9,13 +10,26 @@ import 'package:multiselect/multiselect.dart';
 import '../../widgets/customTextField.dart';
 
 class AddAssuranceA1 extends StatefulWidget {
-  AddAssuranceA1({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  AddAssuranceA1(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA})
+      : super(key: key);
 
   @override
   State<AddAssuranceA1> createState() => _AddAssuranceA1State();
 }
 
 class _AddAssuranceA1State extends State<AddAssuranceA1> {
+  var assuranceA = [];
   CustomTextField nomassuranceA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assureur", initialValue: '');
   CustomNumberField numcontratA = CustomNumberField(
@@ -313,22 +327,32 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
             if (non == true) {
               index = 'Non';
             }
-            FirebaseFirestore.instance.collection('AssuranceA').add({
-              'nom': nomassuranceA.value,
-              'num_contrat': numcontratA.value,
-              'num_carte_verte': numcarteverteA.value,
-              'du': dateinput.text,
-              'au': dateinput2.text,
-              'agence': agenceA.value,
-              'nom_agence': nomagence.value,
-              'adresse': adresseagenceA.value,
-              'pays': paysagenceA.value,
-              'telephone': telephoneagenceA.value,
-              'email': emailagenceA.value,
-              'prise_encharge': index.toString(),
-            });
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddConducteurA1()));
+            assuranceA = [
+              nomassuranceA.value,
+              numcontratA.value,
+              numcarteverteA.value,
+              dateinput.text,
+              dateinput2.text,
+              agenceA.value,
+              nomagence.value,
+              adresseagenceA.value,
+              paysagenceA.value,
+              telephoneagenceA.value,
+              emailagenceA.value,
+              index.toString(),
+            ];
+
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddConducteurA1(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: widget.vehiculeA,
+                          assureA: widget.assureA,
+                          assuranceA: assuranceA,
+                        )));
           }
         },
         child: Container(

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/home/addsinistre.dart';
 import 'package:insertion_bd/screens/home_1/addsinistre1.dart';
 
@@ -13,6 +14,7 @@ class Localisation1 extends StatefulWidget {
 }
 
 class _Localisation1State extends State<Localisation1> {
+  var Sin = [];
   String location = 'localisation';
   String Adresse = '';
   TextEditingController localisation = TextEditingController();
@@ -44,9 +46,9 @@ class _Localisation1State extends State<Localisation1> {
   Future<void> GetAddresseFromLatLong(Position position) async {
     List<Placemark> placemark =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    print(placemark);
+
     Placemark place = placemark[0];
-    Adresse = '${place.street}, ${place.locality}, ${place.country} ';
+    Adresse = ' ${place.locality}, ${place.country} ';
     setState(() {});
   }
 
@@ -68,23 +70,42 @@ class _Localisation1State extends State<Localisation1> {
               const SizedBox(
                 height: 50,
               ),
-              const Text('Cliquer ici', style: TextStyle(fontSize: 17)),
-              const Icon(Icons.arrow_downward),
-              ElevatedButton(
-                onPressed: () async {
-                  Position position = await _determinePosition();
-                  print(position.latitude);
-                  location =
-                      'lat:${position.latitude},long:${position.longitude} ';
-                  GetAddresseFromLatLong(position);
+              const Text('Cliquer ici',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              const Icon(
+                Icons.arrow_downward,
+                size: 30,
+                color: Colors.red,
+              ),
+              Container(
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  )
+                ]),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    Position position = await _determinePosition();
+                    print(position.latitude);
+                    location =
+                        'lat:${position.latitude},long:${position.longitude} ';
+                    GetAddresseFromLatLong(position);
 
-                  setState(() {});
-                },
-                child: Image.asset(
-                  'assets/image/loc1.jpg',
-                  height: 300,
-                  width: 300,
-                  fit: BoxFit.cover,
+                    setState(() {});
+                  },
+                  child: Image.asset(
+                    'assets/image/loc1.jpg',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -106,11 +127,11 @@ class _Localisation1State extends State<Localisation1> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          FirebaseFirestore.instance.collection('Sinistre').add({
-            /*   'localisation_sinistre': ,  */
-          });
+           Sin=[ Adresse.toString()];
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddSinistre1()));
+              MaterialPageRoute(builder: (context) =>  AddSinistre1(
+                Sin: Sin,
+              )));
         },
         child: Container(
           height: 50.0,

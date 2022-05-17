@@ -1,19 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/addvehiculA1.dart';
+import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addvehiculA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 
 import '../../widgets/customTextField.dart';
 
 class AddBlesse1 extends StatefulWidget {
-  const AddBlesse1({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  AddBlesse1({Key? key, this.Sin, this.Temoin}) : super(key: key);
 
   @override
   State<AddBlesse1> createState() => _AddBlesse1State();
 }
 
 class _AddBlesse1State extends State<AddBlesse1> {
+  var blesse = [];
   CustomTextField nomblesse = CustomTextField(
       placeholder: "Entrer le noms", title: "Nom Blessé(s)", initialValue: '');
   CustomTextField prenomblesse = CustomTextField(
@@ -146,17 +150,19 @@ class _AddBlesse1State extends State<AddBlesse1> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          FirebaseFirestore.instance.collection('Blesse').add({
-                            'nom': nomblesse.value,
-                            'prenom': prenomblesse.value,
-                            'adresse': adresseblesse.value,
-                            'telephone': telephone.value,
-                            'profession': profession.value,
-                            'situation': situation.value,
-                            'casque': casqueceinture.value,
-                            'centre_hospitalier': premiersoinslieu.value,
-                            'nature_gravite': gravitenature.value,
-                          });
+                          /*  Blesse(
+                              nomb: nomblesse.value,
+                              prenomb: prenomblesse.value,
+                              adresseb: adresseblesse.value,
+                              telephoneb: telephone.value,
+                              professionb: profession.value,
+                              situationb: situation.value,
+                              casqueb: casqueceinture.value,
+                              centreHospitalierb: premiersoinslieu.value,
+                              natureGraviteb: gravitenature.value); */
+                          /*  FirebaseFirestore.instance
+                              .collection('Blesse')
+                              .add({}); */
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -182,8 +188,22 @@ class _AddBlesse1State extends State<AddBlesse1> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
+            blesse = [
+              nomblesse.value,
+              prenomblesse.value,
+              adresseblesse.value,
+              telephone.value,
+              profession.value,
+              premiersoinslieu.value,
+              gravitenature.value
+            ];
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddVehiculA1()));
+                MaterialPageRoute(builder: (context) => AddVehiculA1(
+                 Sin: widget.Sin,
+                Temoin:widget.Temoin,
+                blesse:blesse,
+                
+                )));
           }
         },
         child: Container(

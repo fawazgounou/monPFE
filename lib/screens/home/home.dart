@@ -46,25 +46,37 @@ class _HomeState extends State<Home> {
                 size: 30,
                 color: Colors.red,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ChoixOption()));
-                },
-                child: Image.asset(
-                  'assets/image/sinistre2.jpg',
-                  height: 300,
-                  width: 300,
-                  fit: BoxFit.cover,
+              Container(
+                 decoration:  BoxDecoration(
+                 boxShadow: [
+                   BoxShadow(
+                     color: Colors.black.withOpacity(0.5),
+                     spreadRadius: 5,
+                     blurRadius: 7,
+                     offset: Offset(0, 3),
+                   )
+                 ]
                 ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ChoixOption()));
+                  },
+                  child: Image.asset(
+                    'assets/image/sinistre2.jpg',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.cover,
+                  ),
 
-                /*  icon: Icon(Icons.add, color: Colors.white),
-                  label: Text(
-                    "Ajouter un Sinistre",
-                    style: TextStyle(color: Colors.white),
-                  ), */
+                  /*  icon: Icon(Icons.add, color: Colors.white),
+                    label: Text(
+                      "Ajouter un Sinistre",
+                      style: TextStyle(color: Colors.white),
+                    ), */
+                ),
               ),
               const SizedBox(
                 height: 50,

@@ -13,6 +13,7 @@ class Localisation extends StatefulWidget {
 }
 
 class _LocalisationState extends State<Localisation> {
+  var Sin = [];
   String location = 'localisation';
   String Adresse = '';
   TextEditingController localisation = TextEditingController();
@@ -44,7 +45,7 @@ class _LocalisationState extends State<Localisation> {
   Future<void> GetAddresseFromLatLong(Position position) async {
     List<Placemark> placemark =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    
+
     Placemark place = placemark[0];
     Adresse = ' ${place.locality}, ${place.country} ';
     setState(() {});
@@ -68,23 +69,42 @@ class _LocalisationState extends State<Localisation> {
               const SizedBox(
                 height: 50,
               ),
-              const Text('Cliquer ici', style: TextStyle(fontSize: 17)),
-              const Icon(Icons.arrow_downward),
-              ElevatedButton(
-                onPressed: () async {
-                  Position position = await _determinePosition();
-                  print(position.latitude);
-                  location =
-                      'lat:${position.latitude},long:${position.longitude} ';
-                  GetAddresseFromLatLong(position);
+              const Text('Cliquer ici',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  )),
+              const Icon(
+                Icons.arrow_downward,
+                size: 30,
+                color: Colors.red,
+              ),
+              Container(
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  )
+                ]),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    Position position = await _determinePosition();
+                    print(position.latitude);
+                    location =
+                        'lat:${position.latitude},long:${position.longitude} ';
+                    GetAddresseFromLatLong(position);
 
-                  setState(() {});
-                },
-                child: Image.asset(
-                  'assets/image/loc1.jpg',
-                  height: 300,
-                  width: 300,
-                  fit: BoxFit.cover,
+                    setState(() {});
+                  },
+                  child: Image.asset(
+                    'assets/image/loc1.jpg',
+                    height: 300,
+                    width: 300,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -106,9 +126,13 @@ class _LocalisationState extends State<Localisation> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          /*    Geo(localise: Adresse.toString()); */
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddSinistre()));
+          Sin = [Adresse.toString()];
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddSinistre(
+                        Sin: Sin,
+                      )));
         },
         child: Container(
           height: 50.0,

@@ -1,18 +1,50 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/1SignatureA/addsignatureA.dart';
+import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/addsignatureA1.dart';
 
 import 'package:insertion_bd/screens/VehiculA/SignatureA/addsignatureA.dart';
 import 'package:multiselect/multiselect.dart';
 
 class AddCirconstanceA1 extends StatefulWidget {
-  const AddCirconstanceA1({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  AddCirconstanceA1(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA})
+      : super(key: key);
 
   @override
   State<AddCirconstanceA1> createState() => _AddCirconstanceA1State();
 }
 
 class _AddCirconstanceA1State extends State<AddCirconstanceA1> {
+  var circonstanceA = [];
   bool _1 = false;
   bool _2 = false;
   bool _3 = false;
@@ -885,11 +917,28 @@ class _AddCirconstanceA1State extends State<AddCirconstanceA1> {
           if (_18 == true) {
             index = "Ma situation ne correspond à rien";
           }
-          FirebaseFirestore.instance.collection('CirconstanceA').add({
-            'circonstance': index.toString(),
-          });
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SignaturePageA1()));
+          circonstanceA = [index.toString()];
+
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SignaturePageA1(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: circonstanceA,
+                      )));
         },
         child: Container(
           height: 50.0,

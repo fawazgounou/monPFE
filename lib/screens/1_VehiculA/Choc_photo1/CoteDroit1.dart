@@ -5,22 +5,44 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/transitionA1.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addcirconstanceA1.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
-import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class AddImageSignatureA1 extends StatefulWidget {
-  const AddImageSignatureA1({Key? key}) : super(key: key);
+import '../../../Model/model.dart';
+
+class CoteDroitA1 extends StatefulWidget {
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  CoteDroitA1(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo})
+      : super(key: key);
 
   @override
-  State<AddImageSignatureA1> createState() => _AddImageSignatureA1State();
+  State<CoteDroitA1> createState() => _CoteDroitA1State();
 }
 
-class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
+class _CoteDroitA1State extends State<CoteDroitA1> {
+  var droit = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -38,6 +60,16 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
   }
 
   File? _pickedImage;
+  void _pickImageCamera() async {
+    final picker = ImagePicker();
+    final pickedImage =
+        await picker.getImage(source: ImageSource.camera, imageQuality: 10);
+    print(pickedImage);
+    final pickedImageFile = File(pickedImage!.path);
+    setState(() {
+      _pickedImage = pickedImageFile;
+    });
+  }
 
   void _pickImageGallery() async {
     final picker = ImagePicker();
@@ -87,6 +119,26 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
                           Expanded(
                             child: ElevatedButton(
                               onPressed: () {
+                                _pickImageCamera();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                              child: const Text(
+                                "Camera",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
                                 _pickImageGallery();
                               },
                               style: ElevatedButton.styleFrom(
@@ -131,19 +183,32 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('SignatureConducteur')
+                .child('usersImages')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-
-            await FirebaseFirestore.instance.collection('SignatureA').add({
+            droit = [url, _fullName];
+            /* await FirebaseFirestore.instance.collection('PhotosA').add({
               'name': _fullName,
               'imageUrl': url,
-            });
+            }); */
           }
 
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const TransitionA1()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddCirconstanceA1(
+                    Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        droit: droit,
+                      )));
         },
         child: Container(
           height: 50.0,

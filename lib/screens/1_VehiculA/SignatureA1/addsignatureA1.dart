@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/addimgasignature1.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/preview_signature.dart';
 
 import 'dart:typed_data';
@@ -7,16 +9,49 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:signature/signature.dart';
 
-import 'addimgasignature.dart';
+
 
 class SignaturePageA1 extends StatefulWidget {
-  const SignaturePageA1({Key? key}) : super(key: key);
-
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  var assureA;
+  var assuranceA;
+  var conductA;
+  var observ;
+  var photo;
+  var arriere;
+  var avant;
+  var droit;
+  var gauche;
+  var hautA;
+  var circonstanceA;
+  SignaturePageA1(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA})
+      : super(key: key);
   @override
   _SignaturePageA1State createState() => _SignaturePageA1State();
 }
 
 class _SignaturePageA1State extends State<SignaturePageA1> {
+  var signature = [];
+
   late SignatureController controller;
 
   @override
@@ -62,9 +97,26 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
         ),
         bottomNavigationBar: GestureDetector(
           onTap: () {
-           
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddImageSignatureA1()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddImageSignatureA1(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: widget.circonstanceA,
+                        signature: signature)));
           },
           child: Container(
             height: 50.0,

@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
-import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
 
-class TransitionB extends StatefulWidget {
+import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
+import 'package:insertion_bd/screens/home/home.dart';
+
+class TransitionA1 extends StatefulWidget {
   var Sin;
   var Temoin;
   var blesse;
@@ -21,23 +22,7 @@ class TransitionB extends StatefulWidget {
   var circonstanceA;
   var signature;
   var imagesignature;
-  var transA;
-  var vehiculeB;
-  var assureB;
-  var assuranceB;
-  var conducteurB;
-  var observB;
-  var photoB;
-  var arriereB;
-  var avantB;
-  var droiteB;
-  var gaucheB;
-  var hautB;
-  var circonstanceB;
-  var signatureB;
-  var imagesignatureB;
-
-  TransitionB(
+  TransitionA1(
       {Key? key,
       this.Sin,
       this.Temoin,
@@ -55,28 +40,15 @@ class TransitionB extends StatefulWidget {
       this.hautA,
       this.circonstanceA,
       this.signature,
-      this.imagesignature,
-      this.transA,
-      this.vehiculeB,
-      this.assureB,
-      this.assuranceB,
-      this.conducteurB,
-      this.observB,
-      this.photoB,
-      this.arriereB,
-      this.avantB,
-      this.droiteB,
-      this.gaucheB,
-      this.hautB,
-      this.circonstanceB,
-      this.signatureB,this.imagesignatureB})
+      this.imagesignature})
       : super(key: key);
 
   @override
-  State<TransitionB> createState() => _TransitionBState();
+  State<TransitionA1> createState() => _TransitionA1State();
 }
 
-class _TransitionBState extends State<TransitionB> {
+class _TransitionA1State extends State<TransitionA1> {
+  var transA = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,9 +78,9 @@ class _TransitionBState extends State<TransitionB> {
                   width: 300,
                   fit: BoxFit.cover,
                 ),
-                   ElevatedButton(
+                 ElevatedButton(
                     onPressed: () {
-                        FirebaseFirestore.instance.collection('Sinistre').add({
+                      /*   FirebaseFirestore.instance.collection('Sinistre').add({
                           'id':1,
                         'date_sinstre': widget.Sin[0],
                         'heure': widget.Sin[1],
@@ -123,7 +95,7 @@ class _TransitionBState extends State<TransitionB> {
                         'lieu': widget.Sin[2],
                         'blesse': widget.Sin[3],
                         'degats': widget.Sin[4]
-                      });
+                      }); */
                     },
                     child: const Text(
                       'Sauvegarder',
@@ -134,17 +106,17 @@ class _TransitionBState extends State<TransitionB> {
           ),
         ),
       ),
-      /*  bottomNavigationBar: GestureDetector(
+      bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddVehiculB()));
+              context, MaterialPageRoute(builder: (context) => Home()));
         },
         child: Container(
           height: 70.0,
           width: double.infinity,
           color: Colors.blue,
           child: const Text(
-            "Saisis les informations du véhicule B",
+            "Terminer",
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 25.0,
@@ -153,7 +125,7 @@ class _TransitionBState extends State<TransitionB> {
           ),
           alignment: Alignment.center,
         ),
-      ), */
+      ),
     );
   }
 }

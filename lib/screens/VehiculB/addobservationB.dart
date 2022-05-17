@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/addphotoA1.dart';
+
 import 'package:insertion_bd/screens/VehiculA/addphotoA.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:insertion_bd/screens/VehiculB/addphotoB.dart';

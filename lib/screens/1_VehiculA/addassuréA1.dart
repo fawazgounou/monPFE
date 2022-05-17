@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/screens/1_VehiculeA/addassuranceA1.dart';
+import 'package:insertion_bd/Model/model.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addassuranceA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addassuranceA.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
@@ -8,13 +9,19 @@ import 'package:insertion_bd/widgets/customNumberField.dart';
 import '../../widgets/customTextField.dart';
 
 class AddAssureA1 extends StatefulWidget {
-  AddAssureA1({Key? key}) : super(key: key);
+  var Sin;
+  var Temoin;
+  var blesse;
+  var vehiculeA;
+  AddAssureA1({Key? key, this.Sin, this.Temoin, this.blesse, this.vehiculeA})
+      : super(key: key);
 
   @override
   State<AddAssureA1> createState() => _AddAssureA1State();
 }
 
 class _AddAssureA1State extends State<AddAssureA1> {
+  var assureA = [];
   CustomTextField nomassureA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assuré", initialValue: '');
   CustomTextField prenomassureA = CustomTextField(
@@ -107,16 +114,24 @@ class _AddAssureA1State extends State<AddAssureA1> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            FirebaseFirestore.instance.collection('AssureA').add({
-              'nom': nomassureA.value,
-              'prenom': prenomassureA.value,
-              'adress': adresseassureA.value,
-              'code_postal': codepostalA.value,
-              'telephone': telephoneassureA.value,
-              'email': emailA.value,
-            });
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddAssuranceA1()));
+            assureA = [
+              nomassureA.value,
+              prenomassureA.value,
+              telephoneassureA.value,
+              adresseassureA.value,
+              codepostalA.value,
+              emailA.value
+            ];
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddAssuranceA1(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: widget.blesse,
+                          vehiculeA: widget.vehiculeA,
+                          assureA: assureA,
+                        )));
           }
         },
         child: Container(

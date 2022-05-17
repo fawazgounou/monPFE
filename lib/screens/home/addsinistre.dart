@@ -12,14 +12,15 @@ import '../../widgets/customTextField.dart';
 import 'package:insertion_bd/Model/model.dart';
 
 class AddSinistre extends StatefulWidget {
-  const AddSinistre({Key? key}) : super(key: key);
+  var Sin;
+   AddSinistre({Key? key,this.Sin}) : super(key: key);
 
   @override
   State<AddSinistre> createState() => _AddSinistreState();
 }
 
 class _AddSinistreState extends State<AddSinistre> {
-  var Sin = [];
+  
   CustomTextField lieu = CustomTextField(
       placeholder: "Entrer le Lieu", title: "Lieu", line: 1, initialValue: '');
 
@@ -116,7 +117,7 @@ class _AddSinistreState extends State<AddSinistre> {
                   ],
                 ),
                 const SizedBox(
-                  width: 5,
+                  height: 25,
                 ),
                 Row(
                   children: [
@@ -277,19 +278,19 @@ class _AddSinistreState extends State<AddSinistre> {
             if (_non == true) {
               index2 = 'Non';
             }
-            Sin = [
-              dateinput.text,
+            widget.Sin.add(  dateinput.text,
               selectedTime.toString(),
               lieu.value,
               index.toString(),
-              index2.toString()
-            ];
+              index2.toString());
+            
+           
 
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => AddTemoins(
-                          Sin: Sin,
+                          Sin: widget.Sin,
                         )));
           }
         },
