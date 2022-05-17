@@ -11,6 +11,7 @@ import 'package:insertion_bd/screens/VehiculB/addcirconstanceB.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 class AddAvantB extends StatefulWidget {
   var Sin;
@@ -71,6 +72,7 @@ class AddAvantB extends StatefulWidget {
 }
 
 class _AddAvantBState extends State<AddAvantB> {
+  var uuid = Uuid();
   var avantB = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -218,6 +220,7 @@ class _AddAvantBState extends State<AddAvantB> {
             url = await ref.getDownloadURL();
 
             avantB = [
+              uuid.v1(),
               _fullName,
               url,
             ];

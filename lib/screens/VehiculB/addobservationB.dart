@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/addphotoA.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:insertion_bd/screens/VehiculB/addphotoB.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
 
@@ -60,6 +61,7 @@ class AddObservationB extends StatefulWidget {
 }
 
 class _AddObservationBState extends State<AddObservationB> {
+  var uuid = Uuid();
   var observB = [];
   CustomTextField degatsapparentA = CustomTextField(
       placeholder: "Dégats",
@@ -113,6 +115,7 @@ class _AddObservationBState extends State<AddObservationB> {
         onTap: () {
           if (_key.currentState!.validate()) {
             observB = [
+              uuid.v1(),
               degatsapparentA.value,
               observationA.value,
             ];

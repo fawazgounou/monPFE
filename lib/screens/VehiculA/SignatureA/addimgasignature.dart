@@ -12,6 +12,7 @@ import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 class AddImageSignatureA extends StatefulWidget {
   var Sin;
@@ -55,6 +56,7 @@ class AddImageSignatureA extends StatefulWidget {
 }
 
 class _AddImageSignatureAState extends State<AddImageSignatureA> {
+  var uuid = Uuid();
   var imagesignature = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -171,7 +173,7 @@ class _AddImageSignatureAState extends State<AddImageSignatureA> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            imagesignature = [url, _fullName];
+            imagesignature = [uuid.v1(), url, _fullName];
             /*    await FirebaseFirestore.instance.collection('SignatureA').add({
               'name': _fullName,
               'imageUrl': url,

@@ -7,6 +7,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:signature/signature.dart';
+import 'package:uuid/uuid.dart';
 
 import 'addimgasignature.dart';
 
@@ -49,6 +50,7 @@ class SignaturePageA extends StatefulWidget {
 }
 
 class _SignaturePageAState extends State<SignaturePageA> {
+  var uuid = Uuid();
   var signature = [];
 
   late SignatureController controller;
@@ -96,6 +98,7 @@ class _SignaturePageAState extends State<SignaturePageA> {
         ),
         bottomNavigationBar: GestureDetector(
           onTap: () {
+            signature = [uuid.v1()];
             Navigator.push(
                 context,
                 MaterialPageRoute(

@@ -4,6 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/home/addsinistre.dart';
+import 'package:uuid/uuid.dart';
 
 class Localisation extends StatefulWidget {
   const Localisation({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class Localisation extends StatefulWidget {
 }
 
 class _LocalisationState extends State<Localisation> {
+  var uuid = Uuid();
   var Sin = [];
   String location = 'localisation';
   String Adresse = '';
@@ -126,7 +128,7 @@ class _LocalisationState extends State<Localisation> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          Sin = [Adresse.toString()];
+          Sin = [uuid.v1(), Adresse.toString()];
           Navigator.push(
               context,
               MaterialPageRoute(

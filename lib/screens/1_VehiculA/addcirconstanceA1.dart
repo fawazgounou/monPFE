@@ -5,6 +5,7 @@ import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/addsignatureA1.dart'
 
 import 'package:insertion_bd/screens/VehiculA/SignatureA/addsignatureA.dart';
 import 'package:multiselect/multiselect.dart';
+import 'package:uuid/uuid.dart';
 
 class AddCirconstanceA1 extends StatefulWidget {
   var Sin;
@@ -44,6 +45,7 @@ class AddCirconstanceA1 extends StatefulWidget {
 }
 
 class _AddCirconstanceA1State extends State<AddCirconstanceA1> {
+  var uuid = Uuid();
   var circonstanceA = [];
   bool _1 = false;
   bool _2 = false;
@@ -917,7 +919,7 @@ class _AddCirconstanceA1State extends State<AddCirconstanceA1> {
           if (_18 == true) {
             index = "Ma situation ne correspond à rien";
           }
-          circonstanceA = [index.toString()];
+          circonstanceA = [uuid.v1(),index.toString()];
 
           Navigator.push(
               context,

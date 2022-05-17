@@ -4,6 +4,7 @@ import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/1_VehiculA/addvehiculA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
 
@@ -17,6 +18,7 @@ class AddBlesse1 extends StatefulWidget {
 }
 
 class _AddBlesse1State extends State<AddBlesse1> {
+   var uuid = Uuid();
   var blesse = [];
   CustomTextField nomblesse = CustomTextField(
       placeholder: "Entrer le noms", title: "Nom Blessé(s)", initialValue: '');
@@ -189,6 +191,7 @@ class _AddBlesse1State extends State<AddBlesse1> {
         onTap: () {
           if (_key.currentState!.validate()) {
             blesse = [
+              uuid.v1(),
               nomblesse.value,
               prenomblesse.value,
               adresseblesse.value,

@@ -11,6 +11,7 @@ import 'package:insertion_bd/screens/VehiculB/addcirconstanceB.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 class ArrierevB extends StatefulWidget {
   var Sin;
@@ -71,6 +72,7 @@ class ArrierevB extends StatefulWidget {
 }
 
 class _ArrierevBState extends State<ArrierevB> {
+  var uuid = Uuid();
   var arriereB = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -218,6 +220,7 @@ class _ArrierevBState extends State<ArrierevB> {
             url = await ref.getDownloadURL();
 
             arriereB = [
+              uuid.v1(),
               _fullName,
               url,
             ];

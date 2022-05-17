@@ -5,6 +5,7 @@ import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/screens/home/addblesse.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:responsive_row/responsive_row.dart';
+import 'package:uuid/uuid.dart';
 import '../../widgets/customTextField.dart';
 
 class AddTemoins extends StatefulWidget {
@@ -16,6 +17,7 @@ class AddTemoins extends StatefulWidget {
 }
 
 class _AddTemoinsState extends State<AddTemoins> {
+   var uuid = Uuid();
   var Temoin = [];
   CustomTextField nomtemoin = CustomTextField(
       placeholder: "Entrer le nom", title: "Nom", initialValue: '');
@@ -108,6 +110,7 @@ class _AddTemoinsState extends State<AddTemoins> {
         onTap: () {
           if (_key.currentState!.validate()) {
             Temoin = [
+              uuid.v1(),
               nomtemoin.value,
               prenomtemoin.value,
               adressetemoin.value,

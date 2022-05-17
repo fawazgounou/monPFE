@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
 
@@ -16,6 +17,7 @@ class AddBlesse extends StatefulWidget {
 }
 
 class _AddBlesseState extends State<AddBlesse> {
+  var uuid = Uuid();
   var blesse = [];
   CustomTextField nomblesse = CustomTextField(
       placeholder: "Entrer le noms", title: "Nom Blessé(s)", initialValue: '');
@@ -188,6 +190,7 @@ class _AddBlesseState extends State<AddBlesse> {
         onTap: () {
           if (_key.currentState!.validate()) {
             blesse = [
+              uuid.v1(),
               nomblesse.value,
               prenomblesse.value,
               adresseblesse.value,
@@ -196,13 +199,14 @@ class _AddBlesseState extends State<AddBlesse> {
               premiersoinslieu.value,
               gravitenature.value
             ];
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AddVehiculA(
-                 Sin: widget.Sin,
-                Temoin:widget.Temoin,
-                blesse:blesse,
-                
-                )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddVehiculA(
+                          Sin: widget.Sin,
+                          Temoin: widget.Temoin,
+                          blesse: blesse,
+                        )));
           }
         },
         child: Container(

@@ -5,6 +5,7 @@ import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:intl/intl.dart';
 import 'package:multiselect/multiselect.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
 
@@ -28,6 +29,7 @@ class AddAssuranceA extends StatefulWidget {
 }
 
 class _AddAssuranceAState extends State<AddAssuranceA> {
+   var uuid = Uuid();
   var assuranceA = [];
   CustomTextField nomassuranceA = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assureur", initialValue: '');
@@ -327,6 +329,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
               index = 'Non';
             }
             assuranceA = [
+              uuid.v1(),
               nomassuranceA.value,
               numcontratA.value,
               numcarteverteA.value,

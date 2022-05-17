@@ -12,6 +12,7 @@ import 'package:insertion_bd/screens/VehiculB/transitionB.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 class AddImageSignatureB extends StatefulWidget {
   var Sin;
@@ -86,6 +87,7 @@ class AddImageSignatureB extends StatefulWidget {
 }
 
 class _AddImageSignatureAState extends State<AddImageSignatureB> {
+  var uuid = Uuid();
   var imagesignatureB = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -203,6 +205,7 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
             url = await ref.getDownloadURL();
 
             imagesignatureB = [
+              uuid.v1(),
               _fullName,
               url,
             ];

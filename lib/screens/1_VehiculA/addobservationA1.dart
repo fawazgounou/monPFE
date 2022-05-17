@@ -4,6 +4,7 @@ import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/1_VehiculA/addphotoA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addphotoA.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
 
@@ -31,6 +32,7 @@ class AddObservationA1 extends StatefulWidget {
 }
 
 class _AddObservationA1State extends State<AddObservationA1> {
+   var uuid = Uuid();
   var observ = [];
   CustomTextField degatsapparentA = CustomTextField(
       placeholder: "Dégats",
@@ -83,7 +85,7 @@ class _AddObservationA1State extends State<AddObservationA1> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           if (_key.currentState!.validate()) {
-            observ = [degatsapparentA.value, observationA.value];
+            observ = [uuid.v1(),degatsapparentA.value, observationA.value];
 
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => AddPhotoA1(

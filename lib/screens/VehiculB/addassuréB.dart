@@ -4,6 +4,7 @@ import 'package:insertion_bd/screens/VehiculA/addassuranceA.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/screens/VehiculB/addassuranceB.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
 
@@ -55,6 +56,7 @@ class AddAssureB extends StatefulWidget {
 }
 
 class _AddAssureBState extends State<AddAssureB> {
+  var uuid = Uuid();
   var assureB = [];
   CustomTextField nomassureB = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom Assuré", initialValue: '');
@@ -149,6 +151,7 @@ class _AddAssureBState extends State<AddAssureB> {
         onTap: () {
           if (_key.currentState!.validate()) {
             assureB = [
+              uuid.v1(),
               nomassureB.value,
               prenomassureB.value,
               adresseassureB.value,

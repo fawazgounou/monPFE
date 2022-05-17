@@ -5,6 +5,7 @@ import 'package:insertion_bd/screens/VehiculB/addobservationB.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:insertion_bd/widgets/customTextField.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 class AddConducteurB extends StatefulWidget {
   var Sin;
@@ -57,6 +58,7 @@ class AddConducteurB extends StatefulWidget {
 }
 
 class _AddConducteurBState extends State<AddConducteurB> {
+  var uuid = Uuid();
   var conducteurB = [];
   CustomTextField nomconducteurB = CustomTextField(
       placeholder: "Entrer le Nom", title: "Nom ", initialValue: '');
@@ -271,6 +273,7 @@ class _AddConducteurBState extends State<AddConducteurB> {
         onTap: () {
           if (_key.currentState!.validate()) {
             conducteurB = [
+              uuid.v1(),
               nomconducteurB.value,
               prenomconducteurB.value,
               adresseconducteurB.value,

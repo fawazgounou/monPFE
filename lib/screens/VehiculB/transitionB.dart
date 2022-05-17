@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
+import 'package:uuid/uuid.dart';
 
 class TransitionB extends StatefulWidget {
   var Sin;
@@ -69,7 +70,8 @@ class TransitionB extends StatefulWidget {
       this.gaucheB,
       this.hautB,
       this.circonstanceB,
-      this.signatureB,this.imagesignatureB})
+      this.signatureB,
+      this.imagesignatureB})
       : super(key: key);
 
   @override
@@ -106,23 +108,23 @@ class _TransitionBState extends State<TransitionB> {
                   width: 300,
                   fit: BoxFit.cover,
                 ),
-                   ElevatedButton(
+                ElevatedButton(
                     onPressed: () {
-                        FirebaseFirestore.instance.collection('Sinistre').add({
-                          'id':1,
-                        'date_sinstre': widget.Sin[0],
-                        'heure': widget.Sin[1],
-                        'lieu': widget.Sin[2],
-                        'blesse': widget.Sin[3],
-                        'degats': widget.Sin[4]
+                      FirebaseFirestore.instance.collection('Sinistre').add({
+                        'id': widget.Sin[0],
+                        'date_sinstre': widget.Sin[1],
+                        'heure': widget.Sin[2],
+                        'lieu': widget.Sin[3],
+                        'blesse': widget.Sin[4],
+                        'degats': widget.Sin[5]
                       });
                       FirebaseFirestore.instance.collection('Temoins').add({
-                          'id':1,
-                        'date_sinstre': widget.Sin[0],
-                        'heure': widget.Sin[1],
-                        'lieu': widget.Sin[2],
-                        'blesse': widget.Sin[3],
-                        'degats': widget.Sin[4]
+                        'id': widget.Temoin[0],
+                        'nom': widget.Temoin[1],
+                        'prenom': widget.Temoin[2],
+                        'lieu': widget.Temoin[3],
+                        'blesse': widget.Temoin[4],
+                        'degats': widget.Temoin[5]
                       });
                     },
                     child: const Text(

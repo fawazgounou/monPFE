@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
 import 'package:insertion_bd/screens/VehiculB/addassur%C3%A9B.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
 
@@ -52,6 +53,7 @@ class AddVehiculB extends StatefulWidget {
 }
 
 class _AddVehiculBState extends State<AddVehiculB> {
+  var uuid = Uuid();
   var vehiculeB = [];
   CustomTextField marqueB = CustomTextField(
       placeholder: "Entrer la Marque", title: "Marque, Type", initialValue: '');
@@ -101,6 +103,7 @@ class _AddVehiculBState extends State<AddVehiculB> {
         onTap: () {
           if (_key.currentState!.validate()) {
             vehiculeB = [
+              uuid.v1(),
               marqueB.value,
               immatriculationVB.value,
               paysimmatriculationVB.value,

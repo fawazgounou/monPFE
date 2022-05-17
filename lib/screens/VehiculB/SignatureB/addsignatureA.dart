@@ -6,6 +6,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:signature/signature.dart';
+import 'package:uuid/uuid.dart';
 
 import 'addimgasignature.dart';
 
@@ -80,6 +81,7 @@ class SignaturePageB extends StatefulWidget {
 }
 
 class _SignaturePageBState extends State<SignaturePageB> {
+  var uuid = Uuid();
   var signatureB = [];
   late SignatureController controller;
 
@@ -126,11 +128,12 @@ class _SignaturePageBState extends State<SignaturePageB> {
         ),
         bottomNavigationBar: GestureDetector(
           onTap: () {
+            signatureB = [uuid.v1()];
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>  AddImageSignatureB(
-                         Sin: widget.Sin,
+                    builder: (context) => AddImageSignatureB(
+                        Sin: widget.Sin,
                         Temoin: widget.Temoin,
                         blesse: widget.blesse,
                         vehiculeA: widget.vehiculeA,
@@ -159,8 +162,7 @@ class _SignaturePageBState extends State<SignaturePageB> {
                         droiteB: widget.droiteB,
                         gaucheB: widget.gaucheB,
                         circonstanceB: widget.circonstanceB,
-                      signatureB:signatureB
-                    )));
+                        signatureB: signatureB)));
           },
           child: Container(
             height: 50.0,

@@ -10,6 +10,7 @@ import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../Model/model.dart';
 
@@ -42,7 +43,7 @@ class AddAvantA extends StatefulWidget {
 
 class _AddAvantAState extends State<AddAvantA> {
   var avant = [];
-
+var uuid = Uuid();
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -187,7 +188,7 @@ class _AddAvantAState extends State<AddAvantA> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            avant = [url, _fullName];
+            avant = [uuid.v1(),url, _fullName];
             /*  await FirebaseFirestore.instance.collection('PhotosA').add({
               'name': _fullName,
               'imageUrl': url,

@@ -12,6 +12,7 @@ import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 class ArrierevA1 extends StatefulWidget {
   var Sin;
@@ -41,6 +42,7 @@ class ArrierevA1 extends StatefulWidget {
 }
 
 class _ArrierevA1State extends State<ArrierevA1> {
+  var uuid = Uuid();
   var arriere = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -187,7 +189,7 @@ class _ArrierevA1State extends State<ArrierevA1> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
 
-            arriere = [url, _fullName];
+            arriere = [uuid.v1(),url, _fullName];
           }
 
           Navigator.push(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/addsignatureA.dart';
 import 'package:insertion_bd/screens/VehiculB/SignatureB/addsignatureA.dart';
 import 'package:multiselect/multiselect.dart';
+import 'package:uuid/uuid.dart';
 
 class AddCirconstanceB extends StatefulWidget {
   var Sin;
@@ -74,6 +75,7 @@ class AddCirconstanceB extends StatefulWidget {
 }
 
 class _AddCirconstanceBState extends State<AddCirconstanceB> {
+  var uuid = Uuid();
   var circonstanceB = [];
   bool _1 = false;
   bool _2 = false;
@@ -949,6 +951,7 @@ class _AddCirconstanceBState extends State<AddCirconstanceB> {
           }
 
           circonstanceB = [
+            uuid.v1(),
             index.toString(),
           ];
 

@@ -78,24 +78,24 @@ class _TransitionA1State extends State<TransitionA1> {
                   width: 300,
                   fit: BoxFit.cover,
                 ),
-                 ElevatedButton(
+                ElevatedButton(
                     onPressed: () {
-                      /*   FirebaseFirestore.instance.collection('Sinistre').add({
-                          'id':1,
-                        'date_sinstre': widget.Sin[0],
-                        'heure': widget.Sin[1],
-                        'lieu': widget.Sin[2],
-                        'blesse': widget.Sin[3],
-                        'degats': widget.Sin[4]
+                      FirebaseFirestore.instance.collection('Sinistre').add({
+                        'id': widget.Sin[0],
+                        'date_sinstre': widget.Sin[1],
+                        'heure': widget.Sin[2],
+                        'lieu': widget.Sin[3],
+                        'blesse': widget.Sin[4],
+                        'degats': widget.Sin[5]
                       });
                       FirebaseFirestore.instance.collection('Temoins').add({
-                          'id':1,
-                        'date_sinstre': widget.Sin[0],
-                        'heure': widget.Sin[1],
-                        'lieu': widget.Sin[2],
-                        'blesse': widget.Sin[3],
-                        'degats': widget.Sin[4]
-                      }); */
+                        'id': widget.Temoin[0],
+                        'date_sinstre': widget.Temoin[1],
+                        'heure': widget.Temoin[2],
+                        'lieu': widget.Temoin[3],
+                        'blesse': widget.Temoin[4],
+                        'degats': widget.Temoin[5]
+                      });
                     },
                     child: const Text(
                       'Sauvegarder',

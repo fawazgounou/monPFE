@@ -10,6 +10,7 @@ import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 import '../addcirconstanceB.dart';
 
@@ -72,6 +73,7 @@ class HautB extends StatefulWidget {
 }
 
 class _HautBState extends State<HautB> {
+  var uuid = Uuid();
   var hautB = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -219,6 +221,7 @@ class _HautBState extends State<HautB> {
             url = await ref.getDownloadURL();
 
             hautB = [
+              uuid.v1(),
               _fullName,
               url,
             ];

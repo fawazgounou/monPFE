@@ -14,6 +14,7 @@ import 'package:insertion_bd/screens/VehiculB/Choc_photo/Haut.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 class AddPhotoB extends StatefulWidget {
   var Sin;
@@ -71,6 +72,7 @@ class AddPhotoB extends StatefulWidget {
 }
 
 class _AddPhotoBState extends State<AddPhotoB> {
+  var uuid = Uuid();
   var photoB = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -100,7 +102,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
   }
 
   Future<void> loadAssets(bool val) async {
-    var photoB = [];
     List<Asset> resultList = <Asset>[];
     String error = 'No Error Detected';
 
@@ -173,10 +174,36 @@ class _AddPhotoBState extends State<AddPhotoB> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
+                                photoB = [uuid.v1()];
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => AddAvantB()));
+                                        builder: (context) => AddAvantB(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: widget.photo,
+                                            arriere: widget.arriere,
+                                            avant: widget.avant,
+                                            droit: widget.droit,
+                                            gauche: widget.gauche,
+                                            hautA: widget.hautA,
+                                            circonstanceA: widget.circonstanceA,
+                                            signature: widget.signature,
+                                            imagesignature:
+                                                widget.imagesignature,
+                                            transA: widget.transA,
+                                            vehiculeB: widget.vehiculeB,
+                                            assureB: widget.assureB,
+                                            assuranceB: widget.assuranceB,
+                                            conducteurB: widget.conducteurB,
+                                            observB: widget.observB,
+                                            photoB: photoB)));
                               },
                               child: Image.asset(
                                 'assets/image/avant.jpg',
@@ -211,10 +238,36 @@ class _AddPhotoBState extends State<AddPhotoB> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
+                                photoB = [uuid.v1()];
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => CoteDroitB()));
+                                        builder: (context) => CoteDroitB(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: widget.photo,
+                                            arriere: widget.arriere,
+                                            avant: widget.avant,
+                                            droit: widget.droit,
+                                            gauche: widget.gauche,
+                                            hautA: widget.hautA,
+                                            circonstanceA: widget.circonstanceA,
+                                            signature: widget.signature,
+                                            imagesignature:
+                                                widget.imagesignature,
+                                            transA: widget.transA,
+                                            vehiculeB: widget.vehiculeB,
+                                            assureB: widget.assureB,
+                                            assuranceB: widget.assuranceB,
+                                            conducteurB: widget.conducteurB,
+                                            observB: widget.observB,
+                                            photoB: photoB)));
                               },
                               child: Image.asset(
                                 'assets/image/coté_droite.jpg',
@@ -254,10 +307,36 @@ class _AddPhotoBState extends State<AddPhotoB> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
+                                photoB = [uuid.v1()];
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => CoteGaucheB()));
+                                        builder: (context) => CoteGaucheB(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: widget.photo,
+                                            arriere: widget.arriere,
+                                            avant: widget.avant,
+                                            droit: widget.droit,
+                                            gauche: widget.gauche,
+                                            hautA: widget.hautA,
+                                            circonstanceA: widget.circonstanceA,
+                                            signature: widget.signature,
+                                            imagesignature:
+                                                widget.imagesignature,
+                                            transA: widget.transA,
+                                            vehiculeB: widget.vehiculeB,
+                                            assureB: widget.assureB,
+                                            assuranceB: widget.assuranceB,
+                                            conducteurB: widget.conducteurB,
+                                            observB: widget.observB,
+                                            photoB: photoB)));
                               },
                               child: Image.asset(
                                 'assets/image/coté_droite.jpg',
@@ -293,6 +372,7 @@ class _AddPhotoBState extends State<AddPhotoB> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
+                                photoB = [uuid.v1()];
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -361,10 +441,36 @@ class _AddPhotoBState extends State<AddPhotoB> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
+                                photoB = [uuid.v1()];
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => HautB()));
+                                        builder: (context) => HautB(
+                                            Sin: widget.Sin,
+                                            Temoin: widget.Temoin,
+                                            blesse: widget.blesse,
+                                            vehiculeA: widget.vehiculeA,
+                                            assureA: widget.assureA,
+                                            assuranceA: widget.assuranceA,
+                                            conductA: widget.conductA,
+                                            observ: widget.observ,
+                                            photo: widget.photo,
+                                            arriere: widget.arriere,
+                                            avant: widget.avant,
+                                            droit: widget.droit,
+                                            gauche: widget.gauche,
+                                            hautA: widget.hautA,
+                                            circonstanceA: widget.circonstanceA,
+                                            signature: widget.signature,
+                                            imagesignature:
+                                                widget.imagesignature,
+                                            transA: widget.transA,
+                                            vehiculeB: widget.vehiculeB,
+                                            assureB: widget.assureB,
+                                            assuranceB: widget.assuranceB,
+                                            conducteurB: widget.conducteurB,
+                                            observB: widget.observB,
+                                            photoB: photoB)));
                               },
                               child: Image.asset(
                                 'assets/image/haut.jpg',

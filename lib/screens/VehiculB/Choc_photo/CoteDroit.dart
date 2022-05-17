@@ -10,6 +10,7 @@ import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:uuid/uuid.dart';
 
 import '../addcirconstanceB.dart';
 
@@ -72,6 +73,7 @@ class CoteDroitB extends StatefulWidget {
 }
 
 class _CoteDroitBState extends State<CoteDroitB> {
+  var uuid = Uuid();
   var droiteB = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -219,6 +221,7 @@ class _CoteDroitBState extends State<CoteDroitB> {
             url = await ref.getDownloadURL();
 
             droiteB = [
+              uuid.v1(),
               _fullName,
               url,
             ];
