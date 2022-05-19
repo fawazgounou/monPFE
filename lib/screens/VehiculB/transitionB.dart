@@ -307,7 +307,7 @@ class _TransitionBState extends State<TransitionB> {
       bottomNavigationBar: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Home()));
+              context, MaterialPageRoute(builder: (context) => const Home()));
         },
         child: Container(
           height: 70.0,

@@ -61,8 +61,7 @@ class AddAssuranceB extends StatefulWidget {
 class _AddAssuranceBState extends State<AddAssuranceB> {
   var uuid = Uuid();
   var assuranceB = [];
-  CustomTextField nomassuranceB = CustomTextField(
-      placeholder: "Entrer le Nom", title: "Nom Assureur", initialValue: '');
+
   CustomNumberField numcontratB = CustomNumberField(
       placeholder: "Numero de contrat",
       title: "N° de Contrat",
@@ -98,10 +97,10 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
 
   bool oui = false;
   bool non = false;
-
+ String? _dropDownValue;
   @override
   Widget build(BuildContext context) {
-    nomassuranceB.err = "Entrer le Nom ";
+  
     numcontratB.err = "Entrer le Numéro du contrat";
     numcarteverteB.err = "Entrer le Numéro de la carte verte'";
     agenceB.err = "Entrer te type D'agence";
@@ -125,7 +124,39 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
             key: _key,
             child: Column(
               children: [
-                nomassuranceB.textfrofield(),
+                DropdownButton(
+                  hint: _dropDownValue == null
+                      ? Text('Choisissez votre Assureur')
+                      : Text(
+                          _dropDownValue!,
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        ),
+                  isExpanded: true,
+                  iconSize: 30.0,
+                  style: TextStyle(color: Colors.black),
+                  items: [
+                    'NSIA BENIN',
+                    'SUNU ASSURANCES VIE BENIN',
+                    'ATLANTIQUE ASSURANCES BENIN',
+                    'SAHAM ASSURANCE VIE',
+                    'AFRICAINE VIE BENIN',
+                    'SAHAM ASSURANCE'
+                  ].map(
+                    (val) {
+                      return DropdownMenuItem<String>(
+                        value: val,
+                        child: Text(val),
+                      );
+                    },
+                  ).toList(),
+                  onChanged: (val) {
+                    setState(
+                      () {
+                        _dropDownValue = val.toString();
+                      },
+                    );
+                  },
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -360,7 +391,7 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
             }
             assuranceB = [
               uuid.v1(),
-              nomassuranceB.value,
+              _dropDownValue.toString(),
               numcontratB.value,
               numcarteverteB.value,
               dateinput.text,

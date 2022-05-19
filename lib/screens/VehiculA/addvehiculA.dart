@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addassur%C3%A9A.dart';
-import 'package:insertion_bd/widgets/customNumberField.dart';
+
 import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
