@@ -39,6 +39,8 @@ class TransitionB extends StatefulWidget {
   var circonstanceB;
   var signatureB;
   var imagesignatureB;
+  var croquisA_B;
+  var imagescroquiA_B;
 
   TransitionB(
       {Key? key,
@@ -73,7 +75,9 @@ class TransitionB extends StatefulWidget {
       this.hautB,
       this.circonstanceB,
       this.signatureB,
-      this.imagesignatureB})
+      this.imagesignatureB,
+      this.croquisA_B,
+      this.imagescroquiA_B})
       : super(key: key);
 
   @override

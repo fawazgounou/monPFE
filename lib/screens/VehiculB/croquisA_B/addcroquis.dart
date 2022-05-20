@@ -14,9 +14,7 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
 
-import '../croquisA_B/FaireCroquisA_B.dart';
-
-class AddImageSignatureB extends StatefulWidget {
+class AddcroquisA_B extends StatefulWidget {
   var Sin;
   var Temoin;
   var blesse;
@@ -48,8 +46,9 @@ class AddImageSignatureB extends StatefulWidget {
   var hautB;
   var circonstanceB;
   var signatureB;
-
-  AddImageSignatureB(
+  var imagesignatureB;
+  var croquisA_B;
+  AddcroquisA_B(
       {Key? key,
       this.Sin,
       this.Temoin,
@@ -81,16 +80,18 @@ class AddImageSignatureB extends StatefulWidget {
       this.gaucheB,
       this.hautB,
       this.circonstanceB,
-      this.signatureB})
+      this.signatureB,
+      this.imagesignatureB,
+      this.croquisA_B})
       : super(key: key);
 
   @override
-  State<AddImageSignatureB> createState() => _AddImageSignatureAState();
+  State<AddcroquisA_B> createState() => _AddImageSignatureAState();
 }
 
-class _AddImageSignatureAState extends State<AddImageSignatureB> {
+class _AddImageSignatureAState extends State<AddcroquisA_B> {
   var uuid = Uuid();
-  var imagesignatureB = [];
+  var imagescroquiA_B = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -204,8 +205,8 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                 .child('SignatureConducteurB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            await FirebaseFirestore.instance.collection('SignatureB').add({
-              'id_SignatureCB': widget.signatureB[0],
+            await FirebaseFirestore.instance.collection('Croquis').add({
+              'id_croquisA_B': widget.croquisA_B[0],
               'name': _fullName,
               'imageUrl': url,
             });
@@ -219,7 +220,7 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => FaireCroquisA_B(
+                  builder: (context) => TransitionB(
                       Sin: widget.Sin,
                       Temoin: widget.Temoin,
                       blesse: widget.blesse,
@@ -250,7 +251,9 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                       gaucheB: widget.gaucheB,
                       circonstanceB: widget.circonstanceB,
                       signatureB: widget.signatureB,
-                      imagesignatureB: imagesignatureB)));
+                      imagesignatureB: widget.imagesignatureB,
+                      croquisA_B: widget.croquisA_B,
+                      imagescroquiA_B: imagescroquiA_B)));
         },
         child: Container(
           height: 50.0,

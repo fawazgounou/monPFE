@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/addimgasignature1.dart';
+import 'package:insertion_bd/screens/1_VehiculA/croquis1/addCroquis1.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/preview_signature.dart';
 
 import 'dart:typed_data';
@@ -10,7 +11,7 @@ import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:signature/signature.dart';
 import 'package:uuid/uuid.dart';
 
-class SignaturePageA1 extends StatefulWidget {
+class FaireCroquis1 extends StatefulWidget {
   var Sin;
   var Temoin;
   var blesse;
@@ -25,38 +26,32 @@ class SignaturePageA1 extends StatefulWidget {
   var droit;
   var gauche;
   var hautA;
-  var croquis;
-  var imagecroquis;
-
-  SignaturePageA1({
-    Key? key,
-    this.Sin,
-    this.Temoin,
-    this.blesse,
-    this.vehiculeA,
-    this.assureA,
-    this.assuranceA,
-    this.conductA,
-    this.observ,
-    this.photo,
-    this.arriere,
-    this.avant,
-    this.droit,
-    this.gauche,
-    this.hautA,
-    var circonstanceA,
-    this.croquis,
-    this.imagecroquis,
-  }) : super(key: key);
-
-  get circonstanceA => null;
+  var circonstanceA;
+  FaireCroquis1(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA})
+      : super(key: key);
   @override
-  _SignaturePageA1State createState() => _SignaturePageA1State();
+  _FaireCroquis1State createState() => _FaireCroquis1State();
 }
 
-class _SignaturePageA1State extends State<SignaturePageA1> {
+class _FaireCroquis1State extends State<FaireCroquis1> {
   var uuid = Uuid();
-  var signature = [];
+  var croquis = [];
 
   late SignatureController controller;
 
@@ -80,7 +75,7 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Signature Conducteur A",
+            "Faire un croquis",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -92,7 +87,7 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
               width: 400,
               child: Signature(
                 controller: controller,
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.red,
               ),
             ),
             buildButtons(context),
@@ -103,11 +98,11 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
         ),
         bottomNavigationBar: GestureDetector(
           onTap: () {
-            signature = [uuid.v1()];
+            croquis = [uuid.v1()];
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => AddImageSignatureA1(
+                    builder: (context) => AddCroquis1(
                         Sin: widget.Sin,
                         Temoin: widget.Temoin,
                         blesse: widget.blesse,
@@ -123,16 +118,14 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
                         gauche: widget.gauche,
                         hautA: widget.hautA,
                         circonstanceA: widget.circonstanceA,
-                        croquis: widget.croquis,
-                        imagecroquis: widget.imagecroquis,
-                        signature: signature)));
+                        croquis: croquis)));
           },
           child: Container(
             height: 50.0,
             width: double.infinity,
             color: Colors.blue,
             child: const Text(
-              "Importer l'image",
+              "Importer le croquis",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 25.0,

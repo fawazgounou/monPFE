@@ -5,18 +5,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:insertion_bd/Model/model.dart';
 
 import 'package:insertion_bd/screens/VehiculA/addcirconstanceA.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
-import 'package:insertion_bd/screens/VehiculB/transitionB.dart';
 
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
 
-import '../croquisA_B/FaireCroquisA_B.dart';
+import '../SignatureA1/addsignatureA1.dart';
+import '../transitionA1.dart';
 
-class AddImageSignatureB extends StatefulWidget {
+class AddCroquis1 extends StatefulWidget {
   var Sin;
   var Temoin;
   var blesse;
@@ -32,24 +33,8 @@ class AddImageSignatureB extends StatefulWidget {
   var gauche;
   var hautA;
   var circonstanceA;
-  var signature;
-  var imagesignature;
-  var transA;
-  var vehiculeB;
-  var assureB;
-  var assuranceB;
-  var conducteurB;
-  var observB;
-  var photoB;
-  var arriereB;
-  var avantB;
-  var droiteB;
-  var gaucheB;
-  var hautB;
-  var circonstanceB;
-  var signatureB;
-
-  AddImageSignatureB(
+  var croquis;
+  AddCroquis1(
       {Key? key,
       this.Sin,
       this.Temoin,
@@ -66,31 +51,16 @@ class AddImageSignatureB extends StatefulWidget {
       this.gauche,
       this.hautA,
       this.circonstanceA,
-      this.signature,
-      this.imagesignature,
-      this.transA,
-      this.vehiculeB,
-      this.assureB,
-      this.assuranceB,
-      this.conducteurB,
-      this.observB,
-      this.photoB,
-      this.arriereB,
-      this.avantB,
-      this.droiteB,
-      this.gaucheB,
-      this.hautB,
-      this.circonstanceB,
-      this.signatureB})
+      this.croquis})
       : super(key: key);
 
   @override
-  State<AddImageSignatureB> createState() => _AddImageSignatureAState();
+  State<AddCroquis1> createState() => _AddCroquis1State();
 }
 
-class _AddImageSignatureAState extends State<AddImageSignatureB> {
+class _AddCroquis1State extends State<AddCroquis1> {
   var uuid = Uuid();
-  var imagesignatureB = [];
+  var imagecroquis = [];
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
 
@@ -201,56 +171,41 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('SignatureConducteurB')
+                .child('SignatureConducteur')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            await FirebaseFirestore.instance.collection('SignatureB').add({
-              'id_SignatureCB': widget.signatureB[0],
+            url = await ref.getDownloadURL();
+
+            // imagesignature = [uuid.v1(), url, _fullName];
+            await FirebaseFirestore.instance.collection('Croquis').add({
+              'id_croquisA': widget.croquis[0],
               'name': _fullName,
               'imageUrl': url,
             });
-            /* imagesignatureB = [
-              uuid.v1(),
-              _fullName,
-              url,
-            ]; */
           }
 
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => FaireCroquisA_B(
-                      Sin: widget.Sin,
-                      Temoin: widget.Temoin,
-                      blesse: widget.blesse,
-                      vehiculeA: widget.vehiculeA,
-                      assureA: widget.assureA,
-                      assuranceA: widget.assuranceA,
-                      conductA: widget.conductA,
-                      observ: widget.observ,
-                      photo: widget.photo,
-                      arriere: widget.arriere,
-                      avant: widget.avant,
-                      droit: widget.droit,
-                      gauche: widget.gauche,
-                      hautA: widget.hautA,
-                      circonstanceA: widget.circonstanceA,
-                      signature: widget.signature,
-                      imagesignature: widget.imagesignature,
-                      transA: widget.transA,
-                      vehiculeB: widget.vehiculeB,
-                      assureB: widget.assureB,
-                      assuranceB: widget.assuranceB,
-                      conducteurB: widget.conducteurB,
-                      observB: widget.observB,
-                      photoB: widget.photoB,
-                      arriereB: widget.arriereB,
-                      avantB: widget.avantB,
-                      droiteB: widget.droiteB,
-                      gaucheB: widget.gaucheB,
-                      circonstanceB: widget.circonstanceB,
-                      signatureB: widget.signatureB,
-                      imagesignatureB: imagesignatureB)));
+                  builder: (context) => SignaturePageA1(
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        arriere: widget.arriere,
+                        avant: widget.avant,
+                        droit: widget.droit,
+                        gauche: widget.gauche,
+                        hautA: widget.hautA,
+                        circonstanceA: widget.circonstanceA,
+                        croquis: widget.croquis,
+                        imagecroquis: imagecroquis,
+                      )));
         },
         child: Container(
           height: 50.0,

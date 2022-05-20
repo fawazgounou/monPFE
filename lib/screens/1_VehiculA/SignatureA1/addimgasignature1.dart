@@ -32,26 +32,30 @@ class AddImageSignatureA1 extends StatefulWidget {
   var gauche;
   var hautA;
   var circonstanceA;
+  var croquis;
+  var imagecroquis;
   var signature;
-  AddImageSignatureA1(
-      {Key? key,
-      this.Sin,
-      this.Temoin,
-      this.blesse,
-      this.vehiculeA,
-      this.assureA,
-      this.assuranceA,
-      this.conductA,
-      this.observ,
-      this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
-      this.circonstanceA,
-      this.signature})
-      : super(key: key);
+  AddImageSignatureA1({
+    Key? key,
+    this.Sin,
+    this.Temoin,
+    this.blesse,
+    this.vehiculeA,
+    this.assureA,
+    this.assuranceA,
+    this.conductA,
+    this.observ,
+    this.photo,
+    this.arriere,
+    this.avant,
+    this.droit,
+    this.gauche,
+    this.hautA,
+    this.circonstanceA,
+    this.croquis,
+    this.imagecroquis,
+    this.signature,
+  }) : super(key: key);
 
   @override
   State<AddImageSignatureA1> createState() => _AddImageSignatureA1State();
@@ -202,6 +206,8 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
                         gauche: widget.gauche,
                         hautA: widget.hautA,
                         circonstanceA: widget.circonstanceA,
+                        croquis: widget.croquis,
+                        imagecroquis: widget.imagecroquis,
                         signature: widget.signature,
                         imagesignature: imagesignature,
                       )));

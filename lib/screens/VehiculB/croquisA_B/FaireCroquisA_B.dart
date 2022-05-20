@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:insertion_bd/Model/model.dart';
-import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/addimgasignature1.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/preview_signature.dart';
 
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
+import 'package:insertion_bd/screens/VehiculB/croquisA_B/addcroquis.dart';
 import 'package:signature/signature.dart';
 import 'package:uuid/uuid.dart';
 
-class SignaturePageA1 extends StatefulWidget {
+
+class FaireCroquisA_B extends StatefulWidget {
   var Sin;
   var Temoin;
   var blesse;
@@ -25,39 +25,67 @@ class SignaturePageA1 extends StatefulWidget {
   var droit;
   var gauche;
   var hautA;
-  var croquis;
-  var imagecroquis;
+  var circonstanceA;
+  var signature;
+  var imagesignature;
+  var transA;
+  var vehiculeB;
+  var assureB;
+  var assuranceB;
+  var conducteurB;
+  var observB;
+  var photoB;
+  var arriereB;
+  var avantB;
+  var droiteB;
+  var gaucheB;
+  var hautB;
+  var circonstanceB;
+  var signatureB;
+  var imagesignatureB;
+  FaireCroquisA_B(
+      {Key? key,
+      this.Sin,
+      this.Temoin,
+      this.blesse,
+      this.vehiculeA,
+      this.assureA,
+      this.assuranceA,
+      this.conductA,
+      this.observ,
+      this.photo,
+      this.arriere,
+      this.avant,
+      this.droit,
+      this.gauche,
+      this.hautA,
+      this.circonstanceA,
+      this.signature,
+      this.imagesignature,
+      this.transA,
+      this.vehiculeB,
+      this.assureB,
+      this.assuranceB,
+      this.conducteurB,
+      this.observB,
+      this.photoB,
+      this.arriereB,
+      this.avantB,
+      this.droiteB,
+      this.gaucheB,
+      this.hautB,
+      this.circonstanceB,
+      this.signatureB,
+      this.imagesignatureB})
+      : super(key: key);
 
-  SignaturePageA1({
-    Key? key,
-    this.Sin,
-    this.Temoin,
-    this.blesse,
-    this.vehiculeA,
-    this.assureA,
-    this.assuranceA,
-    this.conductA,
-    this.observ,
-    this.photo,
-    this.arriere,
-    this.avant,
-    this.droit,
-    this.gauche,
-    this.hautA,
-    var circonstanceA,
-    this.croquis,
-    this.imagecroquis,
-  }) : super(key: key);
-
-  get circonstanceA => null;
   @override
-  _SignaturePageA1State createState() => _SignaturePageA1State();
+  _FaireCroquisA_BState createState() => _FaireCroquisA_BState();
 }
 
-class _SignaturePageA1State extends State<SignaturePageA1> {
+class _FaireCroquisA_BState extends State<FaireCroquisA_B> {
   var uuid = Uuid();
-  var signature = [];
-
+  var croquisA_B = [];
   late SignatureController controller;
 
   @override
@@ -103,11 +131,11 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
         ),
         bottomNavigationBar: GestureDetector(
           onTap: () {
-            signature = [uuid.v1()];
+            croquisA_B = [uuid.v1()];
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => AddImageSignatureA1(
+                    builder: (context) => AddcroquisA_B(
                         Sin: widget.Sin,
                         Temoin: widget.Temoin,
                         blesse: widget.blesse,
@@ -123,9 +151,25 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
                         gauche: widget.gauche,
                         hautA: widget.hautA,
                         circonstanceA: widget.circonstanceA,
-                        croquis: widget.croquis,
-                        imagecroquis: widget.imagecroquis,
-                        signature: signature)));
+                        signature: widget.signature,
+                        imagesignature: widget.imagesignature,
+                        transA: widget.transA,
+                        vehiculeB: widget.vehiculeB,
+                        assureB: widget.assureB,
+                        assuranceB: widget.assuranceB,
+                        conducteurB: widget.conducteurB,
+                        observB: widget.observB,
+                        photoB: widget.photoB,
+                        arriereB: widget.arriereB,
+                        avantB: widget.avantB,
+                        droiteB: widget.droiteB,
+                        gaucheB: widget.gaucheB,
+                        circonstanceB: widget.circonstanceB,
+                        signatureB: widget.signatureB,
+                        imagesignatureB:widget.imagesignatureB,
+                        croquisA_B:croquisA_B
+
+                        )));
           },
           child: Container(
             height: 50.0,

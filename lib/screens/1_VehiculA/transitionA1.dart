@@ -20,28 +20,32 @@ class TransitionA1 extends StatefulWidget {
   var gauche;
   var hautA;
   var circonstanceA;
+  var croquis;
+  var imagecroquis;
   var signature;
   var imagesignature;
-  TransitionA1(
-      {Key? key,
-      this.Sin,
-      this.Temoin,
-      this.blesse,
-      this.vehiculeA,
-      this.assureA,
-      this.assuranceA,
-      this.conductA,
-      this.observ,
-      this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
-      this.circonstanceA,
-      this.signature,
-      this.imagesignature})
-      : super(key: key);
+  TransitionA1({
+    Key? key,
+    this.Sin,
+    this.Temoin,
+    this.blesse,
+    this.vehiculeA,
+    this.assureA,
+    this.assuranceA,
+    this.conductA,
+    this.observ,
+    this.photo,
+    this.arriere,
+    this.avant,
+    this.droit,
+    this.gauche,
+    this.hautA,
+    this.circonstanceA,
+    this.croquis,
+    this.imagecroquis,
+    this.signature,
+    this.imagesignature,
+  }) : super(key: key);
 
   @override
   State<TransitionA1> createState() => _TransitionA1State();
@@ -174,6 +178,7 @@ class _TransitionA1State extends State<TransitionA1> {
                           .add({
                         'id_CirconstanceA': widget.circonstanceA[0],
                         'Circonstance': widget.circonstanceA[1],
+                        'id_croquisA': widget.croquis[0],
                       });
                       FirebaseFirestore.instance.collection('Sinistre').add({
                         'id': widget.Sin[0],
