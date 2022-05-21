@@ -125,14 +125,14 @@ class _TransitionBState extends State<TransitionB> {
                   ]),
                   child: ElevatedButton(
                     onPressed: () {
-                      /*  FirebaseFirestore.instance.collection('Temoins').add({
+                       FirebaseFirestore.instance.collection('Temoins').add({
                         'id': widget.Temoin[0],
                         'nom': widget.Temoin[1],
                         'prenom': widget.Temoin[2],
                         'Adresse': widget.Temoin[3],
                         'Telephone': widget.Temoin[4],
                         'id_sinistre': widget.Sin[0],
-                      }); */
+                      }); 
 
                       FirebaseFirestore.instance.collection('Blesse').add({
                         'id': widget.blesse[0],
@@ -210,6 +210,7 @@ class _TransitionBState extends State<TransitionB> {
                           .add({
                         'id_CirconstanceA': widget.circonstanceA[0],
                         'Circonstance': widget.circonstanceA[1],
+                        'id_croquisA_B': widget.croquisA_B[0],
                       });
 
                       FirebaseFirestore.instance.collection('VehiculeB').add({
@@ -274,6 +275,7 @@ class _TransitionBState extends State<TransitionB> {
                           .add({
                         'id_CirconstanceB': widget.circonstanceB[0],
                         'Circonstance': widget.circonstanceB[1],
+                        'id_croquisA_B': widget.croquisA_B[0],
                       });
                       FirebaseFirestore.instance.collection('Sinistre').add({
                         'id': widget.Sin[0],

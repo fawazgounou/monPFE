@@ -4,6 +4,7 @@ import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:intl/intl.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:multiselect/multiselect.dart';
 import 'package:uuid/uuid.dart';
 
@@ -51,8 +52,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
       placeholder: "Adresse Agence", title: "Adresse", initialValue: '');
   CustomTextField paysagenceA = CustomTextField(
       placeholder: "Pays Agence", title: "Pays", initialValue: '');
-  CustomNumberField telephoneagenceA = CustomNumberField(
-      placeholder: "Téléphone Agence", title: "Téléphone", initialValue: '');
+ 
   CustomTextField emailagenceA = CustomTextField(
       placeholder: "Email Agence", title: "Email", initialValue: '');
   TextEditingController dateinput = TextEditingController();
@@ -64,7 +64,8 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
     dateinput2.text = "";
     super.initState();
   }
-
+final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
   bool oui = false;
   bool non = false;
   String? _dropDownValue;
@@ -77,7 +78,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
     nomagence.err = "Entrer le Nom de l'agence";
     adresseagenceA.err = "Entrer l'Adresse l'agence'";
     paysagenceA.err = "Entrer le Pays Agence";
-    telephoneagenceA.err = "Entrer le Téléphone";
+   
     emailagenceA.err = "Entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
@@ -262,9 +263,23 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
                     SizedBox(
                       width: 10,
                     ),
-                    Expanded(
-                      child: telephoneagenceA.textfrofield(),
+                     Expanded(
                       flex: 1,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
                     ),
                   ],
                 ),
@@ -370,7 +385,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
               nomagence.value,
               adresseagenceA.value,
               paysagenceA.value,
-              telephoneagenceA.value,
+              numbertelephone.value,
               emailagenceA.value,
               index.toString(),
             ];

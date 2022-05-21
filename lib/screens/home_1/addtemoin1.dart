@@ -5,9 +5,11 @@ import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/screens/home/addblesse.dart';
 import 'package:insertion_bd/screens/home_1/addblesse1.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+
 import 'package:responsive_row/responsive_row.dart';
 import 'package:uuid/uuid.dart';
 import '../../widgets/customTextField.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class AddTemoins1 extends StatefulWidget {
   var Sin;
@@ -18,7 +20,7 @@ class AddTemoins1 extends StatefulWidget {
 }
 
 class _AddTemoins1State extends State<AddTemoins1> {
-   var uuid = Uuid();
+  var uuid = Uuid();
   var Temoin = [];
   CustomTextField nomtemoin = CustomTextField(
       placeholder: "Entrer le nom", title: "Nom", initialValue: '');
@@ -29,6 +31,10 @@ class _AddTemoins1State extends State<AddTemoins1> {
   CustomNumberField telephone = CustomNumberField(
       placeholder: "Entrer le téléphone", title: "Téléphone", initialValue: '');
   bool err = false;
+
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
+
   var result;
   final _key = GlobalKey<FormState>();
   @override
@@ -36,7 +42,7 @@ class _AddTemoins1State extends State<AddTemoins1> {
     nomtemoin.err = "Entrer le Nom ";
     prenomtemoin.err = "Entrer le Prenom";
     adressetemoin.err = " Entrer l'Adresse'";
-    telephone.err = " Entrer le Téléphone";
+    telephone.err = "Entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -76,7 +82,23 @@ class _AddTemoins1State extends State<AddTemoins1> {
                 ),
                 Row(
                   children: [
-                    Expanded(flex: 1, child: telephone.textfrofield()),
+                    Expanded(
+                      flex: 2,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration:
+                            const InputDecoration(hintText: 'Téléphone', hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
+                    ),
                     SizedBox(
                       width: 10,
                     ),
@@ -84,20 +106,22 @@ class _AddTemoins1State extends State<AddTemoins1> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                         /*  Temoin.add(
+                          Temoin = [
+                            uuid.v1(),
                             nomtemoin.value,
-                           prenomtemoin.value,
-                              adressetemoin.value, telephone.value); */
+                            prenomtemoin.value,
+                            adressetemoin.value,
+                            numbertelephone.value
+                          ];
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
                           shadowColor: Colors.lightBlue.withOpacity(.7),
                         ),
-                        child: const Text(
-                          "+ de Témoin",
-                          style: TextStyle(color: Colors.white, fontSize: 19),
-                        ),
+                        child: const Text("+ de Témoin",
+                            style: TextStyle(color: Colors.white, fontSize: 17),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                   ],
@@ -115,22 +139,23 @@ class _AddTemoins1State extends State<AddTemoins1> {
               nomtemoin.value,
               prenomtemoin.value,
               adressetemoin.value,
-              telephone.value
+              numbertelephone.value
             ];
-             print(widget.Sin);
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) =>  AddBlesse1(
-                 Sin: widget.Sin,
-                 Temoin: Temoin,
-                 
-                )));
+            print(widget.Sin);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddBlesse1(
+                          Sin: widget.Sin,
+                          Temoin: Temoin,
+                        )));
           }
         },
         child: Container(
           height: 50.0,
           width: double.infinity,
           color: Colors.blue,
-          child: Text(
+          child: const Text(
             "Suivant",
             style: TextStyle(
                 color: Colors.white,

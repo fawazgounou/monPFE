@@ -4,6 +4,7 @@ import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addassuranceA.dart';
 import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
@@ -37,14 +38,13 @@ class _AddAssureAState extends State<AddAssureA> {
       placeholder: "Entrer le Code Postal",
       title: "Code Postal",
       initialValue: '');
-  CustomNumberField telephoneassureA = CustomNumberField(
-      placeholder: "Entrer le Téléphone",
-      title: "Téléphon Assuré",
-      initialValue: '');
+ 
   CustomTextField emailA = CustomTextField(
       placeholder: "Entrer le mail", title: "Email Assuré", initialValue: '');
 
   final _key = GlobalKey<FormState>();
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _AddAssureAState extends State<AddAssureA> {
     prenomassureA.err = "Entrer le Prénom";
     adresseassureA.err = "Entrer l'Adresse'";
     codepostalA.err = "Entrer le Code Poastal";
-    telephoneassureA.err = "Entrer le Téléphone";
+  
     emailA.err = "Entrer le Mail";
     return Scaffold(
       appBar: AppBar(
@@ -97,9 +97,23 @@ class _AddAssureAState extends State<AddAssureA> {
                     SizedBox(
                       width: 10,
                     ),
-                    Expanded(
-                      child: telephoneassureA.textfrofield(),
+                  Expanded(
                       flex: 1,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
                     ),
                   ],
                 ),
@@ -119,7 +133,7 @@ class _AddAssureAState extends State<AddAssureA> {
               uuid.v1(),
               nomassureA.value,
               prenomassureA.value,
-              telephoneassureA.value,
+              numbertelephone.value,
               adresseassureA.value,
               codepostalA.value,
               emailA.value

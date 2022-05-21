@@ -19,6 +19,7 @@ class _Localisation1State extends State<Localisation1> {
   var Sin = [];
   String location = 'localisation';
   String Adresse = '';
+  String localisatMaps = '';
   TextEditingController localisation = TextEditingController();
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -50,7 +51,11 @@ class _Localisation1State extends State<Localisation1> {
         await placemarkFromCoordinates(position.latitude, position.longitude);
 
     Placemark place = placemark[0];
-    Adresse = '${place.locality}, ${place.country} ';
+
+    Adresse = '${place.locality},${place.country}';
+    localisatMaps =
+        '${place.locality},${place.country},${place.street},${place.postalCode},${place.subLocality},${place.subThoroughfare},';
+
     setState(() {});
   }
 
@@ -129,7 +134,7 @@ class _Localisation1State extends State<Localisation1> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {
-          Sin = [uuid.v1(), Adresse.toString(), "", "", "", "", ""];
+          Sin = [uuid.v1(), localisatMaps.toString(), "", "", "", "", ""];
           Navigator.push(
               context,
               MaterialPageRoute(

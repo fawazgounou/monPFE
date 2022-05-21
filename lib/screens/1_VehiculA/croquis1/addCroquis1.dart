@@ -171,7 +171,7 @@ class _AddCroquis1State extends State<AddCroquis1> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('SignatureConducteur')
+                .child('Imagecroquis')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();

@@ -6,6 +6,7 @@ import 'package:insertion_bd/screens/VehiculA/addobservationA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:insertion_bd/widgets/customTextField.dart';
 import 'package:intl/intl.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:uuid/uuid.dart';
 
 class AddConducteurA1 extends StatefulWidget {
@@ -66,13 +67,16 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
     super.initState();
   }
 
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     nomconducteurA.err = "Entrer le Nom ";
     prenomconducteurA.err = "Entrer le Prénom";
     adresseconducteurA.err = "Entrer l'Adresse'";
     paysconducteurA.err = "Entrer le Code Pays";
-    telephoneconducteurA.err = "Entrer le Téléphone";
+
     emailconducteurA.err = "Entrer le Mail";
     numpermisdeconduireA.err = "Entrer le Numéro du Permis";
     categorieA.err = "Entrer la Catégorie";
@@ -167,8 +171,22 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
                       width: 10,
                     ),
                     Expanded(
-                      child: telephoneconducteurA.textfrofield(),
                       flex: 1,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
                     ),
                   ],
                 ),
@@ -256,7 +274,7 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
               adresseconducteurA.value,
               dateinput.text,
               paysconducteurA.value,
-              telephoneconducteurA.value,
+              numbertelephone.value,
               categorieA.value,
               emailconducteurA.value,
               dateinputV.text,

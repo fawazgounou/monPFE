@@ -9,7 +9,6 @@ import 'package:insertion_bd/screens/VehiculB/croquisA_B/addcroquis.dart';
 import 'package:signature/signature.dart';
 import 'package:uuid/uuid.dart';
 
-
 class FaireCroquisA_B extends StatefulWidget {
   var Sin;
   var Temoin;
@@ -108,7 +107,7 @@ class _FaireCroquisA_BState extends State<FaireCroquisA_B> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Signature Conducteur A",
+            "Faire un croquis",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -120,7 +119,7 @@ class _FaireCroquisA_BState extends State<FaireCroquisA_B> {
               width: 400,
               child: Signature(
                 controller: controller,
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.red,
               ),
             ),
             buildButtons(context),
@@ -166,17 +165,15 @@ class _FaireCroquisA_BState extends State<FaireCroquisA_B> {
                         gaucheB: widget.gaucheB,
                         circonstanceB: widget.circonstanceB,
                         signatureB: widget.signatureB,
-                        imagesignatureB:widget.imagesignatureB,
-                        croquisA_B:croquisA_B
-
-                        )));
+                        imagesignatureB: widget.imagesignatureB,
+                        croquisA_B: croquisA_B)));
           },
           child: Container(
             height: 50.0,
             width: double.infinity,
             color: Colors.blue,
             child: const Text(
-              "Importer l'image",
+              "Importer le croquis",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 25.0,

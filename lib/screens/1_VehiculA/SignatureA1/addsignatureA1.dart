@@ -27,6 +27,7 @@ class SignaturePageA1 extends StatefulWidget {
   var hautA;
   var croquis;
   var imagecroquis;
+  var circonstanceA;
 
   SignaturePageA1({
     Key? key,
@@ -44,12 +45,11 @@ class SignaturePageA1 extends StatefulWidget {
     this.droit,
     this.gauche,
     this.hautA,
-    var circonstanceA,
+    this.circonstanceA,
     this.croquis,
     this.imagecroquis,
   }) : super(key: key);
 
-  get circonstanceA => null;
   @override
   _SignaturePageA1State createState() => _SignaturePageA1State();
 }

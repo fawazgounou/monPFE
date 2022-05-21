@@ -4,6 +4,7 @@ import 'package:insertion_bd/screens/VehiculA/addconducteurA.dart';
 import 'package:insertion_bd/screens/VehiculB/addconducteurB.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:intl/intl.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:multiselect/multiselect.dart';
 import 'package:uuid/uuid.dart';
 
@@ -81,13 +82,14 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
       placeholder: "Adresse Agence", title: "Adresse", initialValue: '');
   CustomTextField paysagenceB = CustomTextField(
       placeholder: "Pays Agence", title: "Pays", initialValue: '');
-  CustomNumberField telephoneagenceB = CustomNumberField(
-      placeholder: "Téléphone Agence", title: "Téléphone", initialValue: '');
+
   CustomTextField emailagenceB = CustomTextField(
       placeholder: "Email Agence", title: "Email", initialValue: '');
   TextEditingController dateinput = TextEditingController();
   TextEditingController dateinput2 = TextEditingController();
   final _key = GlobalKey<FormState>();
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
   @override
   void initState() {
     dateinput.text = "";
@@ -97,17 +99,16 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
 
   bool oui = false;
   bool non = false;
- String? _dropDownValue;
+  String? _dropDownValue;
   @override
   Widget build(BuildContext context) {
-  
     numcontratB.err = "Entrer le Numéro du contrat";
     numcarteverteB.err = "Entrer le Numéro de la carte verte'";
     agenceB.err = "Entrer te type D'agence";
     nomagence.err = "Entrer le Nom de l'agence";
     adresseagenceB.err = "Entrer l'Adresse l'agence'";
     paysagenceB.err = "Entrer le Pays Agence";
-    telephoneagenceB.err = "Entrer le Téléphone";
+
     emailagenceB.err = "Entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
@@ -293,8 +294,22 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
                       width: 10,
                     ),
                     Expanded(
-                      child: telephoneagenceB.textfrofield(),
                       flex: 1,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
                     ),
                   ],
                 ),
@@ -400,7 +415,7 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
               nomagence.value,
               adresseagenceB.value,
               paysagenceB.value,
-              telephoneagenceB.value,
+              numbertelephone.value,
               emailagenceB.value,
               index.toString(),
             ];

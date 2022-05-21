@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/addimgasignature1.dart';
 import 'package:insertion_bd/screens/1_VehiculA/croquis1/addCroquis1.dart';
+import 'package:insertion_bd/screens/1_VehiculA/croquis1/preview_signature.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/preview_signature.dart';
 
 import 'dart:typed_data';
@@ -50,7 +51,7 @@ class FaireCroquis1 extends StatefulWidget {
 }
 
 class _FaireCroquis1State extends State<FaireCroquis1> {
-  var uuid = Uuid();
+  var uuid = const Uuid();
   var croquis = [];
 
   late SignatureController controller;
@@ -159,7 +160,7 @@ class _FaireCroquis1State extends State<FaireCroquis1> {
             final signature = await exportSignature();
 
             await Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SignaturePreviewPage(signature: signature!),
+              builder: (context) => CroquisPreviewPage(signature: signature!),
             ));
 
             controller.clear();

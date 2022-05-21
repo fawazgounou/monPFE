@@ -5,6 +5,7 @@ import 'package:insertion_bd/screens/VehiculB/addobservationB.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
 import 'package:insertion_bd/widgets/customTextField.dart';
 import 'package:intl/intl.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:uuid/uuid.dart';
 
 class AddConducteurB extends StatefulWidget {
@@ -68,10 +69,7 @@ class _AddConducteurBState extends State<AddConducteurB> {
       placeholder: "Entrer l'Adresse", title: "Adresse ", initialValue: '');
   CustomTextField paysconducteurB = CustomTextField(
       placeholder: "Entrer le Pays", title: "Pays", initialValue: '');
-  CustomNumberField telephoneconducteurB = CustomNumberField(
-      placeholder: "Entrer le Téléphone",
-      title: "Téléphone ",
-      initialValue: '');
+ 
   CustomTextField emailconducteurB = CustomTextField(
       placeholder: "Entrer le mail", title: "Email ", initialValue: '');
   CustomNumberField numpermisdeconduireB = CustomNumberField(
@@ -93,6 +91,8 @@ class _AddConducteurBState extends State<AddConducteurB> {
     dateinputV.text = "";
     super.initState();
   }
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class _AddConducteurBState extends State<AddConducteurB> {
     prenomconducteurB.err = "Entrer le Prénom";
     adresseconducteurB.err = "Entrer l'Adresse'";
     paysconducteurB.err = "Entrer le Code Pays";
-    telephoneconducteurB.err = "Entrer le Téléphone";
+    
     emailconducteurB.err = "Entrer le Mail";
     numpermisdeconduireB.err = "Entrer le Numéro du Permis";
     categorieB.err = "Entrer la Catégorie";
@@ -195,8 +195,22 @@ class _AddConducteurBState extends State<AddConducteurB> {
                       width: 10,
                     ),
                     Expanded(
-                      child: telephoneconducteurB.textfrofield(),
                       flex: 1,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
                     ),
                   ],
                 ),
@@ -284,7 +298,7 @@ class _AddConducteurBState extends State<AddConducteurB> {
               adresseconducteurB.value,
               dateinput.text,
               paysconducteurB.value,
-              telephoneconducteurB.value,
+              numbertelephone.value,
               emailconducteurB.value,
               numpermisdeconduireB.value,
               categorieB.value,

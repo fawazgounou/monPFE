@@ -178,7 +178,6 @@ class _TransitionA1State extends State<TransitionA1> {
                           .add({
                         'id_CirconstanceA': widget.circonstanceA[0],
                         'Circonstance': widget.circonstanceA[1],
-                        'id_croquisA': widget.croquis[0],
                       });
                       FirebaseFirestore.instance.collection('Sinistre').add({
                         'id': widget.Sin[0],

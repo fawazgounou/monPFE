@@ -4,6 +4,7 @@ import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/1_VehiculA/addvehiculA1.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../widgets/customTextField.dart';
@@ -30,10 +31,7 @@ class _AddBlesse1State extends State<AddBlesse1> {
       placeholder: "Entrer  Adresse",
       title: "Adresse Blessé(s)",
       initialValue: '');
-  CustomNumberField telephone = CustomNumberField(
-      placeholder: "Entrer le téléphone",
-      title: "Téléphone Blessé(s)",
-      initialValue: '');
+  
   CustomTextField profession = CustomTextField(
       placeholder: "Entrer la profession",
       title: "Profession",
@@ -53,6 +51,8 @@ class _AddBlesse1State extends State<AddBlesse1> {
       placeholder: "Entrer la gravité",
       title: " Gravité des Blessures",
       initialValue: '');
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
 
   final _key = GlobalKey<FormState>();
   @override
@@ -60,7 +60,7 @@ class _AddBlesse1State extends State<AddBlesse1> {
     nomblesse.err = "Entrer le Nom";
     prenomblesse.err = "Entrer le Prénom";
     adresseblesse.err = "Entrer l'Adresse ";
-    telephone.err = "Entrer le Téléphone";
+   
     profession.err = "Entrer la Profession";
     situation.err = "Entrer la Situation ";
     casqueceinture.err = "Entrer repondre ";
@@ -103,7 +103,23 @@ class _AddBlesse1State extends State<AddBlesse1> {
                 ),
                 Row(
                   children: [
-                    Expanded(flex: 1, child: telephone.textfrofield()),
+                    Expanded(
+                      flex: 1,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration:
+                            const InputDecoration(hintText: 'Téléphone', hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
+                    ),
                     SizedBox(
                       width: 10,
                     ),
@@ -152,19 +168,18 @@ class _AddBlesse1State extends State<AddBlesse1> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          /*  Blesse(
-                              nomb: nomblesse.value,
-                              prenomb: prenomblesse.value,
-                              adresseb: adresseblesse.value,
-                              telephoneb: telephone.value,
-                              professionb: profession.value,
-                              situationb: situation.value,
-                              casqueb: casqueceinture.value,
-                              centreHospitalierb: premiersoinslieu.value,
-                              natureGraviteb: gravitenature.value); */
-                          /*  FirebaseFirestore.instance
-                              .collection('Blesse')
-                              .add({}); */
+                          blesse = [
+                            uuid.v1(),
+                            nomblesse.value,
+                            prenomblesse.value,
+                            adresseblesse.value,
+                            numbertelephone.value,
+                            profession.value,
+                            situation.value,
+                            casqueceinture.value,
+                            premiersoinslieu.value,
+                            gravitenature.value
+                          ];
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -195,7 +210,7 @@ class _AddBlesse1State extends State<AddBlesse1> {
               nomblesse.value,
               prenomblesse.value,
               adresseblesse.value,
-              telephone.value,
+              numbertelephone.value,
               profession.value,
               situation.value,
               casqueceinture.value,

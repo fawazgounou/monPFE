@@ -4,6 +4,7 @@ import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/VehiculA/addvehiculA.dart';
 import 'package:insertion_bd/screens/home/addblesse.dart';
 import 'package:insertion_bd/widgets/customNumberField.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:responsive_row/responsive_row.dart';
 import 'package:uuid/uuid.dart';
 import '../../widgets/customTextField.dart';
@@ -25,17 +26,18 @@ class _AddTemoinsState extends State<AddTemoins> {
       placeholder: "Entrer le Prenom", title: "Prénom", initialValue: '');
   CustomTextField adressetemoin = CustomTextField(
       placeholder: "Entrer  Adresse", title: "Adresse", initialValue: '');
-  CustomNumberField telephone = CustomNumberField(
-      placeholder: "Entrer le téléphone", title: "Téléphone", initialValue: '');
+  
   bool err = false;
-  var result;
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  final TextEditingController numbertelephone = TextEditingController();
+
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     nomtemoin.err = "Entrer le Nom ";
     prenomtemoin.err = "Entrer le Prenom";
     adressetemoin.err = " Entrer l'Adresse'";
-    telephone.err = " Entrer le Téléphone";
+   
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -75,7 +77,23 @@ class _AddTemoinsState extends State<AddTemoins> {
                 ),
                 Row(
                   children: [
-                    Expanded(flex: 1, child: telephone.textfrofield()),
+                    Expanded(
+                      flex: 2,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Entrer le Téléphone";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: numbertelephone,
+                        keyboardType: TextInputType.number,
+                        decoration:
+                            const InputDecoration(hintText: 'Téléphone', hintStyle: TextStyle(color: Colors.black)),
+                        inputFormatters: [maskFormatter],
+                      ),
+                    ),
                     SizedBox(
                       width: 10,
                     ),
@@ -114,7 +132,7 @@ class _AddTemoinsState extends State<AddTemoins> {
               nomtemoin.value,
               prenomtemoin.value,
               adressetemoin.value,
-              telephone.value
+              numbertelephone.value
             ];
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) =>  AddBlesse(
