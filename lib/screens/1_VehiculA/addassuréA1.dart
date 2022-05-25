@@ -57,7 +57,7 @@ class _AddAssureA1State extends State<AddAssureA1> {
     emailA.err = "Entrer le Mail";
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informaions Assuré A"),
+        title: const Text("Informaions Assuré A", style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

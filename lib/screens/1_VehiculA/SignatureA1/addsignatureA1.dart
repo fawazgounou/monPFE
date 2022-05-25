@@ -132,7 +132,7 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
             width: double.infinity,
             color: Colors.blue,
             child: const Text(
-              "Importer l'image",
+              "Importer la Signature",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 25.0,

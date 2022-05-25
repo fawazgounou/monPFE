@@ -105,7 +105,7 @@ class _SignaturePageBState extends State<SignaturePageB> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Signature Conducteur A",
+            "Signature Conducteur B",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -169,7 +169,7 @@ class _SignaturePageBState extends State<SignaturePageB> {
             width: double.infinity,
             color: Colors.blue,
             child: const Text(
-              "Importer l'image",
+              "Importer la signature",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 25.0,

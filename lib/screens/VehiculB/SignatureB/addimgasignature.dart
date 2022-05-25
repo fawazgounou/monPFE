@@ -138,7 +138,7 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Indications Choc A",
+          "Signature Conducteur B",
         ),
         centerTitle: true,
       ),
@@ -204,9 +204,8 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                 .child('SignatureConducteurB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            await FirebaseFirestore.instance.collection('SignatureB').add({
-              'id_SignatureCB': widget.signatureB[0],
-              'name': _fullName,
+            await FirebaseFirestore.instance.collection('SignatureB').doc(widget.signatureB[0]).set({
+             'name': _fullName,
               'imageUrl': url,
             });
             /* imagesignatureB = [

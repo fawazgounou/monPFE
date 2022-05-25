@@ -8,9 +8,10 @@ import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:insertion_bd/screens/VehiculB/transitionB.dart';
 import 'package:insertion_bd/screens/home/home.dart';
 import 'package:insertion_bd/screens/home_1/localisation1.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
     const MyApp(),
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       title: 'Déclare ton Sinistre',
-      home: Home(),
+      home: AddAssuranceA1(),
     );
   }
 }

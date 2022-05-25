@@ -144,350 +144,343 @@ class _AddPhotoBState extends State<AddPhotoB> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Avant',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              )
-                            ]),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                photoB = [uuid.v1()];
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AddAvantB(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: widget.photo,
-                                            arriere: widget.arriere,
-                                            avant: widget.avant,
-                                            droit: widget.droit,
-                                            gauche: widget.gauche,
-                                            hautA: widget.hautA,
-                                            circonstanceA: widget.circonstanceA,
-                                            signature: widget.signature,
-                                            imagesignature:
-                                                widget.imagesignature,
-                                            transA: widget.transA,
-                                            vehiculeB: widget.vehiculeB,
-                                            assureB: widget.assureB,
-                                            assuranceB: widget.assuranceB,
-                                            conducteurB: widget.conducteurB,
-                                            observB: widget.observB,
-                                            photoB: photoB)));
-                              },
-                              child: Image.asset(
-                                'assets/image/avant.jpg',
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.cover,
-                              ),
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Avant',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            )
+                          ]),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              photoB = [uuid.v1()];
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddAvantB(
+                                          Sin: widget.Sin,
+                                          Temoin: widget.Temoin,
+                                          blesse: widget.blesse,
+                                          vehiculeA: widget.vehiculeA,
+                                          assureA: widget.assureA,
+                                          assuranceA: widget.assuranceA,
+                                          conductA: widget.conductA,
+                                          observ: widget.observ,
+                                          photo: widget.photo,
+                                          arriere: widget.arriere,
+                                          avant: widget.avant,
+                                          droit: widget.droit,
+                                          gauche: widget.gauche,
+                                          hautA: widget.hautA,
+                                          circonstanceA: widget.circonstanceA,
+                                          signature: widget.signature,
+                                          imagesignature: widget.imagesignature,
+                                          transA: widget.transA,
+                                          vehiculeB: widget.vehiculeB,
+                                          assureB: widget.assureB,
+                                          assuranceB: widget.assuranceB,
+                                          conducteurB: widget.conducteurB,
+                                          observB: widget.observB,
+                                          photoB: photoB)));
+                            },
+                            child: Image.asset(
+                              'assets/image/avant.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Coté Droite',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              )
-                            ]),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                photoB = [uuid.v1()];
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CoteDroitB(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: widget.photo,
-                                            arriere: widget.arriere,
-                                            avant: widget.avant,
-                                            droit: widget.droit,
-                                            gauche: widget.gauche,
-                                            hautA: widget.hautA,
-                                            circonstanceA: widget.circonstanceA,
-                                            signature: widget.signature,
-                                            imagesignature:
-                                                widget.imagesignature,
-                                            transA: widget.transA,
-                                            vehiculeB: widget.vehiculeB,
-                                            assureB: widget.assureB,
-                                            assuranceB: widget.assuranceB,
-                                            conducteurB: widget.conducteurB,
-                                            observB: widget.observB,
-                                            photoB: photoB)));
-                              },
-                              child: Image.asset(
-                                'assets/image/coté_droite.jpg',
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.cover,
-                              ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Coté Droite',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            )
+                          ]),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              photoB = [uuid.v1()];
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CoteDroitB(
+                                          Sin: widget.Sin,
+                                          Temoin: widget.Temoin,
+                                          blesse: widget.blesse,
+                                          vehiculeA: widget.vehiculeA,
+                                          assureA: widget.assureA,
+                                          assuranceA: widget.assuranceA,
+                                          conductA: widget.conductA,
+                                          observ: widget.observ,
+                                          photo: widget.photo,
+                                          arriere: widget.arriere,
+                                          avant: widget.avant,
+                                          droit: widget.droit,
+                                          gauche: widget.gauche,
+                                          hautA: widget.hautA,
+                                          circonstanceA: widget.circonstanceA,
+                                          signature: widget.signature,
+                                          imagesignature: widget.imagesignature,
+                                          transA: widget.transA,
+                                          vehiculeB: widget.vehiculeB,
+                                          assureB: widget.assureB,
+                                          assuranceB: widget.assuranceB,
+                                          conducteurB: widget.conducteurB,
+                                          observB: widget.observB,
+                                          photoB: photoB)));
+                            },
+                            child: Image.asset(
+                              'assets/image/coté_droite.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ],
-                      ),
-                      flex: 1,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Coté Gauche',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              )
-                            ]),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                photoB = [uuid.v1()];
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CoteGaucheB(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: widget.photo,
-                                            arriere: widget.arriere,
-                                            avant: widget.avant,
-                                            droit: widget.droit,
-                                            gauche: widget.gauche,
-                                            hautA: widget.hautA,
-                                            circonstanceA: widget.circonstanceA,
-                                            signature: widget.signature,
-                                            imagesignature:
-                                                widget.imagesignature,
-                                            transA: widget.transA,
-                                            vehiculeB: widget.vehiculeB,
-                                            assureB: widget.assureB,
-                                            assuranceB: widget.assuranceB,
-                                            conducteurB: widget.conducteurB,
-                                            observB: widget.observB,
-                                            photoB: photoB)));
-                              },
-                              child: Image.asset(
-                                'assets/image/coté_droite.jpg',
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.cover,
-                              ),
+                    flex: 1,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Coté Gauche',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            )
+                          ]),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              photoB = [uuid.v1()];
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CoteGaucheB(
+                                          Sin: widget.Sin,
+                                          Temoin: widget.Temoin,
+                                          blesse: widget.blesse,
+                                          vehiculeA: widget.vehiculeA,
+                                          assureA: widget.assureA,
+                                          assuranceA: widget.assuranceA,
+                                          conductA: widget.conductA,
+                                          observ: widget.observ,
+                                          photo: widget.photo,
+                                          arriere: widget.arriere,
+                                          avant: widget.avant,
+                                          droit: widget.droit,
+                                          gauche: widget.gauche,
+                                          hautA: widget.hautA,
+                                          circonstanceA: widget.circonstanceA,
+                                          signature: widget.signature,
+                                          imagesignature: widget.imagesignature,
+                                          transA: widget.transA,
+                                          vehiculeB: widget.vehiculeB,
+                                          assureB: widget.assureB,
+                                          assuranceB: widget.assuranceB,
+                                          conducteurB: widget.conducteurB,
+                                          observB: widget.observB,
+                                          photoB: photoB)));
+                            },
+                            child: Image.asset(
+                              'assets/image/coté_droite.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ],
-                      ),
-                      flex: 1,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Arrière',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              )
-                            ]),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                photoB = [uuid.v1()];
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => ArrierevB(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: widget.photo,
-                                            arriere: widget.arriere,
-                                            avant: widget.avant,
-                                            droit: widget.droit,
-                                            gauche: widget.gauche,
-                                            hautA: widget.hautA,
-                                            circonstanceA: widget.circonstanceA,
-                                            signature: widget.signature,
-                                            imagesignature:
-                                                widget.imagesignature,
-                                            transA: widget.transA,
-                                            vehiculeB: widget.vehiculeB,
-                                            assureB: widget.assureB,
-                                            assuranceB: widget.assuranceB,
-                                            conducteurB: widget.conducteurB,
-                                            observB: widget.observB,
-                                            photoB: photoB)));
-                              },
-                              child: Image.asset(
-                                'assets/image/arriere.jpg',
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.cover,
-                              ),
+                    flex: 1,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Arrière',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            )
+                          ]),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              photoB = [uuid.v1()];
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ArrierevB(
+                                          Sin: widget.Sin,
+                                          Temoin: widget.Temoin,
+                                          blesse: widget.blesse,
+                                          vehiculeA: widget.vehiculeA,
+                                          assureA: widget.assureA,
+                                          assuranceA: widget.assuranceA,
+                                          conductA: widget.conductA,
+                                          observ: widget.observ,
+                                          photo: widget.photo,
+                                          arriere: widget.arriere,
+                                          avant: widget.avant,
+                                          droit: widget.droit,
+                                          gauche: widget.gauche,
+                                          hautA: widget.hautA,
+                                          circonstanceA: widget.circonstanceA,
+                                          signature: widget.signature,
+                                          imagesignature: widget.imagesignature,
+                                          transA: widget.transA,
+                                          vehiculeB: widget.vehiculeB,
+                                          assureB: widget.assureB,
+                                          assuranceB: widget.assuranceB,
+                                          conducteurB: widget.conducteurB,
+                                          observB: widget.observB,
+                                          photoB: photoB)));
+                            },
+                            child: Image.asset(
+                              'assets/image/arriere.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ],
-                      ),
-                      flex: 1,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          const Text(
-                            'Haut',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                spreadRadius: 5,
-                                blurRadius: 7,
-                                offset: Offset(0, 3),
-                              )
-                            ]),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                photoB = [uuid.v1()];
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HautB(
-                                            Sin: widget.Sin,
-                                            Temoin: widget.Temoin,
-                                            blesse: widget.blesse,
-                                            vehiculeA: widget.vehiculeA,
-                                            assureA: widget.assureA,
-                                            assuranceA: widget.assuranceA,
-                                            conductA: widget.conductA,
-                                            observ: widget.observ,
-                                            photo: widget.photo,
-                                            arriere: widget.arriere,
-                                            avant: widget.avant,
-                                            droit: widget.droit,
-                                            gauche: widget.gauche,
-                                            hautA: widget.hautA,
-                                            circonstanceA: widget.circonstanceA,
-                                            signature: widget.signature,
-                                            imagesignature:
-                                                widget.imagesignature,
-                                            transA: widget.transA,
-                                            vehiculeB: widget.vehiculeB,
-                                            assureB: widget.assureB,
-                                            assuranceB: widget.assuranceB,
-                                            conducteurB: widget.conducteurB,
-                                            observB: widget.observB,
-                                            photoB: photoB)));
-                              },
-                              child: Image.asset(
-                                'assets/image/haut.jpg',
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.cover,
-                              ),
+                    flex: 1,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        const Text(
+                          'Haut',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3),
+                            )
+                          ]),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              photoB = [uuid.v1()];
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HautB(
+                                          Sin: widget.Sin,
+                                          Temoin: widget.Temoin,
+                                          blesse: widget.blesse,
+                                          vehiculeA: widget.vehiculeA,
+                                          assureA: widget.assureA,
+                                          assuranceA: widget.assuranceA,
+                                          conductA: widget.conductA,
+                                          observ: widget.observ,
+                                          photo: widget.photo,
+                                          arriere: widget.arriere,
+                                          avant: widget.avant,
+                                          droit: widget.droit,
+                                          gauche: widget.gauche,
+                                          hautA: widget.hautA,
+                                          circonstanceA: widget.circonstanceA,
+                                          signature: widget.signature,
+                                          imagesignature: widget.imagesignature,
+                                          transA: widget.transA,
+                                          vehiculeB: widget.vehiculeB,
+                                          assureB: widget.assureB,
+                                          assuranceB: widget.assuranceB,
+                                          conducteurB: widget.conducteurB,
+                                          observB: widget.observB,
+                                          photoB: photoB)));
+                            },
+                            child: Image.asset(
+                              'assets/image/haut.jpg',
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ],
-                      ),
-                      flex: 1,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ],
-            ),
+                    flex: 1,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

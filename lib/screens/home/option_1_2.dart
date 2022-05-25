@@ -42,19 +42,19 @@ class _ChoixOptionState extends State<ChoixOption> {
                   ),
                   Row(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3),
-                          )
-                        ]),
-                        child: Expanded(
-                          child: Column(
-                            children: [
-                              ElevatedButton(
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: Offset(0, 3),
+                                )
+                              ]),
+                              child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -69,7 +69,20 @@ class _ChoixOptionState extends State<ChoixOption> {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              ElevatedButton(
+                            ),
+                            SizedBox(
+                              height: 1,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: Offset(0, 3),
+                                )
+                              ]),
+                              child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -84,8 +97,8 @@ class _ChoixOptionState extends State<ChoixOption> {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                       Expanded(
@@ -109,19 +122,19 @@ class _ChoixOptionState extends State<ChoixOption> {
                   ),
                   Row(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3),
-                          )
-                        ]),
-                        child: Expanded(
-                            child: Column(
-                          children: [
-                            ElevatedButton(
+                      Expanded(
+                          child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.5),
+                                spreadRadius: 5,
+                                blurRadius: 7,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                            child: ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -136,9 +149,9 @@ class _ChoixOptionState extends State<ChoixOption> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                          ],
-                        )),
-                      ),
+                          ),
+                        ],
+                      )),
                       Expanded(
                         child: ElevatedButton(
                             onPressed: () {

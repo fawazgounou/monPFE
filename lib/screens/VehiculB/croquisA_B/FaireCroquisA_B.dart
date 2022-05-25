@@ -6,6 +6,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
 import 'package:insertion_bd/screens/VehiculB/croquisA_B/addcroquis.dart';
+import 'package:insertion_bd/screens/VehiculB/croquisA_B/preview_signature.dart';
 import 'package:signature/signature.dart';
 import 'package:uuid/uuid.dart';
 
@@ -207,7 +208,7 @@ class _FaireCroquisA_BState extends State<FaireCroquisA_B> {
             final signature = await exportSignature();
 
             await Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SignaturePreviewPage(signature: signature!),
+              builder: (context) => CroquisABPreviewPage(signature: signature!),
             ));
 
             controller.clear();

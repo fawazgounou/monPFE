@@ -110,7 +110,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Container(
+        
           child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
@@ -380,7 +380,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
               ],
             ),
           ),
-        ),
+      
       ),
     );
   }

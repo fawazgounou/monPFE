@@ -202,11 +202,11 @@ class _AddImageSignatureAState extends State<AddcroquisA_B> {
           if (_pickedImage != null) {
             final ref = FirebaseStorage.instance
                 .ref()
-                .child('SignatureConducteurB')
+                .child('CroquisAB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            await FirebaseFirestore.instance.collection('Croquis').add({
-              'id_croquisA_B': widget.croquisA_B[0],
+            await FirebaseFirestore.instance.collection('Croquis').doc(widget.croquisA_B[0]).set({
+              
               'name': _fullName,
               'imageUrl': url,
             });

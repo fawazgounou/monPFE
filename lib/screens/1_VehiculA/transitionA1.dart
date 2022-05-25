@@ -93,8 +93,10 @@ class _TransitionA1State extends State<TransitionA1> {
                   ]),
                   child: ElevatedButton(
                     onPressed: () {
-                      FirebaseFirestore.instance.collection('Temoins').add({
-                        'id': widget.Temoin[0],
+                      FirebaseFirestore.instance
+                          .collection('Temoins')
+                          .doc(widget.Temoin[0])
+                          .set({
                         'nom': widget.Temoin[1],
                         'prenom': widget.Temoin[2],
                         'Adresse': widget.Temoin[3],
@@ -102,8 +104,10 @@ class _TransitionA1State extends State<TransitionA1> {
                         'id_sinistre': widget.Sin[0],
                       });
 
-                      FirebaseFirestore.instance.collection('Blesse').add({
-                        'id': widget.blesse[0],
+                      FirebaseFirestore.instance
+                          .collection('Blesse')
+                          .doc(widget.blesse[0])
+                          .set({
                         'nom': widget.blesse[1],
                         'prenom': widget.blesse[2],
                         'Adresse': widget.blesse[3],
@@ -116,15 +120,19 @@ class _TransitionA1State extends State<TransitionA1> {
                         'id_sinistre': widget.Sin[0],
                       });
 
-                      FirebaseFirestore.instance.collection('VehiculeA').add({
-                        'id_vehiculeA': widget.vehiculeA[0],
+                      FirebaseFirestore.instance
+                          .collection('VehiculeA')
+                          .doc(widget.vehiculeA[0])
+                          .set({
                         'Marque': widget.vehiculeA[1],
                         'Numero_immatriculation': widget.vehiculeA[2],
                         'Pays_immatriculation': widget.vehiculeA[3],
                       });
 
-                      FirebaseFirestore.instance.collection('AssureA').add({
-                        'id_AssuréA': widget.assureA[0],
+                      FirebaseFirestore.instance
+                          .collection('AssureA')
+                          .doc(widget.assureA[0])
+                          .set({
                         'Nom': widget.assureA[1],
                         'Prenom': widget.assureA[2],
                         'Adresse': widget.assureA[3],
@@ -133,8 +141,10 @@ class _TransitionA1State extends State<TransitionA1> {
                         'Email': widget.assureA[6],
                       });
 
-                      FirebaseFirestore.instance.collection('AssuranceA').add({
-                        'id_AssuranceA': widget.assuranceA[0],
+                      FirebaseFirestore.instance
+                          .collection('AssuranceA')
+                          .doc(widget.assuranceA[0])
+                          .set({
                         'Nom': widget.assuranceA[1],
                         'num_contrat': widget.assuranceA[2],
                         'num_carte_verte': widget.assuranceA[3],
@@ -149,8 +159,10 @@ class _TransitionA1State extends State<TransitionA1> {
                         'prise_encharge': widget.assuranceA[12],
                       });
 
-                      FirebaseFirestore.instance.collection('ConducteurA').add({
-                        'id_conducteurA': widget.conductA[0],
+                      FirebaseFirestore.instance
+                          .collection('ConducteurA')
+                          .doc(widget.conductA[0])
+                          .set({
                         'Nom': widget.conductA[1],
                         'Prenom': widget.conductA[2],
                         'Adresse': widget.conductA[3],
@@ -166,8 +178,8 @@ class _TransitionA1State extends State<TransitionA1> {
 
                       FirebaseFirestore.instance
                           .collection('ObservationA')
-                          .add({
-                        'id_observationA': widget.observ[0],
+                          .doc(widget.observ[0])
+                          .set({
                         'Détaille': widget.observ[1],
                         'Description': widget.observ[2],
                         'id_PhotoA': widget.photo[0],
@@ -175,12 +187,15 @@ class _TransitionA1State extends State<TransitionA1> {
 
                       FirebaseFirestore.instance
                           .collection('CirconstanceA')
-                          .add({
+                          .doc(widget.circonstanceA[0])
+                          .set({
                         'id_CirconstanceA': widget.circonstanceA[0],
                         'Circonstance': widget.circonstanceA[1],
                       });
-                      FirebaseFirestore.instance.collection('Sinistre').add({
-                        'id': widget.Sin[0],
+                      FirebaseFirestore.instance
+                          .collection('Sinistre')
+                          .doc(widget.Sin[0])
+                          .set({
                         'Localisation': widget.Sin[1],
                         'date_Sinistre': widget.Sin[2],
                         'Heure_Sinistre': widget.Sin[3],

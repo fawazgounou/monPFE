@@ -107,9 +107,8 @@ class _AddCroquis1State extends State<AddCroquis1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Indications Choc A",
-        ),
+        title: const Text("Croquis du Sinistre",
+            style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -177,8 +176,8 @@ class _AddCroquis1State extends State<AddCroquis1> {
             url = await ref.getDownloadURL();
 
             // imagesignature = [uuid.v1(), url, _fullName];
-            await FirebaseFirestore.instance.collection('Croquis').add({
-              'id_croquisA': widget.croquis[0],
+            await FirebaseFirestore.instance.collection('Croquis').doc(widget.croquis[0]).set({
+              
               'name': _fullName,
               'imageUrl': url,
             });

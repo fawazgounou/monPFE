@@ -188,8 +188,8 @@ class _ArrierevA1State extends State<ArrierevA1> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-  await FirebaseFirestore.instance.collection('PhotosA').add({
-       'id_PhotoA': widget.photo[0],
+  await FirebaseFirestore.instance.collection('PhotosA').doc(widget.photo[0]).set({
+       
               'name': _fullName,
               'imageUrl': url,
             });

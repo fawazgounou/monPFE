@@ -4,9 +4,9 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/utils.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class SignaturePreviewPage extends StatelessWidget {
+class CroquisABPreviewPage extends StatelessWidget {
   final Uint8List signature;
-  const SignaturePreviewPage({Key? key, required this.signature})
+  const CroquisABPreviewPage({Key? key, required this.signature})
       : super(key: key);
 
   @override
@@ -48,13 +48,13 @@ class SignaturePreviewPage extends StatelessWidget {
       Navigator.pop(context);
       Utils.showSnackBar(
         context,
-        text: 'Saved to signature folder',
+        text: 'Saved to croquis folder',
         color: Colors.green,
       );
     } else {
       Utils.showSnackBar(
         context,
-        text: 'Failed to save signature',
+        text: 'Failed to save croquis',
         color: Colors.red,
       );
     }

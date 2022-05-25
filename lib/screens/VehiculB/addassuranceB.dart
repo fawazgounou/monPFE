@@ -62,7 +62,7 @@ class AddAssuranceB extends StatefulWidget {
 class _AddAssuranceBState extends State<AddAssuranceB> {
   var uuid = Uuid();
   var assuranceB = [];
-
+  var selectedCurrency;
   CustomNumberField numcontratB = CustomNumberField(
       placeholder: "Numero de contrat",
       title: "N° de Contrat",
@@ -125,39 +125,52 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
             key: _key,
             child: Column(
               children: [
-                DropdownButton(
-                  hint: _dropDownValue == null
-                      ? Text('Choisissez votre Assureur')
-                      : Text(
-                          _dropDownValue!,
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
-                  isExpanded: true,
-                  iconSize: 30.0,
-                  style: TextStyle(color: Colors.black),
-                  items: [
-                    'NSIA BENIN',
-                    'SUNU ASSURANCES VIE BENIN',
-                    'ATLANTIQUE ASSURANCES BENIN',
-                    'SAHAM ASSURANCE VIE',
-                    'AFRICAINE VIE BENIN',
-                    'SAHAM ASSURANCE'
-                  ].map(
-                    (val) {
-                      return DropdownMenuItem<String>(
-                        value: val,
-                        child: Text(val),
+                StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("Compagnie")
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) const Text("Loading.....");
+
+                      List<DropdownMenuItem> currencyItems = [];
+                      for (int i = 0; i < snapshot.data!.docs.length; i++) {
+                        DocumentSnapshot snap = snapshot.data!.docs[i];
+                        currencyItems.add(
+                          DropdownMenuItem(
+                            child: Text(
+                              snap.id,
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            value: "${snap.id}",
+                          ),
+                        );
+                      }
+                      return Row(
+                        children: <Widget>[
+                          DropdownButton<dynamic>(
+                            items: currencyItems,
+                            onChanged: (currencyValue) {
+                              final snackBar = SnackBar(
+                                content: Text(
+                                  "La compagnie d'assurance est $currencyValue",
+                                  style: TextStyle(color: Colors.blue),
+                                ),
+                              );
+                              Scaffold.of(context).showSnackBar(snackBar);
+                              setState(() {
+                                selectedCurrency = currencyValue;
+                              });
+                            },
+                            value: selectedCurrency,
+                            isExpanded: false,
+                            hint: new Text(
+                              "Choisissez votre Assureur",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
                       );
-                    },
-                  ).toList(),
-                  onChanged: (val) {
-                    setState(
-                      () {
-                        _dropDownValue = val.toString();
-                      },
-                    );
-                  },
-                ),
+                    }),
                 const SizedBox(
                   height: 15,
                 ),
@@ -406,7 +419,7 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
             }
             assuranceB = [
               uuid.v1(),
-              _dropDownValue.toString(),
+              selectedCurrency.toString(),
               numcontratB.value,
               numcarteverteB.value,
               dateinput.text,

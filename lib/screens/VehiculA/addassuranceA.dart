@@ -30,9 +30,9 @@ class AddAssuranceA extends StatefulWidget {
 }
 
 class _AddAssuranceAState extends State<AddAssuranceA> {
-   var uuid = Uuid();
+  var uuid = Uuid();
   var assuranceA = [];
- 
+
   CustomNumberField numcontratA = CustomNumberField(
       placeholder: "Numero de contrat",
       title: "N° de Contrat",
@@ -52,7 +52,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
       placeholder: "Adresse Agence", title: "Adresse", initialValue: '');
   CustomTextField paysagenceA = CustomTextField(
       placeholder: "Pays Agence", title: "Pays", initialValue: '');
- 
+
   CustomTextField emailagenceA = CustomTextField(
       placeholder: "Email Agence", title: "Email", initialValue: '');
   TextEditingController dateinput = TextEditingController();
@@ -64,21 +64,21 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
     dateinput2.text = "";
     super.initState();
   }
-final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+
+  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
   final TextEditingController numbertelephone = TextEditingController();
   bool oui = false;
   bool non = false;
-  String? _dropDownValue;
+  var selectedCurrency;
   @override
   Widget build(BuildContext context) {
-    
     numcontratA.err = "Entrer le Numéro du contrat";
     numcarteverteA.err = "Entrer le Numéro de la carte verte'";
     agenceA.err = "Entrer te type D'agence";
     nomagence.err = "Entrer le Nom de l'agence";
     adresseagenceA.err = "Entrer l'Adresse l'agence'";
     paysagenceA.err = "Entrer le Pays Agence";
-   
+
     emailagenceA.err = "Entrer le Téléphone";
     return Scaffold(
       appBar: AppBar(
@@ -95,39 +95,52 @@ final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
             key: _key,
             child: Column(
               children: [
-               DropdownButton(
-                  hint: _dropDownValue == null
-                      ? Text('Choisissez votre Assureur')
-                      : Text(
-                          _dropDownValue!,
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        ),
-                  isExpanded: true,
-                  iconSize: 30.0,
-                  style: TextStyle(color: Colors.black),
-                  items: [
-                    'NSIA BENIN',
-                    'SUNU ASSURANCES VIE BENIN',
-                    'ATLANTIQUE ASSURANCES BENIN',
-                    'SAHAM ASSURANCE VIE',
-                    'AFRICAINE VIE BENIN',
-                    'SAHAM ASSURANCE'
-                  ].map(
-                    (val) {
-                      return DropdownMenuItem<String>(
-                        value: val,
-                        child: Text(val),
+                StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("users")
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) const Text("Loading.....");
+
+                      List<DropdownMenuItem> currencyItems = [];
+                      for (int i = 0; i < snapshot.data!.docs.length; i++) {
+                        DocumentSnapshot snap = snapshot.data!.docs[i];
+                        currencyItems.add(
+                          DropdownMenuItem(
+                            child: Text(
+                              snap.id,
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                            value: "${snap.id}",
+                          ),
+                        );
+                      }
+                      return Row(
+                        children: <Widget>[
+                          DropdownButton<dynamic>(
+                            items: currencyItems,
+                            onChanged: (currencyValue) {
+                              final snackBar = SnackBar(
+                                content: Text(
+                                  "La compagnie d'assurance est $currencyValue",
+                                  style: TextStyle(color: Colors.blue),
+                                ),
+                              );
+                              Scaffold.of(context).showSnackBar(snackBar);
+                              setState(() {
+                                selectedCurrency = currencyValue;
+                              });
+                            },
+                            value: selectedCurrency,
+                            isExpanded: false,
+                            hint: new Text(
+                              "Choisissez votre Assureur",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
                       );
-                    },
-                  ).toList(),
-                  onChanged: (val) {
-                    setState(
-                      () {
-                        _dropDownValue = val.toString();
-                      },
-                    );
-                  },
-                ),
+                    }),
                 const SizedBox(
                   height: 15,
                 ),
@@ -263,7 +276,7 @@ final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
                     SizedBox(
                       width: 10,
                     ),
-                     Expanded(
+                    Expanded(
                       flex: 1,
                       child: TextFormField(
                         validator: (value) {
@@ -376,7 +389,7 @@ final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
             }
             assuranceA = [
               uuid.v1(),
-              _dropDownValue.toString(),
+              selectedCurrency.toString(),
               numcontratA.value,
               numcarteverteA.value,
               dateinput.text,

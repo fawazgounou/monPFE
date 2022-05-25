@@ -105,7 +105,7 @@ class _AddImageSignatureAState extends State<AddImageSignatureA> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Indications Choc A",
+          "Signature Conducteur A",
         ),
         centerTitle: true,
       ),
@@ -174,8 +174,8 @@ class _AddImageSignatureAState extends State<AddImageSignatureA> {
             url = await ref.getDownloadURL();
 
             // imagesignature = [uuid.v1(), url, _fullName];
-            await FirebaseFirestore.instance.collection('SignatureA').add({
-              'id_SignatureCA': widget.signature[0],
+            await FirebaseFirestore.instance.collection('SignatureA').doc(widget.signature[0]).set({
+            
               'name': _fullName,
               'imageUrl': url,
             });
