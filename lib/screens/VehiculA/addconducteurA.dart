@@ -51,8 +51,8 @@ class _AddConducteurAState extends State<AddConducteurA> {
       placeholder: "Entrer la Catégorie",
       title: "Catégorie ",
       initialValue: '');
-final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+ MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
   final _key = GlobalKey<FormState>();
 
   TextEditingController dateinput = TextEditingController();
@@ -77,7 +77,7 @@ final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Informaions Conducteur A",
+          "Informations Conducteur A",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

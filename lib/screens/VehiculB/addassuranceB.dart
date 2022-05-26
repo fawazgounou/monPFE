@@ -88,8 +88,8 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
   TextEditingController dateinput = TextEditingController();
   TextEditingController dateinput2 = TextEditingController();
   final _key = GlobalKey<FormState>();
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
   @override
   void initState() {
     dateinput.text = "";

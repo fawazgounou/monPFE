@@ -78,8 +78,8 @@ class _AddAssureBState extends State<AddAssureB> {
       placeholder: "Entrer le mail", title: "Email Assuré", initialValue: '');
 
   final _key = GlobalKey<FormState>();
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

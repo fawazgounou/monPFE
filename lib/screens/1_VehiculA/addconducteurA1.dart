@@ -67,8 +67,8 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
     super.initState();
   }
 
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

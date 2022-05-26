@@ -31,7 +31,7 @@ class _AddBlesse1State extends State<AddBlesse1> {
       placeholder: "Entrer  Adresse",
       title: "Adresse Blessé(s)",
       initialValue: '');
-  
+
   CustomTextField profession = CustomTextField(
       placeholder: "Entrer la profession",
       title: "Profession",
@@ -51,8 +51,8 @@ class _AddBlesse1State extends State<AddBlesse1> {
       placeholder: "Entrer la gravité",
       title: " Gravité des Blessures",
       initialValue: '');
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
 
   final _key = GlobalKey<FormState>();
   @override
@@ -60,7 +60,7 @@ class _AddBlesse1State extends State<AddBlesse1> {
     nomblesse.err = "Entrer le Nom";
     prenomblesse.err = "Entrer le Prénom";
     adresseblesse.err = "Entrer l'Adresse ";
-   
+
     profession.err = "Entrer la Profession";
     situation.err = "Entrer la Situation ";
     casqueceinture.err = "Entrer repondre ";
@@ -115,8 +115,9 @@ class _AddBlesse1State extends State<AddBlesse1> {
                         },
                         controller: numbertelephone,
                         keyboardType: TextInputType.number,
-                        decoration:
-                            const InputDecoration(hintText: 'Téléphone', hintStyle: TextStyle(color: Colors.black)),
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
                         inputFormatters: [maskFormatter],
                       ),
                     ),
@@ -168,18 +169,15 @@ class _AddBlesse1State extends State<AddBlesse1> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          blesse = [
-                            uuid.v1(),
-                            nomblesse.value,
-                            prenomblesse.value,
-                            adresseblesse.value,
-                            numbertelephone.value,
-                            profession.value,
-                            situation.value,
-                            casqueceinture.value,
-                            premiersoinslieu.value,
-                            gravitenature.value
-                          ];
+                          nomblesse.controller.clear();
+                          prenomblesse.controller.clear();
+                          adresseblesse.controller.clear();
+                          numbertelephone.clear();
+                          profession.controller.clear();
+                          situation.controller.clear();
+                          casqueceinture.controller.clear();
+                          premiersoinslieu.controller.clear();
+                          gravitenature.controller.clear();
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

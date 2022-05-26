@@ -66,8 +66,10 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
     dateinput2.text = "";
     super.initState();
   }
+  
 
   var selectedCurrency;
+   
   final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
   final TextEditingController numbertelephone = TextEditingController();
 
@@ -99,55 +101,54 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
             key: _key,
             child: Column(
               children: [
-                StreamBuilder<QuerySnapshot>(
+            StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
-                        .collection("users")
+                        .collection("Compagnie")
                         .snapshots(),
-                    builder: (context, snapshot) {
-                      if (!snapshot.hasData) const Text("Loading.....");
+                    builder: (context,  snapshot) {
+                      if (snapshot.hasData!= null);
                       {
-
-                      }
-                      List<DropdownMenuItem> currencyItems = [];
-                    
-                      for (int i = 0; i < snapshot.data!.docs.length; i++) {
-                        DocumentSnapshot snap = snapshot.data!.docs[i];
-                        currencyItems.add(
-                          DropdownMenuItem(
-                            child: Text(
-                              snap.id,
-                              style: TextStyle(color: Colors.blue),
+                        List<DropdownMenuItem> currencyItems = [];
+                        
+                        for (int i = 0; i < snapshot.data!.docs.length; i++) {
+                          DocumentSnapshot snap = snapshot.data!.docs[i];
+                          currencyItems.add(
+                            DropdownMenuItem(
+                              child: Text(
+                                snap.id,
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                              value: "${snap.id}",
                             ),
-                            value: "${snap.id}",
-                          ),
+                          );
+                        }
+                        return Row(
+                          children: <Widget>[
+                            DropdownButton<dynamic>(
+                              items: currencyItems,
+                              onChanged: (currencyValue) {
+                                final snackBar = SnackBar(
+                                  content: Text(
+                                    "La compagnie d'assurance est $currencyValue",
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                );
+                                Scaffold.of(context).showSnackBar(snackBar);
+                                setState(() {
+                                  selectedCurrency = currencyValue;
+                                });
+                              },
+                              value: selectedCurrency,
+                              isExpanded: false,
+                              hint: new Text(
+                                "Choisissez votre Assureur",
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                            ),
+                          ],
                         );
                       }
-                      return Row(
-                        children: <Widget>[
-                          DropdownButton<dynamic>(
-                            items: currencyItems,
-                            onChanged: (currencyValue) {
-                              final snackBar = SnackBar(
-                                content: Text(
-                                  "La compagnie d'assurance est $currencyValue",
-                                  style: TextStyle(color: Colors.blue),
-                                ),
-                              );
-                              Scaffold.of(context).showSnackBar(snackBar);
-                              setState(() {
-                                selectedCurrency = currencyValue;
-                              });
-                            },
-                            value: selectedCurrency,
-                            isExpanded: false,
-                            hint: new Text(
-                              "Choisissez votre Assureur",
-                              style: TextStyle(color: Colors.blue),
-                            ),
-                          ),
-                        ],
-                      );
-                    }),
+                    }), 
                 const SizedBox(
                   height: 15,
                 ),

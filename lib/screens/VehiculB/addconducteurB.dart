@@ -69,7 +69,7 @@ class _AddConducteurBState extends State<AddConducteurB> {
       placeholder: "Entrer l'Adresse", title: "Adresse ", initialValue: '');
   CustomTextField paysconducteurB = CustomTextField(
       placeholder: "Entrer le Pays", title: "Pays", initialValue: '');
- 
+
   CustomTextField emailconducteurB = CustomTextField(
       placeholder: "Entrer le mail", title: "Email ", initialValue: '');
   CustomNumberField numpermisdeconduireB = CustomNumberField(
@@ -91,8 +91,10 @@ class _AddConducteurBState extends State<AddConducteurB> {
     dateinputV.text = "";
     super.initState();
   }
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+
+  MaskTextInputFormatter maskFormatter =
+      MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  TextEditingController numbertelephone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +102,7 @@ class _AddConducteurBState extends State<AddConducteurB> {
     prenomconducteurB.err = "Entrer le Prénom";
     adresseconducteurB.err = "Entrer l'Adresse'";
     paysconducteurB.err = "Entrer le Code Pays";
-    
+
     emailconducteurB.err = "Entrer le Mail";
     numpermisdeconduireB.err = "Entrer le Numéro du Permis";
     categorieB.err = "Entrer la Catégorie";

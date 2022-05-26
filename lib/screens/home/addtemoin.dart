@@ -18,7 +18,7 @@ class AddTemoins extends StatefulWidget {
 }
 
 class _AddTemoinsState extends State<AddTemoins> {
-   var uuid = Uuid();
+  var uuid = Uuid();
   var Temoin = [];
   CustomTextField nomtemoin = CustomTextField(
       placeholder: "Entrer le nom", title: "Nom", initialValue: '');
@@ -26,10 +26,10 @@ class _AddTemoinsState extends State<AddTemoins> {
       placeholder: "Entrer le Prenom", title: "Prénom", initialValue: '');
   CustomTextField adressetemoin = CustomTextField(
       placeholder: "Entrer  Adresse", title: "Adresse", initialValue: '');
-  
+
   bool err = false;
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
 
   final _key = GlobalKey<FormState>();
   @override
@@ -37,7 +37,7 @@ class _AddTemoinsState extends State<AddTemoins> {
     nomtemoin.err = "Entrer le Nom ";
     prenomtemoin.err = "Entrer le Prenom";
     adressetemoin.err = " Entrer l'Adresse'";
-   
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -89,8 +89,9 @@ class _AddTemoinsState extends State<AddTemoins> {
                         },
                         controller: numbertelephone,
                         keyboardType: TextInputType.number,
-                        decoration:
-                            const InputDecoration(hintText: 'Téléphone', hintStyle: TextStyle(color: Colors.black)),
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
                         inputFormatters: [maskFormatter],
                       ),
                     ),
@@ -101,20 +102,22 @@ class _AddTemoinsState extends State<AddTemoins> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                        /*   Temoin.add(
-                            nomtemoin.value,
-                           prenomtemoin.value,
-                              adressetemoin.value, telephone.value); */
+                          nomtemoin.controller.clear();
+                          prenomtemoin.controller.clear();
+                          adressetemoin.controller.clear();
+                          numbertelephone.clear();
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
                           shadowColor: Colors.lightBlue.withOpacity(.7),
                         ),
-                        child: const Text(
-                          "+ de Témoin",
-                          style: TextStyle(color: Colors.white, fontSize: 19),
-                        ),
+                        child: const Text("+ de Témoin",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 17,
+                            ),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                   ],
@@ -134,12 +137,13 @@ class _AddTemoinsState extends State<AddTemoins> {
               adressetemoin.value,
               numbertelephone.value
             ];
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) =>  AddBlesse(
-                 Sin: widget.Sin,
-                 Temoin: Temoin,
-                 
-                )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddBlesse(
+                          Sin: widget.Sin,
+                          Temoin: Temoin,
+                        )));
           }
         },
         child: Container(

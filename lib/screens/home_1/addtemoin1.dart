@@ -32,8 +32,8 @@ class _AddTemoins1State extends State<AddTemoins1> {
       placeholder: "Entrer le téléphone", title: "Téléphone", initialValue: '');
   bool err = false;
 
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
 
   var result;
   final _key = GlobalKey<FormState>();
@@ -94,8 +94,9 @@ class _AddTemoins1State extends State<AddTemoins1> {
                         },
                         controller: numbertelephone,
                         keyboardType: TextInputType.number,
-                        decoration:
-                            const InputDecoration(hintText: 'Téléphone', hintStyle: TextStyle(color: Colors.black)),
+                        decoration: const InputDecoration(
+                            hintText: 'Téléphone',
+                            hintStyle: TextStyle(color: Colors.black)),
                         inputFormatters: [maskFormatter],
                       ),
                     ),
@@ -106,13 +107,10 @@ class _AddTemoins1State extends State<AddTemoins1> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          Temoin = [
-                            uuid.v1(),
-                            nomtemoin.value,
-                            prenomtemoin.value,
-                            adressetemoin.value,
-                            numbertelephone.value
-                          ];
+                          nomtemoin.controller.clear();
+                          prenomtemoin.controller.clear();
+                          adressetemoin.controller.clear();
+                          numbertelephone.clear();
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(

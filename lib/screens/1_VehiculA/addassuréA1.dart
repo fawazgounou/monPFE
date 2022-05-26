@@ -42,8 +42,8 @@ class _AddAssureA1State extends State<AddAssureA1> {
 
   CustomTextField emailA = CustomTextField(
       placeholder: "Entrer le mail", title: "Email Assuré", initialValue: '');
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
 
   final _key = GlobalKey<FormState>();
 

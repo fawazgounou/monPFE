@@ -1,17 +1,15 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:insertion_bd/screens/1_VehiculA/addassuranceA1.dart';
-import 'package:insertion_bd/screens/1_VehiculA/addcirconstanceA1.dart';
-import 'package:insertion_bd/screens/1_VehiculA/addphotoA1.dart';
-import 'package:insertion_bd/screens/1_VehiculA/croquis1/faireCroquis1.dart';
-import 'package:insertion_bd/screens/VehiculA/transitionA.dart';
-import 'package:insertion_bd/screens/VehiculB/transitionB.dart';
+
 import 'package:insertion_bd/screens/home/home.dart';
-import 'package:insertion_bd/screens/home_1/localisation1.dart';
+
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() async {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
     const MyApp(),
@@ -27,7 +25,24 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       title: 'Déclare ton Sinistre',
-      home: AddAssuranceA1(),
+      home: const SplashScreen(),
     );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+        splash: Lottie.network(
+            'https://assets3.lottiefiles.com/packages/lf20_2yyeslc6.json'),
+        backgroundColor: Colors.blue,
+        duration: 1000,
+        splashIconSize: 1000,
+        splashTransition: SplashTransition.fadeTransition,
+        animationDuration: Duration(seconds: 3),
+        nextScreen: const Home());
   }
 }

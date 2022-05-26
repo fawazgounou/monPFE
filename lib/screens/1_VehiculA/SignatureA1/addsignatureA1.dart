@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:insertion_bd/Model/model.dart';
 import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/addimgasignature1.dart';
+import 'package:insertion_bd/screens/1_VehiculA/SignatureA1/preview_signature.dart';
 import 'package:insertion_bd/screens/VehiculA/SignatureA/preview_signature.dart';
 
 import 'dart:typed_data';
@@ -85,21 +86,23 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
           ),
           centerTitle: true,
         ),
-        body: Column(
-          children: [
-            Container(
-              height: 551.7,
-              width: 400,
-              child: Signature(
-                controller: controller,
-                backgroundColor: Colors.black,
+        body: Form(
+          child: Column(
+            children: [
+              Container(
+                height: 551.7,
+                width: 400,
+                child: Signature(
+                  controller: controller,
+                  backgroundColor: Colors.black,
+                ),
               ),
-            ),
-            buildButtons(context),
-            const SizedBox(
-              height: 5,
-            ),
-          ],
+              buildButtons(context),
+              const SizedBox(
+                height: 5,
+              ),
+            ],
+          ),
         ),
         bottomNavigationBar: GestureDetector(
           onTap: () {
@@ -166,7 +169,7 @@ class _SignaturePageA1State extends State<SignaturePageA1> {
             final signature = await exportSignature();
 
             await Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SignaturePreviewPage(signature: signature!),
+              builder: (context) => SignaturePreview(signature: signature!),
             ));
 
             controller.clear();

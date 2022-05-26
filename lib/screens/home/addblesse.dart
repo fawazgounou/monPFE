@@ -50,15 +50,15 @@ class _AddBlesseState extends State<AddBlesse> {
       placeholder: "Entrer la gravité",
       title: " Gravité des Blessures",
       initialValue: '');
-  final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-  final TextEditingController numbertelephone = TextEditingController();
+   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+   TextEditingController numbertelephone = TextEditingController();
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     nomblesse.err = "Entrer le Nom";
     prenomblesse.err = "Entrer le Prénom";
     adresseblesse.err = "Entrer l'Adresse ";
-   
+
     profession.err = "Entrer la Profession";
     situation.err = "Entrer la Situation ";
     casqueceinture.err = "Entrer repondre ";
@@ -167,18 +167,15 @@ class _AddBlesseState extends State<AddBlesse> {
                       flex: 1,
                       child: ElevatedButton(
                         onPressed: () async {
-                          blesse = [
-                            uuid.v1(),
-                            nomblesse.value,
-                            prenomblesse.value,
-                            adresseblesse.value,
-                            numbertelephone.value,
-                            profession.value,
-                            situation.value,
-                            casqueceinture.value,
-                            premiersoinslieu.value,
-                            gravitenature.value
-                          ];
+                          nomblesse.controller.clear();
+                          prenomblesse.controller.clear();
+                          adresseblesse.controller.clear();
+                          numbertelephone.clear();
+                          profession.controller.clear();
+                          situation.controller.clear();
+                          casqueceinture.controller.clear();
+                          premiersoinslieu.controller.clear();
+                          gravitenature.controller.clear();
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
