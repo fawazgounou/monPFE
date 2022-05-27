@@ -135,7 +135,7 @@ class _AddTemoinsState extends State<AddTemoins> {
               nomtemoin.value,
               prenomtemoin.value,
               adressetemoin.value,
-              numbertelephone.value
+              numbertelephone.text
             ];
             Navigator.push(
                 context,

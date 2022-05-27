@@ -133,7 +133,7 @@ class _AddAssureAState extends State<AddAssureA> {
               uuid.v1(),
               nomassureA.value,
               prenomassureA.value,
-              numbertelephone.value,
+              numbertelephone.text,
               adresseassureA.value,
               codepostalA.value,
               emailA.value

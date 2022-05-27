@@ -189,8 +189,14 @@ class _CoteDroitAState extends State<CoteDroitA> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
             //droit = [uuid.v1(), url, _fullName];
-              await FirebaseFirestore.instance.collection('PhotosA').doc(widget.photo[0]).set({
-                  
+              await FirebaseFirestore.instance
+                .collection('User')
+                .doc(widget.assuranceA[1])
+                .collection('Sinistre')
+                .doc(widget.Sin[0])
+                .collection('PhotosA')
+                .doc()
+                .set({
               'name': _fullName,
               'imageUrl': url,
             });  

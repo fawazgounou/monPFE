@@ -204,8 +204,15 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                 .child('SignatureConducteurB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            await FirebaseFirestore.instance.collection('SignatureB').doc(widget.signatureB[0]).set({
-             'name': _fullName,
+            await FirebaseFirestore.instance
+                .collection('User')
+                .doc(widget.assuranceB[1])
+                .collection('Sinistre')
+                .doc(widget.Sin[0])
+                .collection('SignatureB')
+                .doc()
+                .set({
+              'name': _fullName,
               'imageUrl': url,
             });
             /* imagesignatureB = [

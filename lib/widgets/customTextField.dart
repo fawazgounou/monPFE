@@ -15,7 +15,7 @@ class CustomTextField {
       this.err = "please complete",
       this.line = 1,
       required this.initialValue});
-  TextEditingController controller = new TextEditingController();
+  TextEditingController controller = TextEditingController();
 
   int i = 0;
   TextFormField textfrofield() {

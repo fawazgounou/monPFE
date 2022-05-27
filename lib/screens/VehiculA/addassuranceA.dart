@@ -65,8 +65,9 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
     super.initState();
   }
 
-   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-   TextEditingController numbertelephone = TextEditingController();
+  MaskTextInputFormatter maskFormatter =
+      MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  TextEditingController numbertelephone = TextEditingController();
   bool oui = false;
   bool non = false;
   var selectedCurrency;
@@ -103,46 +104,50 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
                             .collection("Compagnie")
                             .snapshots(),
                         builder: (context, snapshot) {
-                          if (!snapshot.hasData) const Text("Loading.....");
+                          if (!snapshot.hasData)const Text("Loading.....");
+                          {
+                            List<DropdownMenuItem> currencyItems = [];
 
-                          List<DropdownMenuItem> currencyItems = [];
-                          for (int i = 0; i < snapshot.data!.docs.length; i++) {
-                            DocumentSnapshot snap = snapshot.data!.docs[i];
-                            currencyItems.add(
-                              DropdownMenuItem(
-                                child: Text(
-                                  snap.id,
-                                  style: TextStyle(color: Colors.blue),
+                            for (int i = 0;
+                                i < snapshot.data!.docs.length;
+                                i++) {
+                              DocumentSnapshot snap = snapshot.data!.docs[i];
+                              currencyItems.add(
+                                DropdownMenuItem(
+                                  child: Text(
+                                    snap.id,
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                  value: "${snap.id}",
                                 ),
-                                value: "${snap.id}",
-                              ),
+                              );
+                            }
+                            return Row(
+                              children: <Widget>[
+                                DropdownButton<dynamic>(
+                                  items: currencyItems,
+                                  onChanged: (currencyValue) {
+                                    final snackBar = SnackBar(
+                                      content: Text(
+                                        "La compagnie d'assurance est $currencyValue",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                    );
+                                    Scaffold.of(context).showSnackBar(snackBar);
+                                    setState(() {
+                                      selectedCurrency = currencyValue;
+                                    });
+                                  },
+                                  value: selectedCurrency,
+                                  isExpanded: false,
+                                  hint: new Text(
+                                    "Choisissez votre Assureur",
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                ),
+                              ],
                             );
                           }
-                          return Row(
-                            children: <Widget>[
-                              DropdownButton<dynamic>(
-                                items: currencyItems,
-                                onChanged: (currencyValue) {
-                                  final snackBar = SnackBar(
-                                    content: Text(
-                                      "La compagnie d'assurance est $currencyValue",
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                  );
-                                  Scaffold.of(context).showSnackBar(snackBar);
-                                  setState(() {
-                                    selectedCurrency = currencyValue;
-                                  });
-                                },
-                                value: selectedCurrency,
-                                isExpanded: false,
-                                hint: new Text(
-                                  "Choisissez votre Assureur",
-                                  style: TextStyle(color: Colors.blue),
-                                ),
-                              ),
-                            ],
-                          );
                         }),
                   ],
                 ),
@@ -403,7 +408,7 @@ class _AddAssuranceAState extends State<AddAssuranceA> {
               nomagence.value,
               adresseagenceA.value,
               paysagenceA.value,
-              numbertelephone.value,
+              numbertelephone.text,
               emailagenceA.value,
               index.toString(),
             ];

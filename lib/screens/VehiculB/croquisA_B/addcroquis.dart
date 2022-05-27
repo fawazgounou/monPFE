@@ -205,8 +205,25 @@ class _AddImageSignatureAState extends State<AddcroquisA_B> {
                 .child('CroquisAB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            await FirebaseFirestore.instance.collection('Croquis').doc(widget.croquisA_B[0]).set({
-              
+            await FirebaseFirestore.instance
+                .collection('User')
+                .doc(widget.assuranceA[1])
+                .collection('Sinistre')
+                .doc(widget.Sin[0])
+                .collection('Croquis')
+                .doc()
+                .set({
+              'name': _fullName,
+              'imageUrl': url,
+            });
+            FirebaseFirestore.instance
+                .collection('User')
+                .doc(widget.assuranceB[1])
+                .collection('Sinistre')
+                .doc(widget.Sin[0])
+                .collection('Croquis')
+                .doc()
+                .set({
               'name': _fullName,
               'imageUrl': url,
             });

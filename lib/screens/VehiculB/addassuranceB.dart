@@ -88,8 +88,9 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
   TextEditingController dateinput = TextEditingController();
   TextEditingController dateinput2 = TextEditingController();
   final _key = GlobalKey<FormState>();
-   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-   TextEditingController numbertelephone = TextEditingController();
+  MaskTextInputFormatter maskFormatter =
+      MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  TextEditingController numbertelephone = TextEditingController();
   @override
   void initState() {
     dateinput.text = "";
@@ -428,7 +429,7 @@ class _AddAssuranceBState extends State<AddAssuranceB> {
               nomagence.value,
               adresseagenceB.value,
               paysagenceB.value,
-              numbertelephone.value,
+              numbertelephone.text,
               emailagenceB.value,
               index.toString(),
             ];

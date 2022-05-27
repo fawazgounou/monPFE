@@ -170,7 +170,7 @@ class _AddAssureBState extends State<AddAssureB> {
               prenomassureB.value,
               adresseassureB.value,
               codepostalB.value,
-              numbertelephone.value,
+              numbertelephone.text,
               emailB.value
             ];
             /*  FirebaseFirestore.instance.collection('AssureB').add({

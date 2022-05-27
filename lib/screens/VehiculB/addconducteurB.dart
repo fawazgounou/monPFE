@@ -300,7 +300,7 @@ class _AddConducteurBState extends State<AddConducteurB> {
               adresseconducteurB.value,
               dateinput.text,
               paysconducteurB.value,
-              numbertelephone.value,
+              numbertelephone.text,
               emailconducteurB.value,
               numpermisdeconduireB.value,
               categorieB.value,

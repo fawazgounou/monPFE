@@ -174,8 +174,14 @@ class _AddImageSignatureAState extends State<AddImageSignatureA> {
             url = await ref.getDownloadURL();
 
             // imagesignature = [uuid.v1(), url, _fullName];
-            await FirebaseFirestore.instance.collection('SignatureA').doc(widget.signature[0]).set({
-            
+            await FirebaseFirestore.instance
+                .collection('User')
+                .doc(widget.assuranceA[1])
+                .collection('Sinistre')
+                .doc(widget.Sin[0])
+                .collection('SignatureA')
+                .doc()
+                .set({
               'name': _fullName,
               'imageUrl': url,
             });

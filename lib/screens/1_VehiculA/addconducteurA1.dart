@@ -274,7 +274,7 @@ class _AddConducteurA1State extends State<AddConducteurA1> {
               adresseconducteurA.value,
               dateinput.text,
               paysconducteurA.value,
-              numbertelephone.value,
+              numbertelephone.text,
               categorieA.value,
               emailconducteurA.value,
               dateinputV.text,

@@ -206,7 +206,7 @@ class _AddBlesseState extends State<AddBlesse> {
               nomblesse.value,
               prenomblesse.value,
               adresseblesse.value,
-              numbertelephone.value,
+              numbertelephone.text,
               profession.value,
               situation.value,
               casqueceinture.value,

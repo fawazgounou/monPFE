@@ -66,10 +66,9 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
     dateinput2.text = "";
     super.initState();
   }
-  
 
   var selectedCurrency;
-   
+
   final maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
   final TextEditingController numbertelephone = TextEditingController();
 
@@ -101,15 +100,15 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
             key: _key,
             child: Column(
               children: [
-            StreamBuilder<QuerySnapshot>(
+                StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
                         .collection("Compagnie")
                         .snapshots(),
-                    builder: (context,  snapshot) {
-                      if (snapshot.hasData!= null);
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) const Text("Loading.....") ;
                       {
                         List<DropdownMenuItem> currencyItems = [];
-                        
+
                         for (int i = 0; i < snapshot.data!.docs.length; i++) {
                           DocumentSnapshot snap = snapshot.data!.docs[i];
                           currencyItems.add(
@@ -148,7 +147,7 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
                           ],
                         );
                       }
-                    }), 
+                    }),
                 const SizedBox(
                   height: 15,
                 ),
@@ -406,7 +405,7 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
               nomagence.value,
               adresseagenceA.value,
               paysagenceA.value,
-              numbertelephone.value,
+              numbertelephone.text,
               emailagenceA.value,
               index.toString(),
             ];

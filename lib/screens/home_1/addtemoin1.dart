@@ -35,7 +35,7 @@ class _AddTemoins1State extends State<AddTemoins1> {
    MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
    TextEditingController numbertelephone = TextEditingController();
 
-  var result;
+
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -137,7 +137,7 @@ class _AddTemoins1State extends State<AddTemoins1> {
               nomtemoin.value,
               prenomtemoin.value,
               adressetemoin.value,
-              numbertelephone.value
+              numbertelephone.text
             ];
             print(widget.Sin);
             Navigator.push(
