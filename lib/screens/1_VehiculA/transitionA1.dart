@@ -93,7 +93,7 @@ class _TransitionA1State extends State<TransitionA1> {
                   ]),
                   child: ElevatedButton(
                     onPressed: () {
-                      FirebaseFirestore.instance
+                     FirebaseFirestore.instance
                           .collection('User')
                           .doc(widget.assuranceA[1])
                           .collection('Sinistre')
@@ -105,75 +105,29 @@ class _TransitionA1State extends State<TransitionA1> {
                         'Lieu': widget.Sin[4],
                         'blesse': widget.Sin[5],
                         'degats': widget.Sin[6],
-                      });
-
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('Temoins')
-                          .doc()
-                          .set({
-                        'nom': widget.Temoin[1],
-                        'prenom': widget.Temoin[2],
-                        'Adresse': widget.Temoin[3],
-                        'Telephone': widget.Temoin[4],
-                      });
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('Blesse')
-                          .doc()
-                          .set({
-                        'nom': widget.blesse[1],
-                        'prenom': widget.blesse[2],
-                        'Adresse': widget.blesse[3],
-                        'telephone': widget.blesse[4],
-                        'Profession': widget.blesse[5],
-                        'Situation': widget.blesse[6],
-                        'Casque': widget.blesse[7],
-                        'Centre_Hospitalier': widget.blesse[8],
-                        'Nature_Gravité': widget.blesse[9],
-                      });
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('VehiculeA')
-                          .doc()
-                          .set({
-                        'Marque': widget.vehiculeA[1],
-                        'Numero_immatriculation': widget.vehiculeA[2],
-                        'Pays_immatriculation': widget.vehiculeA[3],
-                      });
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('AssureA')
-                          .doc()
-                          .set({
-                        'Nom': widget.assureA[1],
-                        'Prenom': widget.assureA[2],
-                        'Adresse': widget.assureA[3],
-                        'Code_Postal': widget.assureA[4],
-                        'Téléphone': widget.assureA[5],
-                        'Email': widget.assureA[6],
-                      });
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('AssuranceA')
-                          .doc()
-                          .set({
-                        'Nom': widget.assuranceA[1],
+                        'nomT': widget.Temoin[1],
+                        'prenomT': widget.Temoin[2],
+                        'AdresseT': widget.Temoin[3],
+                        'TelephoneT': widget.Temoin[4],
+                        'nomB': widget.blesse[1],
+                        'prenomB': widget.blesse[2],
+                        'AdresseB': widget.blesse[3],
+                        'telephoneB': widget.blesse[4],
+                        'ProfessionB': widget.blesse[5],
+                        'SituationB': widget.blesse[6],
+                        'CasqueB': widget.blesse[7],
+                        'Centre_HospitalierB': widget.blesse[8],
+                        'Nature_GravitéB': widget.blesse[9],
+                        'MarqueV': widget.vehiculeA[1],
+                        'Numero_immatriculationV': widget.vehiculeA[2],
+                        'Pays_immatriculationV': widget.vehiculeA[3],
+                        'NomAS': widget.assureA[1],
+                        'PrenomAS': widget.assureA[2],
+                        'AdresseAS': widget.assureA[3],
+                        'Code_PostalAS': widget.assureA[4],
+                        'TéléphoneAS': widget.assureA[5],
+                        'EmailAS': widget.assureA[6],
+                        'NomA': widget.assuranceA[1],
                         'num_contrat': widget.assuranceA[2],
                         'num_carte_verte': widget.assuranceA[3],
                         'du': widget.assuranceA[4],
@@ -185,50 +139,57 @@ class _TransitionA1State extends State<TransitionA1> {
                         'telephone': widget.assuranceA[10],
                         'email': widget.assuranceA[11],
                         'prise_encharge': widget.assuranceA[12],
-                      });
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('ConducteurA')
-                          .doc()
-                          .set({
-                        'Nom': widget.conductA[1],
-                        'Prenom': widget.conductA[2],
-                        'Adresse': widget.conductA[3],
-                        'date_naissance': widget.conductA[4],
-                        'pays': widget.conductA[5],
-                        'telephone': widget.conductA[6],
-                        'email': widget.conductA[7],
-                        'num_permis': widget.conductA[8],
-                        'categorie': widget.conductA[9],
-                        'fin_valide_permis': widget.conductA[10],
-                        'id_SignatureCA': widget.signature[0],
-                      });
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('ObservationA')
-                          .doc()
-                          .set({
+                        'NomC': widget.conductA[1],
+                        'PrenomC': widget.conductA[2],
+                        'AdresseC': widget.conductA[3],
+                        'date_naissanceC': widget.conductA[4],
+                        'paysC': widget.conductA[5],
+                        'telephoneC': widget.conductA[6],
+                        'emailC': widget.conductA[7],
+                        'num_permisC': widget.conductA[8],
+                        'categorieC': widget.conductA[9],
+                        'fin_valide_permisC': widget.conductA[10],
+                        'id_SignatureCAC': widget.signature[0],
                         'Détaille': widget.observ[1],
                         'Description': widget.observ[2],
-                        'id_PhotoA': widget.photo[0],
-                      });
-                      FirebaseFirestore.instance
-                          .collection('User')
-                          .doc(widget.assuranceA[1])
-                          .collection('Sinistre')
-                          .doc(widget.Sin[0])
-                          .collection('CirconstanceA')
-                          .doc()
-                          .set({
-                        'id_CirconstanceA': widget.circonstanceA[0],
                         'Circonstance': widget.circonstanceA[1],
+                        'MarqueB':'  ',
+                        'Numero_immatriculationB': '  ',
+                        'Pays_immatriculationB': '  ',
+                        'NomASB': '  ',
+                        'PrenomASB': '  ',
+                        'AdresseASB': '  ',
+                        'Code_PostalASB': '  ',
+                        'TéléphoneASSB': '  ',
+                        'EmailASB': '  ',
+                        'NomB': '  ',
+                        'num_contratB': '  ',
+                        'num_carte_verteB': '  ',
+                        'duB': '  ',
+                        'auB': '  ',
+                        'agenceB': '  ',
+                        'nom_agenceB': '  ',
+                        'adresseB': '  ',
+                        'paysB': '  ',
+                        'telephoneAB': '  ',
+                        'emailB': '  ',
+                        'prise_enchargeB': '  ',
+                        'NomCB': '  ',
+                        'PrenomCB': '  ',
+                        'AdresseCB': '  ',
+                        'date_naissanceCB': '  ',
+                        'paysCB': '  ',
+                        'telephoneCB': '  ',
+                        'emailCB': '  ',
+                        'num_permisCB': '  ',
+                        'categorieCB': '  ',
+                        'fin_valide_permisCB': '  ',
+                        'DétailleCB': '  ',
+                        'DescriptionCB': '  ',
+                        'CirconstanceCB': '  ',
                       });
+
+                
                     },
                     child: const Text(
                       'Sauvegarder',

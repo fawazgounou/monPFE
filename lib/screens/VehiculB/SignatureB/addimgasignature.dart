@@ -209,11 +209,9 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                 .doc(widget.assuranceB[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('SignatureB')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({
+              
+              'SignatureB': url,
             });
             /* imagesignatureB = [
               uuid.v1(),

@@ -190,18 +190,14 @@ class _AddAvantA1State extends State<AddAvantA1> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            await  FirebaseFirestore.instance
+            await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('PhotosA')
-                .doc()
                 .set({
-              'name': _fullName,
-              'imageUrl': url,
+              'PhotosA': url,
             });
-           
           }
 
           Navigator.push(

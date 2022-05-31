@@ -185,11 +185,8 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('SignatureA')
-                .doc()
                 .set({
-              'name': _fullName,
-              'imageUrl': url,
+              'SignatureA': url,
             });
           }
 

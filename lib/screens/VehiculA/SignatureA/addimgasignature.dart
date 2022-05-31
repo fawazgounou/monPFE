@@ -177,13 +177,11 @@ class _AddImageSignatureAState extends State<AddImageSignatureA> {
             await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])
-                .collection('Sinistre')
+               .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('SignatureA')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({
+              
+              'SignatureA': url,
             });
           }
 

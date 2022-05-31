@@ -176,16 +176,13 @@ class _AddCroquis1State extends State<AddCroquis1> {
             url = await ref.getDownloadURL();
 
             // imagesignature = [uuid.v1(), url, _fullName];
-            await  FirebaseFirestore.instance
+            await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('CroquisA')
-                .doc()
                 .set({
-              'name': _fullName,
-              'imageUrl': url,
+              'CroquisA': url,
             });
           }
 

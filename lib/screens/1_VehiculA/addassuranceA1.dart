@@ -105,7 +105,7 @@ class _AddAssuranceA1State extends State<AddAssuranceA1> {
                         .collection("Compagnie")
                         .snapshots(),
                     builder: (context, snapshot) {
-                      if (!snapshot.hasData) const Text("Loading.....") ;
+                      if (!snapshot.hasData) const Text("Loading.....");
                       {
                         List<DropdownMenuItem> currencyItems = [];
 

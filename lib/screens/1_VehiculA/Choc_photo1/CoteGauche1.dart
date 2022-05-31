@@ -195,11 +195,8 @@ class _CoteGaucheA1State extends State<CoteGaucheA1> {
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('PhotosA')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({'PhotosAimageUrl': url,
+              'PhotosAname': _fullName,
             });
           }
 

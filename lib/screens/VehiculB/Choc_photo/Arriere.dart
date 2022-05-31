@@ -226,11 +226,9 @@ class _ArrierevBState extends State<ArrierevB> {
                 .doc(widget.assuranceB[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('PhotosB')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({
+              
+              'PhotosB': url,
             });
             /*  arriereB = [
               uuid.v1(),

@@ -226,11 +226,9 @@ class _AddAvantBState extends State<AddAvantB> {
                 .doc(widget.assuranceB[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('PhotosB')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({
+              
+              'PhotosB': url,
             });
             /*  avantB = [
               uuid.v1(),

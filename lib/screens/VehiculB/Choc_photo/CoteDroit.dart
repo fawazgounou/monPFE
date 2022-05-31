@@ -222,13 +222,11 @@ class _CoteDroitBState extends State<CoteDroitB> {
  await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceB[1])
-                .collection('Sinistre')
+                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('PhotosB')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({
+              
+              'PhotosB': url,
             });
            /*  droiteB = [
               uuid.v1(),

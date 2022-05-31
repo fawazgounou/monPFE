@@ -194,11 +194,9 @@ var uuid = Uuid();
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('PhotosA')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({
+              
+              'PhotosA': url,
             });
           }
 

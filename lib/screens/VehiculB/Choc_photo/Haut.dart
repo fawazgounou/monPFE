@@ -238,11 +238,9 @@ class _HautBState extends State<HautB> {
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                .collection('CroquisA_B')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+                 .set({
+              
+              'PhotosB': url,
             });
           }
 
