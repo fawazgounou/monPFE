@@ -1,10 +1,13 @@
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:insertion_bd/mobile.dart';
+import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
 import 'package:insertion_bd/screens/home/home.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
+
+import '../../PdfPreviewScreen.dart';
 
 class TransitionA1 extends StatefulWidget {
   var Sin;
@@ -55,18 +58,45 @@ class TransitionA1 extends StatefulWidget {
 
 class _TransitionA1State extends State<TransitionA1> {
   var transA = [];
-/*   pdfCreation() async {
-    final pdf = pw.Document();
-    pdf.addPage(pw.Page(
-        pageFormat: PdfPageFormat.a4,
-        build: (pw.Context context) {
-          return pw.Center(
-            child: pw.Text("Hello World"),
-          ); // Center
-        }));
+  final pdf = pw.Document();
 
-    
-  } */
+  writeOnPdf() {
+    pdf.addPage(pw.MultiPage(
+      pageFormat: PdfPageFormat.a5,
+      margin: pw.EdgeInsets.all(32),
+      build: (pw.Context context) {
+        return <pw.Widget>[
+          pw.Header(level: 0, child: pw.Text("Easy Approach Document")),
+          pw.Paragraph(
+              text:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
+          pw.Paragraph(
+              text:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
+          pw.Header(level: 1, child: pw.Text("Second Heading")),
+          pw.Paragraph(
+              text:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
+          pw.Paragraph(
+              text:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
+          pw.Paragraph(
+              text:
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
+        ];
+      },
+    ));
+  }
+
+  Future savePdf() async {
+    Directory documentDirectory = await getApplicationDocumentsDirectory();
+
+    String documentPath = documentDirectory.path;
+
+    File file = File("$documentPath/example.pdf");
+
+    file.writeAsBytesSync(await pdf.save());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +119,25 @@ class _TransitionA1State extends State<TransitionA1> {
                       textAlign: TextAlign.center),
                 ),
                 ElevatedButton(
-                    onPressed: _createPDF, child: Text('Create PDF')),
+                    onPressed: () async {
+                      writeOnPdf();
+                      savePdf();
+
+                      Directory documentDirectory =
+                          await getApplicationDocumentsDirectory();
+
+                      String documentPath = documentDirectory.path;
+
+                      String fullPath = "$documentPath/example.pdf";
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PdfPreviewScreen(
+                                    path: fullPath,
+                                  )));
+                    },
+                    child: Icon(Icons.save)),
                 const SizedBox(
                   height: 50,
                 ),
@@ -238,45 +286,5 @@ class _TransitionA1State extends State<TransitionA1> {
         ),
       ),
     );
-  }
-
-  Future<void> _createPDF() async {
-    PdfDocument document = PdfDocument();
-
-    PdfGrid grid = PdfGrid();
-    grid.style = PdfGridStyle(
-        font: PdfStandardFont(PdfFontFamily.helvetica, 30),
-        cellPadding: PdfPaddings(left: 5, right: 2, top: 2, bottom: 2));
-
-    grid.columns.add(count: 3);
-    grid.headers.add(1);
-
-    PdfGridRow header = grid.headers[0];
-    header.cells[0].value = 'Date';
-    header.cells[1].value = 'Heure';
-    header.cells[2].value = 'Localisation';
-
-    PdfGridRow row = grid.rows.add();
-    /*  row.cells[0].value = widget.Sin[2];
-    row.cells[1].value = widget.Sin[3];
-    row.cells[2].value = widget.Sin[1]; */
-
-    grid.headers.add(1);
-    grid.columns.add(count: 3);
-    PdfGridRow vA = grid.headers[0];
-    header.cells[0].value = 'Marque';
-    header.cells[1].value = 'NImmatriculation';
-    header.cells[2].value = 'PaysImmatriculation';
-    PdfGridRow VA = grid.rows.add();
-    /*   row.cells[0].value = widget.Sin[2];
-    row.cells[1].value = widget.Sin[3];
-    row.cells[2].value = widget.Sin[1];
- */
-
-    grid.draw(
-        page: document.pages.add(), bounds: const Rect.fromLTWH(0, 0, 0, 0));
-    List<int> bytes = document.save();
-    document.dispose();
-    saveAndLaunchFile(bytes, 'Output.pdf');
   }
 }
