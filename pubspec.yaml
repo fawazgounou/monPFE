@@ -57,7 +57,10 @@ dependencies:
   uuid: ^3.0.6
   lottie: ^1.3.0
   animated_splash_screen: ^1.2.0
-  
+  pdf: ^3.8.1
+  syncfusion_flutter_pdf: ^20.1.58-beta
+  path_provider: ^2.0.1
+  open_file: ^3.1.0
   
   
   

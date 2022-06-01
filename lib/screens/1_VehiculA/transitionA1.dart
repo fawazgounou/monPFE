@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:insertion_bd/mobile.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
 import 'package:insertion_bd/screens/home/home.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class TransitionA1 extends StatefulWidget {
   var Sin;
@@ -53,6 +55,19 @@ class TransitionA1 extends StatefulWidget {
 
 class _TransitionA1State extends State<TransitionA1> {
   var transA = [];
+/*   pdfCreation() async {
+    final pdf = pw.Document();
+    pdf.addPage(pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        build: (pw.Context context) {
+          return pw.Center(
+            child: pw.Text("Hello World"),
+          ); // Center
+        }));
+
+    
+  } */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +88,8 @@ class _TransitionA1State extends State<TransitionA1> {
                       ),
                       textAlign: TextAlign.center),
                 ),
+                ElevatedButton(
+                    onPressed: _createPDF, child: Text('Create PDF')),
                 const SizedBox(
                   height: 50,
                 ),
@@ -93,7 +110,7 @@ class _TransitionA1State extends State<TransitionA1> {
                   ]),
                   child: ElevatedButton(
                     onPressed: () {
-                     FirebaseFirestore.instance
+                      FirebaseFirestore.instance
                           .collection('User')
                           .doc(widget.assuranceA[1])
                           .collection('Sinistre')
@@ -153,7 +170,7 @@ class _TransitionA1State extends State<TransitionA1> {
                         'Détaille': widget.observ[1],
                         'Description': widget.observ[2],
                         'Circonstance': widget.circonstanceA[1],
-                        'MarqueB':'  ',
+                        'MarqueB': '  ',
                         'Numero_immatriculationB': '  ',
                         'Pays_immatriculationB': '  ',
                         'NomASB': '  ',
@@ -188,8 +205,6 @@ class _TransitionA1State extends State<TransitionA1> {
                         'DescriptionCB': '  ',
                         'CirconstanceCB': '  ',
                       });
-
-                
                     },
                     child: const Text(
                       'Sauvegarder',
@@ -223,5 +238,45 @@ class _TransitionA1State extends State<TransitionA1> {
         ),
       ),
     );
+  }
+
+  Future<void> _createPDF() async {
+    PdfDocument document = PdfDocument();
+
+    PdfGrid grid = PdfGrid();
+    grid.style = PdfGridStyle(
+        font: PdfStandardFont(PdfFontFamily.helvetica, 30),
+        cellPadding: PdfPaddings(left: 5, right: 2, top: 2, bottom: 2));
+
+    grid.columns.add(count: 3);
+    grid.headers.add(1);
+
+    PdfGridRow header = grid.headers[0];
+    header.cells[0].value = 'Date';
+    header.cells[1].value = 'Heure';
+    header.cells[2].value = 'Localisation';
+
+    PdfGridRow row = grid.rows.add();
+    /*  row.cells[0].value = widget.Sin[2];
+    row.cells[1].value = widget.Sin[3];
+    row.cells[2].value = widget.Sin[1]; */
+
+    grid.headers.add(1);
+    grid.columns.add(count: 3);
+    PdfGridRow vA = grid.headers[0];
+    header.cells[0].value = 'Marque';
+    header.cells[1].value = 'NImmatriculation';
+    header.cells[2].value = 'PaysImmatriculation';
+    PdfGridRow VA = grid.rows.add();
+    /*   row.cells[0].value = widget.Sin[2];
+    row.cells[1].value = widget.Sin[3];
+    row.cells[2].value = widget.Sin[1];
+ */
+
+    grid.draw(
+        page: document.pages.add(), bounds: const Rect.fromLTWH(0, 0, 0, 0));
+    List<int> bytes = document.save();
+    document.dispose();
+    saveAndLaunchFile(bytes, 'Output.pdf');
   }
 }

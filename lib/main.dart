@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:insertion_bd/screens/1_VehiculA/transitionA1.dart';
 
 import 'package:insertion_bd/screens/home/home.dart';
 
@@ -43,6 +44,6 @@ class SplashScreen extends StatelessWidget {
         splashIconSize: 1000,
         splashTransition: SplashTransition.fadeTransition,
         animationDuration: Duration(seconds: 3),
-        nextScreen: const Home());
+        nextScreen:  TransitionA1());
   }
 }

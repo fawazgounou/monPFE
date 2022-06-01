@@ -28,13 +28,12 @@ class _AddTemoins1State extends State<AddTemoins1> {
       placeholder: "Entrer le Prenom", title: "Prénom", initialValue: '');
   CustomTextField adressetemoin = CustomTextField(
       placeholder: "Entrer  Adresse", title: "Adresse", initialValue: '');
-  CustomNumberField telephone = CustomNumberField(
-      placeholder: "Entrer le téléphone", title: "Téléphone", initialValue: '');
+
   bool err = false;
 
-   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-   TextEditingController numbertelephone = TextEditingController();
-
+  MaskTextInputFormatter maskFormatter =
+      MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  TextEditingController numbertelephone = TextEditingController();
 
   final _key = GlobalKey<FormState>();
   @override
@@ -42,7 +41,7 @@ class _AddTemoins1State extends State<AddTemoins1> {
     nomtemoin.err = "Entrer le Nom ";
     prenomtemoin.err = "Entrer le Prenom";
     adressetemoin.err = " Entrer l'Adresse'";
-    telephone.err = "Entrer le Téléphone";
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
