@@ -189,7 +189,7 @@ class _CoteDroitA1State extends State<CoteDroitA1> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-           // droit = [uuid.v1(),url, _fullName];
+           droit = [uuid.v1(),url, _fullName];
              await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])

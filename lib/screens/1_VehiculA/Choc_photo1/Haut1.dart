@@ -189,14 +189,14 @@ class _HautA1State extends State<HautA1> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            //hautA = [uuid.v1(),url, _fullName];
-            await  FirebaseFirestore.instance
+            hautA = [uuid.v1(), url, _fullName];
+            await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
-                 .set({
-                'PhotosA': url,
+                .set({
+              'PhotosA': url,
             });
           }
 

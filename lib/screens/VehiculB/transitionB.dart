@@ -185,6 +185,9 @@ class _TransitionBState extends State<TransitionB> {
                         'Détaille': widget.observ[1],
                         'Description': widget.observ[2],
                         'Circonstance': widget.circonstanceA[1],
+                        'CroquisA': widget.imagescroquiA_B[1],
+                        'SignatureA': widget.imagesignature[1],
+                        'SignatureB': widget.imagesignatureB[1],
                         'MarqueB': widget.vehiculeB[1],
                         'Numero_immatriculationB': widget.vehiculeB[2],
                         'Pays_immatriculationB': widget.vehiculeB[3],
@@ -314,6 +317,9 @@ class _TransitionBState extends State<TransitionB> {
                         'Détaille': widget.observB[1],
                         'Description': widget.observB[2],
                         'Circonstance': widget.circonstanceB[1],
+                        'CroquisA': widget.imagescroquiA_B[1],
+                        'SignatureA': widget.imagesignature[1],
+                        'SignatureB': widget.imagesignatureB[1],
                       });
                     },
                     child: const Text(

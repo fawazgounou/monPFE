@@ -205,29 +205,12 @@ class _AddImageSignatureAState extends State<AddcroquisA_B> {
                 .child('CroquisAB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-            await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceA[1])
-                 .collection('Sinistre')
-                .doc(widget.Sin[0])
-                 .set({
-              
-              'CroquisA_B': url,
-            });
-            FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceB[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                 .set({
-              
-              'CroquisA_B': url,
-            });
-            /* imagesignatureB = [
+
+            imagescroquiA_B = [
               uuid.v1(),
               _fullName,
               url,
-            ]; */
+            ];
           }
 
           Navigator.push(

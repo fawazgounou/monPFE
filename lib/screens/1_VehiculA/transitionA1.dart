@@ -7,8 +7,6 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:insertion_bd/screens/VehiculB/addvehiculB.dart';
 import 'package:insertion_bd/screens/home/home.dart';
 
-import '../../PdfPreviewScreen.dart';
-
 class TransitionA1 extends StatefulWidget {
   var Sin;
   var Temoin;
@@ -58,45 +56,6 @@ class TransitionA1 extends StatefulWidget {
 
 class _TransitionA1State extends State<TransitionA1> {
   var transA = [];
-  final pdf = pw.Document();
-
-  writeOnPdf() {
-    pdf.addPage(pw.MultiPage(
-      pageFormat: PdfPageFormat.a5,
-      margin: pw.EdgeInsets.all(32),
-      build: (pw.Context context) {
-        return <pw.Widget>[
-          pw.Header(level: 0, child: pw.Text("Easy Approach Document")),
-          pw.Paragraph(
-              text:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
-          pw.Paragraph(
-              text:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
-          pw.Header(level: 1, child: pw.Text("Second Heading")),
-          pw.Paragraph(
-              text:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
-          pw.Paragraph(
-              text:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
-          pw.Paragraph(
-              text:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."),
-        ];
-      },
-    ));
-  }
-
-  Future savePdf() async {
-    Directory documentDirectory = await getApplicationDocumentsDirectory();
-
-    String documentPath = documentDirectory.path;
-
-    File file = File("$documentPath/example.pdf");
-
-    file.writeAsBytesSync(await pdf.save());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,26 +77,6 @@ class _TransitionA1State extends State<TransitionA1> {
                       ),
                       textAlign: TextAlign.center),
                 ),
-                ElevatedButton(
-                    onPressed: () async {
-                      writeOnPdf();
-                      savePdf();
-
-                      Directory documentDirectory =
-                          await getApplicationDocumentsDirectory();
-
-                      String documentPath = documentDirectory.path;
-
-                      String fullPath = "$documentPath/example.pdf";
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PdfPreviewScreen(
-                                    path: fullPath,
-                                  )));
-                    },
-                    child: Icon(Icons.save)),
                 const SizedBox(
                   height: 50,
                 ),
@@ -218,6 +157,8 @@ class _TransitionA1State extends State<TransitionA1> {
                         'Détaille': widget.observ[1],
                         'Description': widget.observ[2],
                         'Circonstance': widget.circonstanceA[1],
+                        'CroquisA': widget.imagecroquis[1],
+                        'SignatureA': widget.imagesignature[1],
                         'MarqueB': '  ',
                         'Numero_immatriculationB': '  ',
                         'Pays_immatriculationB': '  ',
@@ -252,6 +193,7 @@ class _TransitionA1State extends State<TransitionA1> {
                         'DétailleCB': '  ',
                         'DescriptionCB': '  ',
                         'CirconstanceCB': '  ',
+                        'SignatureB': '  ',
                       });
                     },
                     child: const Text(
