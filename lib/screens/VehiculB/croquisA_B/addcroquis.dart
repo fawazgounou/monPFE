@@ -205,12 +205,8 @@ class _AddImageSignatureAState extends State<AddcroquisA_B> {
                 .child('CroquisAB')
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
-
-            imagescroquiA_B = [
-              uuid.v1(),
-              _fullName,
-              url,
-            ];
+            url = await ref.getDownloadURL();
+            imagescroquiA_B = [uuid.v1(), url, _fullName];
           }
 
           Navigator.push(

@@ -159,6 +159,11 @@ class _TransitionA1State extends State<TransitionA1> {
                         'Circonstance': widget.circonstanceA[1],
                         'CroquisA': widget.imagecroquis[1],
                         'SignatureA': widget.imagesignature[1],
+                        'imageArriereA': widget.arriere[1] ?? "",
+                      /*  'imageAvantA': widget.avant[1]==null?"":widget.avant[1],
+                         /* 'imageDroitA': widget.droit[1] ?? "",
+                        'imageGaucheA': widget.gauche[1] ?? "",
+                        'imageHautA': ""?? widget.hautA[1], */ */
                         'MarqueB': '  ',
                         'Numero_immatriculationB': '  ',
                         'Pays_immatriculationB': '  ',

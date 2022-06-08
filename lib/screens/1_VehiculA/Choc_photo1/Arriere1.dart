@@ -188,16 +188,15 @@ class _ArrierevA1State extends State<ArrierevA1> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-             arriere = [uuid.v1(),url, _fullName];
+            arriere = [uuid.v1(), url, _fullName];
             await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
                 .set({
-              'PhotosA': url,
+              'PhotosA': arriere[1],
             });
-            
           }
 
           Navigator.push(

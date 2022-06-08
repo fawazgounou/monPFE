@@ -219,7 +219,7 @@ class _CoteDroitBState extends State<CoteDroitB> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
- await FirebaseFirestore.instance
+/*  await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceB[1])
                  .collection('Sinistre')
@@ -227,12 +227,12 @@ class _CoteDroitBState extends State<CoteDroitB> {
                  .set({
               
               'PhotosB': url,
-            });
-           /*  droiteB = [
+            }); */
+            droiteB = [
               uuid.v1(),
               _fullName,
               url,
-            ]; */
+            ]; 
           }
 
           Navigator.push(

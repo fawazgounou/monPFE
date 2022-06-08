@@ -185,9 +185,7 @@ class _TransitionBState extends State<TransitionB> {
                         'Détaille': widget.observ[1],
                         'Description': widget.observ[2],
                         'Circonstance': widget.circonstanceA[1],
-                        'CroquisA': widget.imagescroquiA_B[1],
                         'SignatureA': widget.imagesignature[1],
-                        'SignatureB': widget.imagesignatureB[1],
                         'MarqueB': widget.vehiculeB[1],
                         'Numero_immatriculationB': widget.vehiculeB[2],
                         'Pays_immatriculationB': widget.vehiculeB[3],
@@ -222,6 +220,8 @@ class _TransitionBState extends State<TransitionB> {
                         'DétailleCB': widget.observB[1],
                         'DescriptionCB': widget.observB[2],
                         'CirconstanceCB': widget.circonstanceB[1],
+                        'CroquisA': widget.imagescroquiA_B[1],
+                        'SignatureB': widget.imagesignatureB[1],
                       });
 
                       FirebaseFirestore.instance
@@ -249,6 +249,7 @@ class _TransitionBState extends State<TransitionB> {
                         'CasqueB': widget.blesse[7],
                         'Centre_HospitalierB': widget.blesse[8],
                         'Nature_GravitéB': widget.blesse[9],
+                        'SignatureA': widget.imagesignature[1],
                         'MarqueVB': widget.vehiculeA[1],
                         'Numero_immatriculationVB': widget.vehiculeA[2],
                         'Pays_immatriculationVB': widget.vehiculeA[3],
@@ -258,7 +259,7 @@ class _TransitionBState extends State<TransitionB> {
                         'Code_PostalASB': widget.assureA[4],
                         'TéléphoneAS': widget.assureA[5],
                         'EmailASB': widget.assureA[6],
-                        'NomAB': widget.assuranceA[1],
+                        'NomB': widget.assuranceA[1],
                         'num_contratB': widget.assuranceA[2],
                         'num_carte_verteB': widget.assuranceA[3],
                         'duB': widget.assuranceA[4],
@@ -292,7 +293,7 @@ class _TransitionBState extends State<TransitionB> {
                         'Code_PostalAS': widget.assureB[4],
                         'TéléphoneASS': widget.assureB[5],
                         'EmailAS': widget.assureB[6],
-                        'Nom': widget.assuranceB[1],
+                        'NomA': widget.assuranceB[1],
                         'num_contrat': widget.assuranceB[2],
                         'num_carte_verte': widget.assuranceB[3],
                         'du': widget.assuranceB[4],
@@ -318,7 +319,6 @@ class _TransitionBState extends State<TransitionB> {
                         'Description': widget.observB[2],
                         'Circonstance': widget.circonstanceB[1],
                         'CroquisA': widget.imagescroquiA_B[1],
-                        'SignatureA': widget.imagesignature[1],
                         'SignatureB': widget.imagesignatureB[1],
                       });
                     },

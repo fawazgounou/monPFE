@@ -54,7 +54,7 @@ class _Localisation1State extends State<Localisation1> {
 
     Adresse = '${place.locality},${place.country}';
     localisatMaps =
-        '${place.locality},${place.country},${place.street},${place.postalCode},${place.subLocality},${place.subThoroughfare},';
+        '${place.locality},${place.country},${place.street}';
 
     setState(() {});
   }

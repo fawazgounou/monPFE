@@ -190,14 +190,14 @@ class _CoteGaucheA1State extends State<CoteGaucheA1> {
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
             gauche = [uuid.v1(),url, _fullName];
-             await  FirebaseFirestore.instance
+            /*  await  FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
                 .doc(widget.Sin[0])
                  .set({'PhotosA': url,
               
-            });
+            }); */
           }
 
           Navigator.push(

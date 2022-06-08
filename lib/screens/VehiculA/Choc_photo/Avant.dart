@@ -188,8 +188,8 @@ var uuid = Uuid();
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-           // avant = [uuid.v1(),url, _fullName];
-                await FirebaseFirestore.instance
+            avant = [uuid.v1(),url, _fullName];
+            /*     await FirebaseFirestore.instance
                 .collection('User')
                 .doc(widget.assuranceA[1])
                 .collection('Sinistre')
@@ -197,7 +197,7 @@ var uuid = Uuid();
                  .set({
               
               'PhotosA': url,
-            });
+            }); */
           }
 
           Navigator.push(
