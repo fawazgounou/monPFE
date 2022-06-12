@@ -16,11 +16,7 @@ class AddCirconstanceB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -31,44 +27,29 @@ class AddCirconstanceB extends StatefulWidget {
   var conducteurB;
   var observB;
   var photoB;
-  var arriereB;
-  var avantB;
-  var droiteB;
-  var gaucheB;
-  var hautB;
 
-  AddCirconstanceB(
-      {Key? key,
-      this.Sin,
-      this.Temoin,
-      this.blesse,
-      this.vehiculeA,
-      this.assureA,
-      this.assuranceA,
-      this.conductA,
-      this.observ,
-      this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
-      this.circonstanceA,
-      this.signature,
-      this.imagesignature,
-      this.transA,
-      this.vehiculeB,
-      this.assureB,
-      this.assuranceB,
-      this.conducteurB,
-      this.observB,
-      this.photoB,
-      this.arriereB,
-      this.avantB,
-      this.droiteB,
-      this.gaucheB,
-      this.hautB})
-      : super(key: key);
+  AddCirconstanceB({
+    Key? key,
+    this.Sin,
+    this.Temoin,
+    this.blesse,
+    this.vehiculeA,
+    this.assureA,
+    this.assuranceA,
+    this.conductA,
+    this.observ,
+    this.photo,
+    this.circonstanceA,
+    this.signature,
+    this.imagesignature,
+    this.transA,
+    this.vehiculeB,
+    this.assureB,
+    this.assuranceB,
+    this.conducteurB,
+    this.observB,
+    this.photoB,
+  }) : super(key: key);
 
   @override
   State<AddCirconstanceB> createState() => _AddCirconstanceBState();
@@ -968,11 +949,6 @@ class _AddCirconstanceBState extends State<AddCirconstanceB> {
                         conductA: widget.conductA,
                         observ: widget.observ,
                         photo: widget.photo,
-                        arriere: widget.arriere,
-                        avant: widget.avant,
-                        droit: widget.droit,
-                        gauche: widget.gauche,
-                        hautA: widget.hautA,
                         circonstanceA: widget.circonstanceA,
                         signature: widget.signature,
                         imagesignature: widget.imagesignature,
@@ -983,10 +959,6 @@ class _AddCirconstanceBState extends State<AddCirconstanceB> {
                         conducteurB: widget.conducteurB,
                         observB: widget.observB,
                         photoB: widget.photoB,
-                        arriereB: widget.arriereB,
-                        avantB: widget.avantB,
-                        droiteB: widget.droiteB,
-                        gaucheB: widget.gaucheB,
                         circonstanceB: circonstanceB,
                       )));
         },

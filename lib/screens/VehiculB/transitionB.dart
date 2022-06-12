@@ -16,11 +16,7 @@ class TransitionB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -31,11 +27,7 @@ class TransitionB extends StatefulWidget {
   var conducteurB;
   var observB;
   var photoB;
-  var arriereB;
-  var avantB;
-  var droiteB;
-  var gaucheB;
-  var hautB;
+
   var circonstanceB;
   var signatureB;
   var imagesignatureB;
@@ -53,11 +45,6 @@ class TransitionB extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -68,11 +55,6 @@ class TransitionB extends StatefulWidget {
       this.conducteurB,
       this.observB,
       this.photoB,
-      this.arriereB,
-      this.avantB,
-      this.droiteB,
-      this.gaucheB,
-      this.hautB,
       this.circonstanceB,
       this.signatureB,
       this.imagesignatureB,
@@ -186,6 +168,11 @@ class _TransitionBState extends State<TransitionB> {
                         'Description': widget.observ[2],
                         'Circonstance': widget.circonstanceA[1],
                         'SignatureA': widget.imagesignature[1],
+                        'AvantA': widget.photo[0],
+                        'ArriereA': widget.photo[1],
+                        'DroitA': widget.photo[2],
+                        'GaucheA': widget.photo[3],
+                        'HautA': widget.photo[4],
                         'MarqueB': widget.vehiculeB[1],
                         'Numero_immatriculationB': widget.vehiculeB[2],
                         'Pays_immatriculationB': widget.vehiculeB[3],
@@ -222,6 +209,11 @@ class _TransitionBState extends State<TransitionB> {
                         'CirconstanceCB': widget.circonstanceB[1],
                         'CroquisA': widget.imagescroquiA_B[1],
                         'SignatureB': widget.imagesignatureB[1],
+                        'AvantB': widget.photoB[0],
+                        'ArriereB': widget.photoB[1],
+                        'DroitB': widget.photoB[2],
+                        'GaucheB': widget.photoB[3],
+                        'HautB': widget.photoB[4],
                       });
 
                       FirebaseFirestore.instance
@@ -250,9 +242,9 @@ class _TransitionBState extends State<TransitionB> {
                         'Centre_HospitalierB': widget.blesse[8],
                         'Nature_GravitéB': widget.blesse[9],
                         'SignatureA': widget.imagesignature[1],
-                        'MarqueVB': widget.vehiculeA[1],
-                        'Numero_immatriculationVB': widget.vehiculeA[2],
-                        'Pays_immatriculationVB': widget.vehiculeA[3],
+                        'MarqueB': widget.vehiculeA[1],
+                        'Numero_immatriculationB': widget.vehiculeA[2],
+                        'Pays_immatriculationB': widget.vehiculeA[3],
                         'NomASB': widget.assureA[1],
                         'PrenomASB': widget.assureA[2],
                         'AdresseASB': widget.assureA[3],
@@ -284,6 +276,11 @@ class _TransitionBState extends State<TransitionB> {
                         'DétailleB': widget.observ[1],
                         'DescriptionB': widget.observ[2],
                         'CirconstanceB': widget.circonstanceA[1],
+                        'AvantB': widget.photo[0],
+                        'ArriereB': widget.photo[1],
+                        'DroitB': widget.photo[2],
+                        'GaucheB': widget.photo[3],
+                        'HautB': widget.photo[4],
                         'MarqueV': widget.vehiculeB[1],
                         'Numero_immatriculationV': widget.vehiculeB[2],
                         'Pays_immatriculationV': widget.vehiculeB[3],
@@ -317,6 +314,11 @@ class _TransitionBState extends State<TransitionB> {
                         'fin_valide_permisC': widget.conducteurB[10],
                         'Détaille': widget.observB[1],
                         'Description': widget.observB[2],
+                        'AvantA': widget.photoB[0],
+                        'ArriereA': widget.photoB[1],
+                        'DroitA': widget.photoB[2],
+                        'GaucheA': widget.photoB[3],
+                        'HautA': widget.photoB[4],
                         'Circonstance': widget.circonstanceB[1],
                         'CroquisA': widget.imagescroquiA_B[1],
                         'SignatureB': widget.imagesignatureB[1],

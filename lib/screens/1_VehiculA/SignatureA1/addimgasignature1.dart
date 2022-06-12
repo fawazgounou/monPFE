@@ -180,14 +180,7 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
             url = await ref.getDownloadURL();
 
             imagesignature = [uuid.v1(), url, _fullName];
-            /*   await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceA[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                .set({
-              'SignatureA': imagesignature[1],
-            }); */
+            
           }
 
           Navigator.push(

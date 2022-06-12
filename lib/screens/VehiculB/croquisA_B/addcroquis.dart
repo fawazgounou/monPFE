@@ -24,11 +24,7 @@ class AddcroquisA_B extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -39,11 +35,7 @@ class AddcroquisA_B extends StatefulWidget {
   var conducteurB;
   var observB;
   var photoB;
-  var arriereB;
-  var avantB;
-  var droiteB;
-  var gaucheB;
-  var hautB;
+
   var circonstanceB;
   var signatureB;
   var imagesignatureB;
@@ -59,11 +51,6 @@ class AddcroquisA_B extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -74,11 +61,6 @@ class AddcroquisA_B extends StatefulWidget {
       this.conducteurB,
       this.observB,
       this.photoB,
-      this.arriereB,
-      this.avantB,
-      this.droiteB,
-      this.gaucheB,
-      this.hautB,
       this.circonstanceB,
       this.signatureB,
       this.imagesignatureB,
@@ -222,11 +204,6 @@ class _AddImageSignatureAState extends State<AddcroquisA_B> {
                       conductA: widget.conductA,
                       observ: widget.observ,
                       photo: widget.photo,
-                      arriere: widget.arriere,
-                      avant: widget.avant,
-                      droit: widget.droit,
-                      gauche: widget.gauche,
-                      hautA: widget.hautA,
                       circonstanceA: widget.circonstanceA,
                       signature: widget.signature,
                       imagesignature: widget.imagesignature,
@@ -237,10 +214,6 @@ class _AddImageSignatureAState extends State<AddcroquisA_B> {
                       conducteurB: widget.conducteurB,
                       observB: widget.observB,
                       photoB: widget.photoB,
-                      arriereB: widget.arriereB,
-                      avantB: widget.avantB,
-                      droiteB: widget.droiteB,
-                      gaucheB: widget.gaucheB,
                       circonstanceB: widget.circonstanceB,
                       signatureB: widget.signatureB,
                       imagesignatureB: widget.imagesignatureB,

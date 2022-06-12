@@ -188,16 +188,9 @@ var uuid = Uuid();
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            avant = [uuid.v1(),url, _fullName];
-            /*     await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceA[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                 .set({
-              
-              'PhotosA': url,
-            }); */
+          setState(() {
+              widget.photo[0] = url;
+            });
           }
 
           Navigator.push(
@@ -213,7 +206,7 @@ var uuid = Uuid();
                         conductA: widget.conductA,
                         observ: widget.observ,
                         photo: widget.photo,
-                        avant: avant,
+                        
                       )));
         },
         child: Container(

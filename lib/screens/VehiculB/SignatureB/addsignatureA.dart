@@ -20,11 +20,7 @@ class SignaturePageB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -35,11 +31,7 @@ class SignaturePageB extends StatefulWidget {
   var conducteurB;
   var observB;
   var photoB;
-  var arriereB;
-  var avantB;
-  var droiteB;
-  var gaucheB;
-  var hautB;
+
   var circonstanceB;
 
   SignaturePageB(
@@ -53,11 +45,6 @@ class SignaturePageB extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -68,11 +55,6 @@ class SignaturePageB extends StatefulWidget {
       this.conducteurB,
       this.observB,
       this.photoB,
-      this.arriereB,
-      this.avantB,
-      this.droiteB,
-      this.gaucheB,
-      this.hautB,
       this.circonstanceB})
       : super(key: key);
 
@@ -142,11 +124,6 @@ class _SignaturePageBState extends State<SignaturePageB> {
                         conductA: widget.conductA,
                         observ: widget.observ,
                         photo: widget.photo,
-                        arriere: widget.arriere,
-                        avant: widget.avant,
-                        droit: widget.droit,
-                        gauche: widget.gauche,
-                        hautA: widget.hautA,
                         circonstanceA: widget.circonstanceA,
                         signature: widget.signature,
                         imagesignature: widget.imagesignature,
@@ -157,10 +134,6 @@ class _SignaturePageBState extends State<SignaturePageB> {
                         conducteurB: widget.conducteurB,
                         observB: widget.observB,
                         photoB: widget.photoB,
-                        arriereB: widget.arriereB,
-                        avantB: widget.avantB,
-                        droiteB: widget.droiteB,
-                        gaucheB: widget.gaucheB,
                         circonstanceB: widget.circonstanceB,
                         signatureB: signatureB)));
           },

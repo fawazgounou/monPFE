@@ -159,11 +159,11 @@ class _TransitionA1State extends State<TransitionA1> {
                         'Circonstance': widget.circonstanceA[1],
                         'CroquisA': widget.imagecroquis[1],
                         'SignatureA': widget.imagesignature[1],
-                        'imageArriereA': widget.arriere[1] ?? "",
-                      /*  'imageAvantA': widget.avant[1]==null?"":widget.avant[1],
-                         /* 'imageDroitA': widget.droit[1] ?? "",
-                        'imageGaucheA': widget.gauche[1] ?? "",
-                        'imageHautA': ""?? widget.hautA[1], */ */
+                        'AvantA': widget.photo[0],
+                        'ArriereA': widget.photo[1],
+                        'DroitA': widget.photo[2],
+                        'GaucheA': widget.photo[3],
+                        'HautA': widget.photo[4],
                         'MarqueB': '  ',
                         'Numero_immatriculationB': '  ',
                         'Pays_immatriculationB': '  ',
@@ -199,6 +199,11 @@ class _TransitionA1State extends State<TransitionA1> {
                         'DescriptionCB': '  ',
                         'CirconstanceCB': '  ',
                         'SignatureB': '  ',
+                        'AvantB': '  ',
+                        'ArriereB': '  ',
+                        'DroitB': '  ',
+                        'GaucheB': '  ',
+                        'HautB': '  ',
                       });
                     },
                     child: const Text(

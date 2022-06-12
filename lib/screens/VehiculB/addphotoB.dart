@@ -26,11 +26,7 @@ class AddPhotoB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -51,11 +47,6 @@ class AddPhotoB extends StatefulWidget {
     this.conductA,
     this.observ,
     this.photo,
-    this.arriere,
-    this.avant,
-    this.droit,
-    this.gauche,
-    this.hautA,
     this.circonstanceA,
     this.signature,
     this.imagesignature,
@@ -84,6 +75,7 @@ class _AddPhotoBState extends State<AddPhotoB> {
   void initState() {
     requestPermission();
     super.initState();
+    photoB = ["", "", "", "", ""];
   }
 
   void requestPermission() async {
@@ -173,7 +165,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photoB = [uuid.v1()];
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -187,11 +178,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                                           conductA: widget.conductA,
                                           observ: widget.observ,
                                           photo: widget.photo,
-                                          arriere: widget.arriere,
-                                          avant: widget.avant,
-                                          droit: widget.droit,
-                                          gauche: widget.gauche,
-                                          hautA: widget.hautA,
                                           circonstanceA: widget.circonstanceA,
                                           signature: widget.signature,
                                           imagesignature: widget.imagesignature,
@@ -236,7 +222,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photoB = [uuid.v1()];
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -250,11 +235,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                                           conductA: widget.conductA,
                                           observ: widget.observ,
                                           photo: widget.photo,
-                                          arriere: widget.arriere,
-                                          avant: widget.avant,
-                                          droit: widget.droit,
-                                          gauche: widget.gauche,
-                                          hautA: widget.hautA,
                                           circonstanceA: widget.circonstanceA,
                                           signature: widget.signature,
                                           imagesignature: widget.imagesignature,
@@ -304,7 +284,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photoB = [uuid.v1()];
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -318,11 +297,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                                           conductA: widget.conductA,
                                           observ: widget.observ,
                                           photo: widget.photo,
-                                          arriere: widget.arriere,
-                                          avant: widget.avant,
-                                          droit: widget.droit,
-                                          gauche: widget.gauche,
-                                          hautA: widget.hautA,
                                           circonstanceA: widget.circonstanceA,
                                           signature: widget.signature,
                                           imagesignature: widget.imagesignature,
@@ -368,7 +342,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photoB = [uuid.v1()];
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -382,11 +355,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                                           conductA: widget.conductA,
                                           observ: widget.observ,
                                           photo: widget.photo,
-                                          arriere: widget.arriere,
-                                          avant: widget.avant,
-                                          droit: widget.droit,
-                                          gauche: widget.gauche,
-                                          hautA: widget.hautA,
                                           circonstanceA: widget.circonstanceA,
                                           signature: widget.signature,
                                           imagesignature: widget.imagesignature,
@@ -436,7 +404,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photoB = [uuid.v1()];
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -450,11 +417,6 @@ class _AddPhotoBState extends State<AddPhotoB> {
                                           conductA: widget.conductA,
                                           observ: widget.observ,
                                           photo: widget.photo,
-                                          arriere: widget.arriere,
-                                          avant: widget.avant,
-                                          droit: widget.droit,
-                                          gauche: widget.gauche,
-                                          hautA: widget.hautA,
                                           circonstanceA: widget.circonstanceA,
                                           signature: widget.signature,
                                           imagesignature: widget.imagesignature,

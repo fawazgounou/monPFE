@@ -1,6 +1,9 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:insertion_bd/screens/1_VehiculA/Choc_photo1/Arriere1.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addassuranceA1.dart';
+import 'package:insertion_bd/screens/1_VehiculA/addphotoA1.dart';
 import 'package:insertion_bd/screens/1_VehiculA/transitionA1.dart';
 
 import 'package:insertion_bd/screens/home/home.dart';

@@ -38,11 +38,6 @@ class SignaturePageA extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
       this.circonstanceA})
       : super(key: key);
   @override
@@ -112,11 +107,6 @@ class _SignaturePageAState extends State<SignaturePageA> {
                         conductA: widget.conductA,
                         observ: widget.observ,
                         photo: widget.photo,
-                        arriere: widget.arriere,
-                        avant: widget.avant,
-                        droit: widget.droit,
-                        gauche: widget.gauche,
-                        hautA: widget.hautA,
                         circonstanceA: widget.circonstanceA,
                         signature: signature)));
           },

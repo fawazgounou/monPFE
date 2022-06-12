@@ -50,6 +50,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
   void initState() {
     requestPermission();
     super.initState();
+      photo = ["","","","",""];
   }
 
   void requestPermission() async {
@@ -140,7 +141,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
-                                photo = [uuid.v1()];
+                                
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -189,7 +190,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
-                                photo = [uuid.v1()];
+                                
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -243,7 +244,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
-                                photo = [uuid.v1()];
+                                
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -293,7 +294,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
-                                photo = [uuid.v1()];
+                                
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -347,7 +348,7 @@ class _AddPhotoAState extends State<AddPhotoA> {
                             ]),
                             child: ElevatedButton(
                               onPressed: () {
-                                photo = [uuid.v1()];
+                                
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

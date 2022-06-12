@@ -23,11 +23,7 @@ class AddAvantB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+  
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -50,11 +46,7 @@ class AddAvantB extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
+     
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -221,20 +213,9 @@ class _AddAvantBState extends State<AddAvantB> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-          /*   await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceB[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                 .set({
-              
-              'PhotosB': url,
-            }); */
-              avantB = [
-             
-              _fullName,
-              url,
-            ]; 
+           setState(() {
+              widget.photoB[0] = url;
+            });
           }
 
           Navigator.push(
@@ -250,11 +231,7 @@ class _AddAvantBState extends State<AddAvantB> {
                       conductA: widget.conductA,
                       observ: widget.observ,
                       photo: widget.photo,
-                      arriere: widget.arriere,
-                      avant: widget.avant,
-                      droit: widget.droit,
-                      gauche: widget.gauche,
-                      hautA: widget.hautA,
+                     
                       circonstanceA: widget.circonstanceA,
                       signature: widget.signature,
                       imagesignature: widget.imagesignature,
@@ -265,7 +242,7 @@ class _AddAvantBState extends State<AddAvantB> {
                       conducteurB: widget.conducteurB,
                       observB: widget.observB,
                       photoB: widget.photoB,
-                      avantB: avantB)));
+                     )));
         },
         child: Container(
           height: 50.0,

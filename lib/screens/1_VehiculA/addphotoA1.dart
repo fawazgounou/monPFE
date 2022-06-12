@@ -43,7 +43,7 @@ class AddPhotoA1 extends StatefulWidget {
 
 class _AddPhotoA1State extends State<AddPhotoA1> {
   var uuid = Uuid();
-  var photo = [];
+  var photo = ["","","","",""];
 
   final _key = GlobalKey<FormState>();
   List<Asset> images = <Asset>[];
@@ -55,6 +55,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
   void initState() {
     requestPermission();
     super.initState();
+   photo = ["","","","",""];
   }
 
   void requestPermission() async {
@@ -144,7 +145,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photo = [uuid.v1()];
+                            
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -193,7 +194,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photo = [uuid.v1()];
+                             print(photo[1]);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -247,7 +248,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photo = [uuid.v1()];
+                             print(photo[1]);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -297,7 +298,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photo = [uuid.v1()];
+                             print(photo[1]);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -351,7 +352,7 @@ class _AddPhotoA1State extends State<AddPhotoA1> {
                           ]),
                           child: ElevatedButton(
                             onPressed: () {
-                              photo = [uuid.v1()];
+                             print(photo[1]);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

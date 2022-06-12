@@ -19,11 +19,7 @@ class AddAssureB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -40,11 +36,6 @@ class AddAssureB extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -73,13 +64,14 @@ class _AddAssureBState extends State<AddAssureB> {
       placeholder: "Entrer le Code Postal",
       title: "Code Postal",
       initialValue: '');
-  
+
   CustomTextField emailB = CustomTextField(
       placeholder: "Entrer le mail", title: "Email Assuré", initialValue: '');
 
   final _key = GlobalKey<FormState>();
-   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
-   TextEditingController numbertelephone = TextEditingController();
+  MaskTextInputFormatter maskFormatter =
+      MaskTextInputFormatter(mask: '+(###) ##-##-##-##');
+  TextEditingController numbertelephone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +79,7 @@ class _AddAssureBState extends State<AddAssureB> {
     prenomassureB.err = "Entrer le Prénom";
     adresseassureB.err = "Entrer l'Adresse'";
     codepostalB.err = "Entrer le Code Poastal";
-   
+
     emailB.err = "Entrer le Mail";
     return Scaffold(
       appBar: AppBar(
@@ -132,7 +124,7 @@ class _AddAssureBState extends State<AddAssureB> {
                     SizedBox(
                       width: 10,
                     ),
-                     Expanded(
+                    Expanded(
                       flex: 1,
                       child: TextFormField(
                         validator: (value) {
@@ -194,11 +186,6 @@ class _AddAssureBState extends State<AddAssureB> {
                           conductA: widget.conductA,
                           observ: widget.observ,
                           photo: widget.photo,
-                          arriere: widget.arriere,
-                          avant: widget.avant,
-                          droit: widget.droit,
-                          gauche: widget.gauche,
-                          hautA: widget.hautA,
                           circonstanceA: widget.circonstanceA,
                           signature: widget.signature,
                           imagesignature: widget.imagesignature,

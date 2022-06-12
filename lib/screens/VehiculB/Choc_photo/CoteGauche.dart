@@ -23,11 +23,7 @@ class CoteGaucheB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -50,11 +46,7 @@ class CoteGaucheB extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
+      
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -221,20 +213,9 @@ class _CoteGaucheBState extends State<CoteGaucheB> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-           /*  await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceB[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                 .set({
-              
-              'PhotosB': url,
-            }); */
-             gaucheB = [
-              uuid.v1(),
-              _fullName,
-              url,
-            ]; 
+          setState(() {
+              widget.photoB[2] = url;
+            });
           }
 
           Navigator.push(
@@ -250,11 +231,7 @@ class _CoteGaucheBState extends State<CoteGaucheB> {
                       conductA: widget.conductA,
                       observ: widget.observ,
                       photo: widget.photo,
-                      arriere: widget.arriere,
-                      avant: widget.avant,
-                      droit: widget.droit,
-                      gauche: widget.gauche,
-                      hautA: widget.hautA,
+                     
                       circonstanceA: widget.circonstanceA,
                       signature: widget.signature,
                       imagesignature: widget.imagesignature,
@@ -265,7 +242,7 @@ class _CoteGaucheBState extends State<CoteGaucheB> {
                       conducteurB: widget.conducteurB,
                       observB: widget.observB,
                       photoB: widget.photoB,
-                      gaucheB: gaucheB)));
+                      )));
         },
         child: Container(
           height: 50.0,

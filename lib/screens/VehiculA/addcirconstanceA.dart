@@ -16,11 +16,7 @@ class AddCirconstanceA extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+  
   AddCirconstanceA(
       {Key? key,
       this.Sin,
@@ -32,11 +28,7 @@ class AddCirconstanceA extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA})
+   })
       : super(key: key);
 
   @override
@@ -933,11 +925,6 @@ class _AddCirconstanceAState extends State<AddCirconstanceA> {
                         conductA: widget.conductA,
                         observ: widget.observ,
                         photo: widget.photo,
-                        arriere: widget.arriere,
-                        avant: widget.avant,
-                        droit: widget.droit,
-                        gauche: widget.gauche,
-                        hautA: widget.hautA,
                         circonstanceA: circonstanceA,
                       )));
         },

@@ -24,11 +24,7 @@ class HautB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -51,11 +47,6 @@ class HautB extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -222,58 +213,35 @@ class _HautBState extends State<HautB> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            hautB = [url,_fullName];
-            /*  await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceB[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                .collection('CroquisA_B')
-                .doc()
-                .set({
-              'name': _fullName,
-              'imageUrl': url,
+            setState(() {
+              widget.photoB[4] = url;
             });
-            FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceA[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                 .set({
-              
-              'PhotosB': url,
-            }); */
           }
 
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => AddCirconstanceB(
-                      Sin: widget.Sin,
-                      Temoin: widget.Temoin,
-                      blesse: widget.blesse,
-                      vehiculeA: widget.vehiculeA,
-                      assureA: widget.assureA,
-                      assuranceA: widget.assuranceA,
-                      conductA: widget.conductA,
-                      observ: widget.observ,
-                      photo: widget.photo,
-                      arriere: widget.arriere,
-                      avant: widget.avant,
-                      droit: widget.droit,
-                      gauche: widget.gauche,
-                      hautA: widget.hautA,
-                      circonstanceA: widget.circonstanceA,
-                      signature: widget.signature,
-                      imagesignature: widget.imagesignature,
-                      transA: widget.transA,
-                      vehiculeB: widget.vehiculeB,
-                      assureB: widget.assureB,
-                      assuranceB: widget.assuranceB,
-                      conducteurB: widget.conducteurB,
-                      observB: widget.observB,
-                      photoB: widget.photoB,
-                      hautB: hautB)));
+                        Sin: widget.Sin,
+                        Temoin: widget.Temoin,
+                        blesse: widget.blesse,
+                        vehiculeA: widget.vehiculeA,
+                        assureA: widget.assureA,
+                        assuranceA: widget.assuranceA,
+                        conductA: widget.conductA,
+                        observ: widget.observ,
+                        photo: widget.photo,
+                        circonstanceA: widget.circonstanceA,
+                        signature: widget.signature,
+                        imagesignature: widget.imagesignature,
+                        transA: widget.transA,
+                        vehiculeB: widget.vehiculeB,
+                        assureB: widget.assureB,
+                        assuranceB: widget.assuranceB,
+                        conducteurB: widget.conducteurB,
+                        observB: widget.observB,
+                        photoB: widget.photoB,
+                      )));
         },
         child: Container(
           height: 50.0,

@@ -176,14 +176,7 @@ class _AddCroquis1State extends State<AddCroquis1> {
             url = await ref.getDownloadURL();
 
             imagecroquis = [uuid.v1(), url, _fullName];
-         /*    await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceA[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                .set({
-              'CroquisA': imagecroquis[1],
-            }); */
+      
           }
 
           Navigator.push(

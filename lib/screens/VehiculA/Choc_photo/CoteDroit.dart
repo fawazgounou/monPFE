@@ -188,23 +188,16 @@ class _CoteDroitAState extends State<CoteDroitA> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-            droit = [uuid.v1(), url, _fullName];
-          /*     await FirebaseFirestore.instance
-                .collection('User')
-                .doc(widget.assuranceA[1])
-                .collection('Sinistre')
-                .doc(widget.Sin[0])
-                 .set({
-              
-              'PhotosA': url,
-            }); */
+            setState(() {
+              widget.photo[1] = url;
+            });
           }
 
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => AddCirconstanceA(
-                    Sin: widget.Sin,
+                        Sin: widget.Sin,
                         Temoin: widget.Temoin,
                         blesse: widget.blesse,
                         vehiculeA: widget.vehiculeA,
@@ -213,7 +206,6 @@ class _CoteDroitAState extends State<CoteDroitA> {
                         conductA: widget.conductA,
                         observ: widget.observ,
                         photo: widget.photo,
-                        droit: droit,
                       )));
         },
         child: Container(

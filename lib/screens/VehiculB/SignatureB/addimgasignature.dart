@@ -26,11 +26,7 @@ class AddImageSignatureB extends StatefulWidget {
   var conductA;
   var observ;
   var photo;
-  var arriere;
-  var avant;
-  var droit;
-  var gauche;
-  var hautA;
+
   var circonstanceA;
   var signature;
   var imagesignature;
@@ -41,11 +37,6 @@ class AddImageSignatureB extends StatefulWidget {
   var conducteurB;
   var observB;
   var photoB;
-  var arriereB;
-  var avantB;
-  var droiteB;
-  var gaucheB;
-  var hautB;
   var circonstanceB;
   var signatureB;
 
@@ -60,11 +51,6 @@ class AddImageSignatureB extends StatefulWidget {
       this.conductA,
       this.observ,
       this.photo,
-      this.arriere,
-      this.avant,
-      this.droit,
-      this.gauche,
-      this.hautA,
       this.circonstanceA,
       this.signature,
       this.imagesignature,
@@ -75,11 +61,6 @@ class AddImageSignatureB extends StatefulWidget {
       this.conducteurB,
       this.observB,
       this.photoB,
-      this.arriereB,
-      this.avantB,
-      this.droiteB,
-      this.gaucheB,
-      this.hautB,
       this.circonstanceB,
       this.signatureB})
       : super(key: key);
@@ -205,8 +186,10 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                 .child(_fullName + '.jpg');
             await ref.putFile(_pickedImage!);
             url = await ref.getDownloadURL();
-           imagesignatureB = [
-              uuid.v1(), url, _fullName,
+            imagesignatureB = [
+              uuid.v1(),
+              url,
+              _fullName,
             ];
           }
 
@@ -223,11 +206,6 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                       conductA: widget.conductA,
                       observ: widget.observ,
                       photo: widget.photo,
-                      arriere: widget.arriere,
-                      avant: widget.avant,
-                      droit: widget.droit,
-                      gauche: widget.gauche,
-                      hautA: widget.hautA,
                       circonstanceA: widget.circonstanceA,
                       signature: widget.signature,
                       imagesignature: widget.imagesignature,
@@ -238,10 +216,6 @@ class _AddImageSignatureAState extends State<AddImageSignatureB> {
                       conducteurB: widget.conducteurB,
                       observB: widget.observB,
                       photoB: widget.photoB,
-                      arriereB: widget.arriereB,
-                      avantB: widget.avantB,
-                      droiteB: widget.droiteB,
-                      gaucheB: widget.gaucheB,
                       circonstanceB: widget.circonstanceB,
                       signatureB: widget.signatureB,
                       imagesignatureB: imagesignatureB)));
