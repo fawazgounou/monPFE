@@ -28,11 +28,11 @@ class _ChoixOptionState extends State<ChoixOption> {
               children: [
                 const Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Text('Sélctionnez le mode de saisie',
+                  child: Text('Sélectionnez le mode de saisie',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,fontWeight: FontWeight.bold
-                      ),
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center),
                 ),
                 const SizedBox(

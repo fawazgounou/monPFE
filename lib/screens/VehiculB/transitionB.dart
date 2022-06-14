@@ -249,7 +249,7 @@ class _TransitionBState extends State<TransitionB> {
                         'PrenomASB': widget.assureA[2],
                         'AdresseASB': widget.assureA[3],
                         'Code_PostalASB': widget.assureA[4],
-                        'TéléphoneAS': widget.assureA[5],
+                        'TéléphoneASSB': widget.assureA[5],
                         'EmailASB': widget.assureA[6],
                         'NomB': widget.assuranceA[1],
                         'num_contratB': widget.assuranceA[2],

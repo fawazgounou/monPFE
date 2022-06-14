@@ -180,7 +180,6 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
             url = await ref.getDownloadURL();
 
             imagesignature = [uuid.v1(), url, _fullName];
-            
           }
 
           Navigator.push(

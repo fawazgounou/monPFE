@@ -7,6 +7,7 @@ import 'package:insertion_bd/screens/1_VehiculA/addphotoA1.dart';
 import 'package:insertion_bd/screens/1_VehiculA/transitionA1.dart';
 
 import 'package:insertion_bd/screens/home/home.dart';
+import 'package:insertion_bd/screens/home/option_1_2.dart';
 
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
