@@ -323,6 +323,39 @@ class _TransitionBState extends State<TransitionB> {
                         'CroquisA': widget.imagescroquiA_B[1],
                         'SignatureB': widget.imagesignatureB[1],
                       });
+
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text(
+                                'Sauvegarder avec succès',
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ), // To display the title it is optional
+                              content: Text(
+                                'Informations envoyés à ${widget.assuranceA[1]} et ${widget.assuranceB[1]}',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18),
+                                textAlign: TextAlign.center,
+                              ),
+                              actions: [
+                                FlatButton(
+                                  textColor: Colors.black,
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text(
+                                    'OK',
+                                    style: TextStyle(
+                                        color: Colors.blue, fontSize: 20),
+                                  ),
+                                ),
+                              ],
+                            );
+                          });
                     },
                     child: const Text(
                       'Sauvegarder',
