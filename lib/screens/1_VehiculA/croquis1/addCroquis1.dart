@@ -152,13 +152,13 @@ class _AddCroquis1State extends State<AddCroquis1> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 400,
+                  height: 420,
                   decoration: _pickedImage == null
                       ? const BoxDecoration(color: Colors.white)
                       : BoxDecoration(
                           image: DecorationImage(
                               image: FileImage(_pickedImage!),
-                              fit: BoxFit.cover)),
+                              fit: BoxFit.fill)),
                 ),
               )
             ],
@@ -176,7 +176,6 @@ class _AddCroquis1State extends State<AddCroquis1> {
             url = await ref.getDownloadURL();
 
             imagecroquis = [uuid.v1(), url, _fullName];
-      
           }
 
           Navigator.push(

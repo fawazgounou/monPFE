@@ -166,13 +166,13 @@ class _AddImageSignatureAState extends State<AddcroquisA_B> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 400,
+                  height: 420,
                   decoration: _pickedImage == null
                       ? const BoxDecoration(color: Colors.white)
                       : BoxDecoration(
                           image: DecorationImage(
                               image: FileImage(_pickedImage!),
-                              fit: BoxFit.cover)),
+                              fit: BoxFit.fill)),
                 ),
               )
             ],

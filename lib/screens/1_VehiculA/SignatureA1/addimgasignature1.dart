@@ -162,7 +162,7 @@ class _AddImageSignatureA1State extends State<AddImageSignatureA1> {
                       : BoxDecoration(
                           image: DecorationImage(
                               image: FileImage(_pickedImage!),
-                              fit: BoxFit.cover)),
+                              fit: BoxFit.fill)),
                 ),
               )
             ],
